@@ -10,29 +10,21 @@ class MyQueue {
     
     /** Push element x to the back of queue. */
     public void push(int x) {
-        // while(!s1.empty()){
-        //     s2.push(s1.pop());
-        // }
-        // s1.push(x);
-        // while(!s2.empty()){
-        //     s1.push(s2.pop());
-        // }
+        while(!s1.empty()){
+            s2.push(s1.pop());
+        }
         s1.push(x);
+        while(!s2.empty()){
+            s1.push(s2.pop());
+        }
+        // s1.push(x);
 
         System.out.println("Stack " + s1);
     }
     
     /** Removes the element from in front of queue and returns that element. */
-    public int pop() {
-        
-        while(!s1.empty()){
-            s2.push(s1.pop());
-        }
-        int x = s2.pop();
-        return x;
-        //return s1.pop();
-        
-       // return 0;
+    public int pop() {        
+        return s1.pop();        
     }
     
     /** Get the front element. */
