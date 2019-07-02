@@ -1,0 +1,31 @@
+class MyHashSet {
+
+    int set[] = new int[1000000];
+    /** Initialize your data structure here. */
+    public MyHashSet() {
+        
+    }
+    
+    public void add(int key) {
+        if(set[key]==0) //if the key is not present, increment index by 1
+            set[key]++;
+    }
+    
+    public void remove(int key) {
+        if(set[key]>0)  //if key present, remove the key by decrementing the index
+            set[key]--;
+    }
+    
+    /** Returns true if this set contains the specified element */
+    public boolean contains(int key) {
+        return set[key]>0;
+    }
+}
+
+/**
+ * Your MyHashSet object will be instantiated and called as such:
+ * MyHashSet obj = new MyHashSet();
+ * obj.add(key);
+ * obj.remove(key);
+ * boolean param_3 = obj.contains(key);
+ */
