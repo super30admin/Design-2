@@ -4,16 +4,12 @@ class MyHashSet {
 
     /** Initialize your data structure here. */
     public MyHashSet() {
-         list =new ArrayList<Integer>();
-         
-         // Boolean array is used since list.remove() and list.contains() have time complxity of O(n)
-         //Finding element by position instead of value saves cost and makes its O(1) instead of O(n)
+         //list =new ArrayList<Integer>();
         contained = new boolean[1000000];
     }
     
     public void add(int key) {
         if(!contained[key])
-             list.add(key);
         contained[key] = true;
     }
     
@@ -41,4 +37,4 @@ class MyHashSet {
  * obj.add(key);
  * obj.remove(key);
  * boolean param_3 = obj.contains(key);
- */Has
+ */
