@@ -23,6 +23,8 @@ public class MyHashSet {
 
     }
     public void remove(int key){
+        if(nodes[index(key)]==null)
+            return;
         ListNode prev = find(nodes[index(key)],key);
         if(prev.next == null)
             return;
