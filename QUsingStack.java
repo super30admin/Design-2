@@ -1,39 +1,41 @@
 import java.util.Stack;
 
 public class QUsingStack {
-    Stack<Integer> stack;
+ Stack<Integer> stack;
     Stack<Integer> dupe;
-    int length;
-    int dlength;
+    //int length;
+    //int dlength;
 
-    public QUsingStack() {
+    /** Initialize your data structure here. */
+    public MyQueue() {
         stack = new Stack<Integer>();
         dupe = new Stack<Integer>();
-        length = 0;
-        dlength = 0;
+        //length = 0;
+        //dlength = 0;
     }
-
-    public void push(int data){
-        stack.push(data);
-        length++;
-
+    
+    /** Push element x to the back of queue. */
+    public void push(int x) {
+        stack.push(x);
+        //length++;
     }
-
-    public int pop(){
-    if(length>0 && dlength == 0){
-        int x = length;
-        while(x>0){
-            int y = stack.pop();
-            dupe.push(y);
-            length--;
-            dlength++;
-            x--;
+    
+    /** Removes the element from in front of queue and returns that element. */
+    public int pop() {
+        if(!stack.isEmpty() && dupe.isEmpty()){
+        //int x = length;
+        while(!stack.isEmpty()){
+            //int y = stack.pop();
+            dupe.push(stack.pop());
+            //length--;
+            //dlength++;
+            //x--;
         }
-        dlength--;
+            //dlength--;
         return dupe.pop();
     }
-    else if(length>=0 && dlength>0){
-        dlength--;
+    else if(!dupe.isEmpty()){
+        //dlength--;
         return dupe.pop();
     }
     else {
@@ -42,35 +44,37 @@ public class QUsingStack {
     }
 
     }
-
-    public int peek(){
-        if(length>0 && dlength == 0){
-            int x = length;
-            while(x>0){
-                int y = stack.pop();
-                dupe.push(y);
-                length--;
-                dlength++;
-                x--;
+    
+    /** Get the front element. */
+    public int peek() {
+         if(!stack.isEmpty() && dupe.isEmpty()){
+            //int x = length;
+            while(!stack.isEmpty()){
+                //int y = stack.pop();
+                dupe.push(stack.pop());
+                //length--;
+                //dlength++;
+                //x--;
             }
             return dupe.peek();
         }
-        else if(length>=0 && dlength>0){
+        else if(!dupe.isEmpty()){
             return dupe.peek();
         }
         else {
             System.out.println("Queue Underflow");
             return -1;
         }
-
     }
-
-    public boolean empty(){
-    if(length<1 && dlength<1)
+    
+    /** Returns whether the queue is empty. */
+    public boolean empty() {
+        if(stack.isEmpty() && dupe.isEmpty())
         return true;
     else
         return false;
     }
+}
 
     public static void main(String[] args) {
         QUsingStack q = new QUsingStack();
