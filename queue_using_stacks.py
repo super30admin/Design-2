@@ -1,3 +1,8 @@
+"""
+Approach push data in to stack 1 . pop data from stack 2. if stack to is empty then pop data from stack 1 to stack 2
+and then pop
+
+"""
 class MyQueue(object):
     
     stack_1 = []
@@ -15,6 +20,7 @@ class MyQueue(object):
         Push element x to the back of queue.
         :type x: int
         :rtype: None
+        O(1)
         """
         self.stack_1.append(x)
     
@@ -24,6 +30,7 @@ class MyQueue(object):
         """
         Removes the element from in front of queue and returns that element.
         :rtype: int
+        O(1) on avg O(n) if stack 2 is empty ese O(1)
         """
         if self.empty() :
             return None
@@ -42,6 +49,7 @@ class MyQueue(object):
         """
         Get the front element.
         :rtype: int
+        O(1) on avg O(n) if stack 2 is empty ese O(1)
         """
         if self.empty() :
             return None

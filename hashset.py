@@ -1,5 +1,8 @@
 """
 HashSet implemented using double hashing.
+
+All operation O(1) operation as inner list and outer lists are of constant size
+
 """
 class MyHashSet(object):
     
