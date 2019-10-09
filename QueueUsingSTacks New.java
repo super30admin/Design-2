@@ -1,3 +1,8 @@
+// TC : Push Operation is O(N)  pop is O(1)
+// SC : O(N)
+// Idea : To push all the elemetns in S1 to S2 , and push new element to S1 and 
+
+
 import java.util.Stack;
 
 public class D2_QueueUsingStack {
@@ -37,7 +42,7 @@ class MyQueue {
         while (!s1.isEmpty())
         {
             s2.push(s1.pop());
-            //s1.pop();
+            
         }
 
         // Push item into s1
@@ -47,7 +52,7 @@ class MyQueue {
         while (!s2.isEmpty())
         {
             s1.push(s2.pop());
-            //s2.pop();
+            
         }
     }
 
@@ -60,10 +65,8 @@ class MyQueue {
             System.exit(0);
         }
 
-        // Return top of s1
-        int x = s1.peek();
-        s1.pop();
-        return x;
+        // Return top of s1 and pop
+        return s1.pop();
 
     }
 
