@@ -1,13 +1,6 @@
-"""Using two stack approach"""
-
-"""Getting wrong answer for peek
-Your input
-["MyQueue","push","push","peek","pop","empty"]
-[[],[1],[2],[],[],[]]
-Output
-[null,null,null,None,1,false]
-Expected
-[null,null,null,1,1,false]"""
+"""Approach: Using two stacks"""
+#Accepted on Leetcode
+#Time Complexity - O(1) for push and O(N) for pop and peek
 
 class MyQueue(object):
 
@@ -33,9 +26,12 @@ class MyQueue(object):
         Removes the element from in front of queue and returns that element.
         :rtype: int
         """
-        while len(self.push_stack) != 0:
-            self.pop_stack.append(self.push_stack.pop())
-        return self.pop_stack.pop()
+        if len(self.pop_stack) != 0:
+            return self.pop_stack.pop()
+        else:
+            while len(self.push_stack) != 0:
+                self.pop_stack.append(self.push_stack.pop())
+            return self.pop_stack.pop()
         
 
     def peek(self):
@@ -43,17 +39,19 @@ class MyQueue(object):
         Get the front element.
         :rtype: int
         """
-        if self.pop_stack != None and len(self.pop_stack) != 0:
+        if len(self.pop_stack) != 0:
             return self.pop_stack[-1]
-        
-        
+        else:
+            while len(self.push_stack) != 0:
+                self.pop_stack.append(self.push_stack.pop())
+            return self.pop_stack[-1]
 
     def empty(self):
         """
         Returns whether the queue is empty.
         :rtype: bool
         """
-        if self.push_stack == None and self.pop_stack == None:
+        if self.push_stack == [] and self.pop_stack == []:
             return True
         
 
