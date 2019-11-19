@@ -2,6 +2,11 @@ package demo;
 
 import java.util.Stack;
 
+//Time complexity : pop = O(n)
+//Space Complexity: O(n)
+//LeetCode : yes
+
+
 class MyQueue {
     Stack<Integer> st = new Stack<>();
     Stack<Integer> st2 = new Stack<>();
@@ -17,9 +22,11 @@ class MyQueue {
     
     /** Removes the element from in front of queue and returns that element. */
     public int pop() {
-        while(st2.isEmpty()){
+        if(st2.isEmpty()){
+        		while(!st.isEmpty()) {
             int popped = st.pop();
             st2.push(popped);
+        		}
         }
         return st2.pop();
     }
