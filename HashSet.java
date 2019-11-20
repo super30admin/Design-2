@@ -1,3 +1,5 @@
+Time Complexity-Search-O(1)
+Space Complexity-O(n)
 class MyHashSet {
     int buckets=1000;
     int bucketItems=1000;
