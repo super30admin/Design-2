@@ -8,11 +8,13 @@ class MyQueue(object):
 
     def pop(self):
         #poppping the element from front 
-        return self.mainstack.pop(0)
+         #since it acts as a list last element would be -1 index
+        return self.mainstack.pop(-1)
         
     def peek(self):
         #returning the front element
-        return self.mainstack[0]
+        #since it acts as a list last element would be -1 index
+        return self.mainstack[-1]
         
     def empty(self):
         return len(self.mainstack)==0
