@@ -96,8 +96,75 @@ class MyHashSet(object):
                 current = current.next
         return False
 
+class MyHashSetDoubleHashing(object):
 
+    def __init__(self):
+        """
+        Initialize your data structure here.
+        """
+        self.size = 1000
+        self.hashSet = [None] * self.size
+        
+    def __hashingOne(self, key):
+        return key % self.size
+    
+    def __hashingTwo(self, key):
+        return key // self.size
+    
+    def add(self, key):
+        """
+        :type key: int
+        :rtype: None
+        """
+        h1 = self.__hashingOne(key)
+        h2 = self.__hashingTwo(key)
+        if not self.hashSet[h1]:
+            self.hashSet[h1] = [False] * self.size
+            self.hashSet[h1][h2] = True
+        else:
+            self.hashSet[h1][h2] = True
+
+    def remove(self, key):
+        """
+        :type key: int
+        :rtype: None
+        """
+        h1 = self.__hashingOne(key)
+        h2 = self.__hashingTwo(key)
+        if self.hashSet[h1]:
+            self.hashSet[h1][h2] = False
+        
+
+    def contains(self, key):
+        """
+        Returns true if this set contains the specified element
+        :type key: int
+        :rtype: bool
+        """
+        h1 = self.__hashingOne(key)
+        h2 = self.__hashingTwo(key)
+        if self.hashSet[h1]:
+            return self.hashSet[h1][h2]
+        else:
+            return False
+
+print('LINEAR CHAINING')
 hashSet = MyHashSet()
+hashSet.add(1)         
+hashSet.add(2)         
+print(hashSet.contains(1))
+# // returns true
+print(hashSet.contains(3))
+# // returns false (not found)
+hashSet.add(2)          
+print(hashSet.contains(2))
+# // returns true
+hashSet.remove(2)          
+print(hashSet.contains(2))
+# // returns false (already removed)
+
+print('DOUBLE HASHING')
+hashSet = MyHashSetDoubleHashing()
 hashSet.add(1)         
 hashSet.add(2)         
 print(hashSet.contains(1))
