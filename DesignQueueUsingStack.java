@@ -1,5 +1,8 @@
 // Time Complexity :
-// Average time complexity : O(1) , but worst time complexity : O(n) as we push all elements from instack to outstack
+
+// Pop and Peek : Average time complexity  O(1) , but worst time complexity : O(n) as we push all elements from instack to outstack
+// Empty : O(1)
+// Push : O(1)
 
 // Space Complexity : O(n) as we are using two stacks
 
