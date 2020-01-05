@@ -3,11 +3,11 @@ from math import sqrt
 
 class MyHashSet:
 
-    def __init__(self):
+    def __init__(self, values=1000000):
         """
         Initialize your data structure here.
         """
-        self.size = int(sqrt(1000000))
+        self.size = int(sqrt(values))
         self.buckets = [None] * self.size
 
     def _hash(self, key):
@@ -16,7 +16,7 @@ class MyHashSet:
     def add(self, key: int) -> None:
         hash1, hash2 = self._hash(key)
         if not self.buckets[hash1]:
-            self.buckets[hash1] = [False] * self.size
+            self.buckets[hash1] = [False] * (self.size + 1)
         self.buckets[hash1][hash2] = True
 
     def remove(self, key: int) -> None:
