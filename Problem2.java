@@ -1,29 +1,36 @@
 class MyHashSet {
-    boolean[] hashArr;
+    boolean[] arrayhash;
+
+    /** Initialize your data structure here. */
     public MyHashSet() {
-        hashArr = new boolean[1000];
+        arrayhash = new boolean[1000];
     }
     
     public void add(int key) {
-        if(key>=hashArr.length)
-            extend(key);
-        hashArr[key]=true;
+        if(key>=arrayhash.length){
+            doubleArray(key);
+        }
+        arrayhash[key] = true;
     }
     
     public void remove(int key) {
-        if(key>=hashArr.length)
-            extend(key);
-        hashArr[key]=false;
+        if(key>=arrayhash.length){
+            doubleArray(key);
+        }
+        arrayhash[key] = false;
     }
     
+    /** Returns true if this set contains the specified element */
     public boolean contains(int key) {
-        if(key>=hashArr.length)
-            return false;
-        return hashArr[key]==true;
+        if(key>=arrayhash.length){
+            doubleArray(key);
+        }
+        boolean iscontained = arrayhash[key];
+        return iscontained;
     }
     
-    public void extend(int key){
-        hashArr= Arrays.copyOf(hashArr, key+1);  
+    public void doubleArray (int key){
+        arrayhash = Arrays.copyOf(arrayhash, key+1);  
     }
 }
 

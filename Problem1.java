@@ -1,63 +1,49 @@
 class MyQueue {
+        
+        Stack<Integer> stack1;
+        Stack<Integer> stack2;
+        int top;
 
     /** Initialize your data structure here. */
-    
-    //Initialized Two Stack approach, temp is used to maintain top element for the queue
-    Stack<Integer> stack;
-    Stack<Integer> temp;
-    
-    // Integer front is used to keep track of current top element as per queue
-    Integer front;
     public MyQueue() {
-        stack = new Stack<Integer>();
-        temp = new Stack<Integer>();
+        stack1 = new Stack<>();
+        stack2 = new Stack<>();
     }
     
     /** Push element x to the back of queue. */
     public void push(int x) {
-        
-        //update front is stack is empty
-        if(stack.empty()){
-            front = x;
+        if (stack1.empty()){
+            top = x;
+        }
+        while (!stack1.isEmpty()){
+            int y = stack1.pop();
+            stack2.push(y);
+        }
+        stack2.push(x);
+        while (!stack2.isEmpty()){
+            int y = stack2.pop();
+            stack1.push(y);
         }
         
-        //transferring all elements of stack to temp to so that last element can be pushed to stack first
-        while(!stack.empty()){
-            temp.push(stack.pop());
-        }
-        
-        //pushing last element to stack first
-        stack.push(x);
-        
-        //updating stack back from the temp
-        while(!temp.empty()){
-            stack.push(temp.pop());
-        }
     }
     
     /** Removes the element from in front of queue and returns that element. */
     public int pop() {
-        
-        //popped interger will be the current top element as per queue
-        Integer popped = stack.pop();
-        
-        //If stack is not empty, then second element in queue becomes the top
-        if(!stack.empty()){
-            front = stack.peek();
-        }
-        return popped;
+        int y = stack1.pop();
+            if (!stack1.empty()){
+                top = stack1.peek();
+            }
+        return y;
     }
     
     /** Get the front element. */
     public int peek() {
-        
-        //returning front, as it will be always top
-        return front;
+        return stack1.peek();
     }
     
     /** Returns whether the queue is empty. */
     public boolean empty() {
-       return stack.isEmpty();
+        return stack1.isEmpty();
     }
 }
 
