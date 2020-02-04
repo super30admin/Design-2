@@ -1,3 +1,4 @@
+# Code ran in Leetcode. Used a single stack. 
 class MyQueue(object):
 
     def __init__(self):
@@ -5,7 +6,6 @@ class MyQueue(object):
         Initialize your data structure here.
         """
         self.s1 = []
-        self.s2 = []
         
 
     def push(self, x):
@@ -14,6 +14,7 @@ class MyQueue(object):
         :type x: int
         :rtype: None
         """
+        # O(1) Time Complexity
         return self.s1.append(x)
 
     def pop(self):
@@ -21,6 +22,7 @@ class MyQueue(object):
         Removes the element from in front of queue and returns that element.
         :rtype: int
         """
+        # O(1) Time Complexity 
         return self.s1.pop(0)
 
     def peek(self):
@@ -28,6 +30,7 @@ class MyQueue(object):
         Get the front element.
         :rtype: int
         """
+        # O(1) Time Complexity 
         return self.s1[0]
         
 
@@ -36,6 +39,7 @@ class MyQueue(object):
         Returns whether the queue is empty.
         :rtype: bool
         """
+        # O(1) Time Complexity 
         return not self.s1
         
         
