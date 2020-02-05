@@ -5,6 +5,8 @@ import java.util.Stack;
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this :
 
+//It uses 2 stacks one for push and another for pop. The functions while popping the number pop all the values from 1st stack and then remove the element. Further the elements are pushed back to the 1st stack
+
 class MyQueue {
 
     Stack<Integer> st1;
