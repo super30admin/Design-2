@@ -2,18 +2,58 @@ import java.util.Stack;
 
 class MyQueue {
 
-
     Stack<Integer> s1;
     Stack<Integer> s2;
      
-    /** Initialize your data structure here. */
     public MyQueue() {
 
         s1 = new Stack<Integer>();
         s2 = new Stack<Integer>();
     }
     
-    /** Push element x to the back of queue. */
+    public void push(int x) {
+        s1.push(x);
+    }
+
+    public int pop() {
+       if(s2.isEmpty()){
+           transfer(s1,s2);
+       } 
+       return s2.pop();
+
+    }
+
+    public int peek() {
+        if(s2.isEmpty()){
+            transfer(s1,s2);
+        }
+        return s2.peek();
+
+    }
+
+    public boolean empty() {
+
+        return s1.isEmpty() && s2.isEmpty();
+    }
+
+    private void transfer(Stack<Integer> s1, Stack<Integer> s2){
+        while(!s1.isEmpty()){
+            s2.push(s1.pop());
+        }
+    }
+
+
+
+/*
+    Stack<Integer> s1;
+    Stack<Integer> s2;
+     
+    public MyQueue() {
+
+        s1 = new Stack<Integer>();
+        s2 = new Stack<Integer>();
+    }
+    
     public void push(int x) {
 
         if(s1.isEmpty()){
@@ -31,7 +71,6 @@ class MyQueue {
         
     }
     
-    /** Removes the element from in front of queue and returns that element. */
     public int pop() {
 
    
@@ -40,19 +79,17 @@ class MyQueue {
         //return s2.pop();
     }
     
-    /** Get the front element. */
     public int peek() {
         return s1.peek();
     }
     
-    /** Returns whether the queue is empty. */
     public boolean empty() {
         if(!s1.isEmpty()){
             return false;
         }
         return true;
     }
-
+*/
 
     public static void main(String args[]) {
         MyQueue m = new MyQueue();
