@@ -62,8 +62,9 @@ class MyHashSet:
         # need to write it this way for python
         return type(self.storage[bucketKey]) is list and self.storage[bucketKey][bucketItem]
 
-# Your MyHashSet object will be instantiated and called as such:
-# obj = MyHashSet()
-# obj.add(key)
-# obj.remove(key)
-# param_3 = obj.contains(key)
+obj = MyHashSet()
+obj.add(1)
+obj.add(8)
+obj.add(20)
+print("Element status " + str(obj.contains(8)))
+obj.remove(20)
