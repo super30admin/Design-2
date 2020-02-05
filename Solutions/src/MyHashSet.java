@@ -1,6 +1,9 @@
 // Time Complexity :
-
-// Space Complexity :
+//Add O(1)
+//Remove O(1)
+//Contains O(1)
+//// Space Complexity :
+//O(n^2) Not sure, please let me know if its correct
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : Forgot to initialize the bucketItem array which caused an issue, resolution took 5 min.
 
