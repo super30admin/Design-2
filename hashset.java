@@ -1,6 +1,6 @@
 // Time Complexity : O(1)
 // Space Complexity : O(N)
-// Did this code successfully run on Leetcode : NO
+// Did this code successfully run on Leetcode : YES
 // Any problem you faced while coding this :
 
 // I solved the problem after yesterday's class. I couldn't solve this on my own.
@@ -31,7 +31,7 @@ class MyHashSet {
     
     public void add(int key) {
         int bucket = bucket(key);
-        int bucketItem = bucket(key);
+        int bucketItem = bucketItem(key);
         if(storage[bucket] == null){
            storage[bucket] = new boolean[bucketItems]; 
         }
@@ -40,7 +40,7 @@ class MyHashSet {
     
     public void remove(int key) {
         int bucket = bucket(key);
-        int bucketItem = bucket(key);
+        int bucketItem = bucketItem(key);
         if(storage[bucket] != null){
             storage[bucket][bucketItem] = false; 
         }
@@ -50,7 +50,7 @@ class MyHashSet {
     /** Returns true if this set contains the specified element */
     public boolean contains(int key) {
         int bucket = bucket(key);
-        int bucketItem = bucket(key);
+        int bucketItem = bucketItem(key);
         return storage[bucket] != null && storage[bucket][bucketItem] == true;
     }
 }
