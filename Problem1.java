@@ -1,7 +1,8 @@
 // Time Complexity : O(1) average time complexity
 // Space Complexity : O(n) 
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+// 2 stack Solution with average time complexity of O(1) out stack is used for pop operations to get the front elemets and in stack is used to push the elements. out stack is populated from in stack if it is empty which is O(n) operation.
 
 
 
@@ -22,10 +23,8 @@ class MyQueue {
     /** Removes the element from in front of queue and returns that element. */
     public int pop() {
         if(out.isEmpty()){
-            int size = in.size();
-            for(int i=0;i < size;i++){
+            while(!in.isEmpty())
                 out.push(in.pop());
-            }
         }
         return out.pop();
     }
@@ -33,8 +32,7 @@ class MyQueue {
     /** Get the front element. */
     public int peek() {
          if(out.isEmpty()){
-            int size = in.size();
-            for(int i=0;i < size ;i++){
+            while(!in.isEmpty()){
                 out.push(in.pop());
             }
         }
@@ -43,9 +41,7 @@ class MyQueue {
     
     /** Returns whether the queue is empty. */
     public boolean empty() {
-        if(in.isEmpty() && out.isEmpty())
-            return true;
-        return false;
+        return in.isEmpty() && out.isEmpty();
     }
 }
 
