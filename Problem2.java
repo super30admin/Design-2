@@ -1,5 +1,5 @@
-// Time Complexity
-// Space Complexity - 
+// Time Complexity - O(1) for all operations
+// Space Complexity - O(n)
 // This Solution worked on LeetCode
 
 
