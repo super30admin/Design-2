@@ -1,5 +1,5 @@
-// Time Complexity :O(1)
-// Space Complexity :O(1) usually but when values need to be tansfered to another stack it will be  O(n)
+// Time Complexity :O(1) usually for all the operation but when values need to be tansfered to another stack it will be  O(n) in case of pop
+// Space Complexity :O(n)
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : I did not faced any problem in this.
 class Queue {
