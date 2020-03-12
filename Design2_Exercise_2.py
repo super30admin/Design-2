@@ -2,7 +2,6 @@
 // Space Complexity : O(n)
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : Initially, used divide '/' operator and got a float index. Had to use '//' for int index.
-	
 
 // Your code here along with comments explaining your approach - 
 1. Initialize the bucket size, bucketItem and define an empty hashset with size equal to bucket size.
