@@ -3,7 +3,6 @@
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : Questions - As we are using 2 stack, would space complexity be O(2n)? For pop, can we call
 time complexity as amortized O(1)?
-	
 
 // Your code here along with comments explaining your approach - 
 1. For push, we simply append the value to stack 1.
