@@ -1,5 +1,11 @@
+// Time Complexity : 0(n)
+// Space Complexity : 0(n)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : None
+
 class MyQueue {
     
+
     Stack<Integer> stack1;
     Stack<Integer> stack2;
     
@@ -12,14 +18,18 @@ class MyQueue {
     }
     
     /** Push element x to the back of queue. */
+    // only if stack1 is empty, update variable front
     public void push(int x) {
         if(stack1.isEmpty()){
             front = x;
         }
+        // always push in stack1
         stack1.push(x);
     }
     
     /** Removes the element from in front of queue and returns that element. */
+    // if stack2 is not empty, pop form it, else, refill stack2 from stack1 and pop frm stack2. 
+    // Always pops element form stack2
     public int pop() {
         if(stack2.isEmpty()){
             while(!stack1.isEmpty()){
@@ -29,6 +39,7 @@ class MyQueue {
         return stack2.pop();
     }
     
+    // if stack2 is not empty, peek the top element, else return front
     /** Get the front element. */
     public int peek() {
         if(!stack2.isEmpty()){
