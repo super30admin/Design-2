@@ -1,6 +1,6 @@
 
 
-#Time complexity : Apush: O(1), pop: O(n), empty: O(1)
+#Time complexity : ush: O(1), pop: O(n),peek:O(n), empty: O(1)
 #Space complexity: O(n) 
 
 # Implemented queue using two stacks.
