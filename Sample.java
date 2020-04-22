@@ -1,4 +1,4 @@
-// Time Complexity :O(n)
+// Time Complexity :O(1)
 // Space Complexity :O(n)
 // Did this code successfully run on Leetcode :
 // Any problem you faced while coding this :no
@@ -50,8 +50,8 @@ class MyQueue {
     }
 }
 ------------------------------------------------------------------------------------------
-// Time Complexity :O(n) due to initialization of buckets in bucketArray
-// Space Complexity :O(keyspace)
+// Time Complexity :O(n) due to initialization of buckets in bucketArray? bit confused about this
+// Space Complexity :O(n)
 // Did this code successfully run on Leetcode :Yes
 // Any problem you faced while coding this :no
 class Bucket {
