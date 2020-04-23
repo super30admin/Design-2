@@ -1,4 +1,4 @@
-# Design-2
+# Design-2.0
 
 ## Problem 1: (https://leetcode.com/problems/implement-queue-using-stacks/)
 Implement the following operations of a queue using stacks.
