@@ -1,3 +1,7 @@
+// Time Complexity : O(1) - push - O(1), pop - average O(1), worst case O(n)
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : None
 class MyQueue {
 public:
     /** Initialize your data structure here. */
