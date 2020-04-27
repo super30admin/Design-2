@@ -1,4 +1,5 @@
-#Time Complexity : O(N) for pop O(1) for pop
+# I did changes let me know if it corrector not
+#Time Complexity : O(N) for pop if stack b is empty otherwise O(1) O(1) for push
 #Space Complexity :O(N)
 #Did this code successfully run on Leetcode : Yes
 #Any problem you faced while coding this : took a lot of time in pop
@@ -32,12 +33,12 @@ class MyQueue(object):
         # then pop the last element added from the secondary stack and store in variable h
         # then pop all the elements from secondary to main stack
         # return variable h
-        while (len(self.a)!=0): 
-            self.b.append(self.a.pop())
-        h = self.b.pop()
-        while (len(self.b)!=0):
-            self.a.append(self.b.pop())
-        return(h)
+        if len(self.b)==0:
+            while (len(self.a)!=0): 
+                self.b.append(self.a.pop())
+            self.b.pop()
+        else:
+            self.b.pop()
         
         
 
@@ -47,7 +48,12 @@ class MyQueue(object):
         :rtype: int
         """
         # return the front element which is 0th index element from main stack
-        return(self.a[0])
+        if len(self.b)==0:
+            while (len(self.a)!=0): 
+                self.b.append(self.a.pop())
+            return(self.b[-1])
+        else:
+            return(self.a[0])
 
     def empty(self):
         """
