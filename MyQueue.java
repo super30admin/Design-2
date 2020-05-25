@@ -1,6 +1,11 @@
 import java.util.Deque;
 import java.util.Stack;
+/*
+PUSH : O(1)
+POP : O(1) average case but in worst case O(n)
+Peek : O(1)
 
+*/
 class MyQueue {
     Stack<Integer> stack;
     Stack<Integer> stack1;
@@ -29,14 +34,6 @@ class MyQueue {
                 }    
             }
             int remove = stack1.pop();
-            // if(stack1.isEmpty()){
-            //     front =-1;
-            // }else{
-            //     front = stack1.peek();
-            //     System.out.println("front"+front);
-            
-            // }
-            // System.out.println("PEEK"+front);
             return remove;
         
     }
