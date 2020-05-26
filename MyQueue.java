@@ -6,11 +6,11 @@
 import java.util.Stack;
 
 class MyQueue {
-    Stack stack, stack2;
+    Stack<Integer> stack, stack2;
     /** Initialize your data structure here. */
     public MyQueue() {
-        stack = new Stack();
-        stack2 = new Stack();
+        stack = new Stack<>();
+        stack2 = new Stack<>();
     }
     
     /** Push element x to the back of queue. */
@@ -20,62 +20,31 @@ class MyQueue {
     
     /** Removes the element from in front of queue and returns that element. */
     public int pop() {
-        if(!empty())
-            
+        if(stack2.isEmpty())
         {
-            int stackSize = stack.size();
-            //transfer data into another stack
-            for(int i=0;i<stackSize;i++)
-                {
-                    stack2.push(stack.pop());
-                }
-            //pop the topmost value for queue
-            int popedValue = (int)stack2.pop();
-            int stackSize2 = stack2.size();
-            //transfer data back to the main stack
-            for(int i=0;i<stackSize2;i++)
-                {
-                    stack.push(stack2.pop());
-                }
-
-            return popedValue;
+            while(!stack.isEmpty())
+            {
+                stack2.push(stack.pop());
+            }
         }
-        else
-        {
-            return -1;
-        }
+       return stack2.pop();
     }
     
     /** Get the front element. */
     public int peek() {
-        if(!empty())
+        if(stack2.isEmpty())
         {
-            int stackSize = stack.size();
-        for(int i=0;i<stackSize;i++)
-        {
-            stack2.push(stack.pop());
+            while(!stack.isEmpty())
+            {
+                stack2.push(stack.pop());
+            }
         }
-        int peekValue = (int) stack2.peek();
-
-            int stackSize2 = stack2.size();
-        for(int i=0;i<stackSize2;i++)
-        {
-            stack.push(stack2.pop());
-        }
-
-            return peekValue;
-        }
-
-        else
-        {
-            return -1;
-        }
-
+       return stack2.peek();
     }
     
     /** Returns whether the queue is empty. */
     public boolean empty() {
-        if( stack.empty())
+        if( stack.isEmpty() && stack2.isEmpty())
         {
             return true;
         }
@@ -87,14 +56,7 @@ class MyQueue {
 
 
 
-/**
- * Your MyQueue object will be instantiated and called as such:
- * MyQueue obj = new MyQueue();
- * obj.push(x);
- * int param_2 = obj.pop();
- * int param_3 = obj.peek();
- * boolean param_4 = obj.empty();
- */
+
 
 public static void main(String[] args) {
   MyQueue obj = new MyQueue();
