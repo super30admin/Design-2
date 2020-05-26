@@ -39,7 +39,7 @@ class MyHashSet {
     
     /** Returns true if this set contains the specified element */
     public boolean contains(int key) {
-        int i = idx(key);
+        int i = index(key);
         if(nodes[i] == null)
             return false;
         Node prev = find(nodes[i], key);
