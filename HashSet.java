@@ -1,3 +1,7 @@
+// Time Complexity :O(1)
+// Space Complexity :O(n) n- number of values stored in the hashset
+// Did this code successfully run on Leetcode :Yes
+// Any problem you faced while coding this :-
 class MyHashSet {
     //HashSet Using Matrix and Double Hashing
     boolean[][] matrix;
@@ -6,27 +10,27 @@ class MyHashSet {
     /** Initialize your data structure here. */
     public MyHashSet() {
         buckets=1000;
-        bucketItems=1001;
+        bucketItems=1001; // to cover the edge case key - 1000000 we assign 1001 to bucket items
         matrix=new boolean[buckets][];
 
     }
     
     private int hashBucket(int key)
     {
-        return key%buckets;
+        return key%buckets; //Hashing to get the index to the row in the matrix
     }
     
      private int hashBucketItems(int key)
     {
-        return key/bucketItems;
+        return key/bucketItems;//Hashing to get the specific cell (Column) in the row
     }
     
     public void add(int key) {
          int row=hashBucket(key);
          int column=hashBucketItems(key);
-         if(matrix[row]==null)
+         if(matrix[row]==null) 
          {
-             matrix[row]=new boolean[bucketItems];
+             matrix[row]=new boolean[bucketItems]; // adding columns to that specific row
          }
         matrix[row][column]=true;
         
@@ -37,7 +41,7 @@ class MyHashSet {
          int column=hashBucketItems(key);
          if(matrix[row]!=null)
          {
-            matrix[row][column]=false;  
+            matrix[row][column]=false;   // removing value from the specific row
          }
        
     }
@@ -48,10 +52,10 @@ class MyHashSet {
          int column=hashBucketItems(key);
          if(matrix[row]!=null)
          {
-            return matrix[row][column];
+            return matrix[row][column]; 
              
          }
-      return false;  
+      return false;  // If row is null then there is no column to contain the key so return false
         
     }
 }

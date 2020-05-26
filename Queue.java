@@ -4,7 +4,7 @@
 // Any problem you faced while coding this :Understanding the idea took me a while
 
 
-// Your code here along with comments explaining your approach
+// Using Two stack
 class MyQueue {
     
 	//create two stack
