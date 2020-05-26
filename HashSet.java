@@ -18,6 +18,7 @@ class HashSet {
         _set =  new boolean[buckets][];
     }
     private int  hash_1(int key){
+        System.out.println();
         return key % buckets;
     }
 

@@ -1,9 +1,15 @@
 import java.util.Deque;
 import java.util.Stack;
 /*
+Time Complexity:
 PUSH : O(1)
 POP : O(1) average case but in worst case O(n)
 Peek : O(1)
+
+Space Complexity :
+
+    Used two Stack each hold N input size:
+    that's why space complexty is O(N)
 
 */
 class MyQueue {
