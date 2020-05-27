@@ -1,5 +1,3 @@
-import java.util.Deque;
-import java.util.Stack;
 /*
 Time Complexity:
 PUSH : O(1)
@@ -12,6 +10,10 @@ Space Complexity :
     that's why space complexty is O(N)
 
 */
+
+import java.util.Deque;
+import java.util.Stack;
+
 class MyQueue {
     Stack<Integer> stack;
     Stack<Integer> stack1;
