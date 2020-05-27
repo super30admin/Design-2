@@ -1,5 +1,7 @@
 /**
- * Time Complexity: O(1)
+ * Time Complexity: 
+ * push(), empty() : O(1)
+ * pop(), peek() : O(n) where n = number of elements in 'in' Stack
  * Approach used : 2 stacks 
  */
 
