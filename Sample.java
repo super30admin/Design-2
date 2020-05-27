@@ -5,44 +5,98 @@
 
 
 // Your code here along with comments explaining your approach
-class MyQueue {
-    
-    public Stack<Integer> normalStack, reverseStack;
+import java.util.ArrayList;
+
+public class Node {
+
+	public int value;
+	public Node nextItem;
+	
+	public Node(int value) {
+		this.value=value;
+	}
+}
+
+class MyHashSet {
+
+   public Node nodeArray[];
+	int size = 5000;
 
 	/** Initialize your data structure here. */
-	public MyQueue() {
-		normalStack = new Stack();
-		reverseStack = new Stack();
+	public MyHashSet() {
+		nodeArray = new Node[size];
 	}
 
-	/** Push element x to the back of queue. */
-	public void push(int x) {
-		
-		while(!normalStack.isEmpty())
-			reverseStack.push(normalStack.pop());
-		
-		normalStack.push(x);
-		
-		while(!reverseStack.isEmpty())
-			normalStack.push(reverseStack.pop());
+	public void add(int key) {
+		if(!contains(key))
+		if (nodeArray[key % size] == null) {
+			this.nodeArray[key % size] = new Node(key);
+		} else {
+			Node node = this.nodeArray[key % size];
+
+			while (node.nextItem != null) {
+				node = node.nextItem;
+			}
+
+			node.nextItem = new Node(key);
+		}
+
+		int i = 0;
+
 	}
 
-	/** Removes the element from in front of queue and returns that element. */
-	public int pop() {
+	public void remove(int key) {
 		
-		return normalStack.pop();
+		if(contains(key)) {
+			Node prevNode = null;	
+		if (this.nodeArray[key % size] != null) {
+			Node node = this.nodeArray[key % size];
+
+			if (node.value == key && node.nextItem!=null) {
+				this.nodeArray[key % size] = node.nextItem;
+			}else if(node.value==key) {
+				this.nodeArray[key % size] = null;
+			} 
+			else {
+				prevNode = node;
+				while (node.nextItem != null) {
+					if (node.value != key) {
+						prevNode = node;
+						node = node.nextItem;
+					} else {
+						prevNode.nextItem = node.nextItem;
+						break;
+					}
+
+				}
+				if(node.nextItem==null && node.value==key)
+					prevNode.nextItem=null;
+			}
+
+		}
+	}
 	}
 
-	/** Get the front element. */
-	public int peek() {
-		return normalStack.peek();
-	}
-
-	/** Returns whether the queue is empty. */
-	public boolean empty() {
-		if (normalStack.size()==0)
-			return true;
-		else
-			return false;
-	}
+	/** Returns true if this set contains the specified element */
+	
+	  public boolean contains(int key) {
+	  
+		  Node node=nodeArray[key%size];
+		  if(node!=null) {
+			 
+			  if(node.value==key)
+				  return true;
+			  else {
+				  while(node.nextItem!=null) {
+					  if(node.value==key)
+						  return true;
+					  else
+						  node=node.nextItem;
+				  }
+				  if(node.value==key)
+					  return true;
+			  }
+		  }
+		  return false;
+	  }
 }
