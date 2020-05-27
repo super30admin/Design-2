@@ -21,48 +21,35 @@ class MyQueue {
     
     /** Removes the element from in front of queue and returns that element. */
     public int pop() {
-        int popElement;
-        if(s1.empty()==true){
-            return 0;
-        }else{
-            while (!s1.isEmpty()) 
-        {  
-            s2.push(s1.pop());  
-            //s1.pop();  
-        }  
-        popElement = (int) s2.pop();
-
-        while(!s2.isEmpty()){
-            s1.push(s2.pop());
-        }
-        return popElement;
-        }
         
+        if (s2.empty() == true) {
+            while (!s1.isEmpty()) {
+                s2.push(s1.pop());
+                // s1.pop();
+            }
+            return (int) s2.pop();
+        } else {
+            return (int) s2.pop();
+        }
     }
     
     /** Get the front element. */
     public int peek() {
-        int peekElement;
-        if(s1.empty()==true){
-            return 0;
-        }else{
-            while (!s1.isEmpty()) 
-        {  
-            s2.push(s1.pop());  
-            //s1.pop();  
-        }  
-        peekElement = (int) s2.peek();
-
-        while(!s2.isEmpty()){
-            s1.push(s2.pop());
-        }
-        return peekElement;
+       
+        if (s2.empty() == true) {
+            while (!s1.isEmpty()) {
+                s2.push(s1.pop());
+                // s1.pop();
+            }
+            return (int) s2.peek();
+        } else {
+            return (int) s2.peek();
         }
     }
     
     /** Returns whether the queue is empty. */
     public boolean empty() {
-        return s1.empty();
+         return s1.empty() && s2.empty();
     }
 }
 
