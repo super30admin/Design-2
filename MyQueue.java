@@ -8,6 +8,9 @@ Space Complexity :
 
     Used two Stack each hold N input size:
     that's why space complexty is O(N)
+    
+Tested in Leetcode Successfully : YES
+Challenges face : It was easy no trouble
 
 */
 
