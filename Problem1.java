@@ -1,3 +1,13 @@
+// Time Complexity : 
+//push: O(n)
+//pop: O(1)
+//peek: O(1)
+//empty: O(1)
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+
 import java.util.Stack;
 
 public class MyQueue {
