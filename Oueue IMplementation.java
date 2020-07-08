@@ -3,6 +3,9 @@
 // Did this code successfully run on Leetcode : yes
 // Any problem you faced while coding this : no
 
+// Time Complexity : pop - on average its O(1) in worst case its O(n) if we keep on adding many numbers and then pop
+// Time Complexity : push - O(1)
+// Time Complexity : peek - on average its O(1) in worst case its O(n) if we keep on adding many numbers and then peek
 
 // Your code here along with comments explaining your approach
 
