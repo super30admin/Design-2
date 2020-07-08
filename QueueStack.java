@@ -3,6 +3,8 @@
 //Time Complexity : O(n)
               //  Push O(1)
                // Pop O(n)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
 
                class MyQueue {
 
