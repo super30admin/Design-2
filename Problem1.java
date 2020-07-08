@@ -9,11 +9,13 @@ class MyQueue {
     }
     
     /** Push element x to the back of queue. */
+    //Time Complexity : O(1)
     public void push(int x) {
         s1.push(x);
     }
     
     /** Removes the element from in front of queue and returns that element. */
+    //Time Complexity : Amortized O(1)
     public int pop() {
         if(s2.isEmpty()){
             while(!s1.isEmpty()){
@@ -24,6 +26,7 @@ class MyQueue {
     }
     
     /** Get the front element. */
+    //Time Complexity : Amortized O(1)
     public int peek() {
         if(s2.isEmpty()){
             while(!s1.isEmpty()){
@@ -34,6 +37,7 @@ class MyQueue {
     }
     
     /** Returns whether the queue is empty. */
+    //Time Complexity : O(1)
     public boolean empty() {
         return s2.isEmpty() && s1.isEmpty();
     }
