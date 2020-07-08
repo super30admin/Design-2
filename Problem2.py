@@ -60,3 +60,6 @@ print(param_3)
 param_4 = obj.empty()
 print("Is queue empty??")
 print(param_4)
+#Time Complexity: O(1)
+
+#Space Complexity:O(n)

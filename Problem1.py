@@ -44,3 +44,6 @@ obj.remove(pop_element)
 param_3 = obj.contains(3)
 print("If element present in hashset??")
 print(param_3)
+
+#Time Complexity of add,pop,contains:O(1) Overall :O(1)
+#Space Complexity:O(n)
