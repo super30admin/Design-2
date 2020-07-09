@@ -1,3 +1,15 @@
+# Time Complexity : push: O(1), pop: O(n) - worst case, peek: O(n), empty: O(1)
+# Space Complexity : O(n)
+# Did this code successfully run on Leetcode : yes
+# Any problem you faced while coding this : No
+
+#Approach:
+#1. We take 2 stacks for this problem. One stack will store all the elements of the queue as they get pushed.
+#2. As we pop the elements, we need to reverse the stack, to get the front of the queue, to do this, we will pop all the elements from stack1 and
+# push them into another stack, top of which will give the front of the queue.
+#3. Push will continue appending elements in first stack, pop will check in stack 2, if we have something, we will return, or else we will pop all the elements from
+# stack 1 and push them in stack 2 and return the top of stack 2.
+
 class MyQueue(object):
 
     def __init__(self):
