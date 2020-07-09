@@ -9,7 +9,7 @@
 #2. As we receive two elements with same hash for the array, we will use another hashing algorithm to store the element in our sub array. (like H = key%1000 for 
 # main array and H2 = key/1000 for sub array
 #3. Now, as we have an array of arrays with hashes for every index in this 2-D array, we know that which element will go where, so instead of storing the element 
-# itself, we can just store a boolean or a flag at the index like a True of False, which indicates that whether the element is there in the HashSet or not.
+# itself, we can just store a boolean or a flag at the index like a True or False, which indicates that whether the element is there in the HashSet or not.
 
 class MyHashSet(object):
 
