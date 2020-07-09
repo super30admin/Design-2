@@ -20,8 +20,8 @@ class MyQueue:
         """
         Removes the element from in front of queue and returns that element.
         """
-        if self.stack2==None:
-            while self.stack1 !=None:
+        if self.stack2==[]:
+            while self.stack1 !=[]:
                 self.stack2.append(self.stack1.pop())
         return self.stack2.pop()
         
@@ -30,8 +30,8 @@ class MyQueue:
         """
         Get the front element.
         """
-        if self.stack2 == None:
-            while self.stack1!=None:
+        if self.stack2 == []:
+            while self.stack1!=[]:
                 self.stack2.append(self.stack1.pop())       
         return self.stack2[-1]
         
