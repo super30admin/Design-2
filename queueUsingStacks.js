@@ -1,8 +1,34 @@
-// Time Complexity : O(1) for push, peek and emtpty, O(n) for pop
+// Time Complexity : Average case O(1), worst case O(n)
 // Space Complexity : O(n)
 // Did this code successfully run on Leetcode : Yes
-// Any problem you faced while coding this : No
 
+class MyQueue {
+    in = [];
+    out = [];
+    push(num) {
+        this.in.push(num);
+    }
+    pop() {
+        if(this.out.length === 0) {
+            let len = this.in.length;
+            for(let i = 0; i < len; i++) {
+                this.out.push(this.in.pop());
+            }
+        }        
+        return this.out.pop();
+    }
+    peek() {
+        if(this.out.length === 0) return this.in[0];
+        else return this.out[this.out.length - 1];
+    }
+    empty() {
+        if(this.in.length + this.out.length === 0) return true;
+        else return false;
+    }
+};
+
+/////////////////////////////
+// OLD SOLUTION
 
 class MyQueue {
     /**
@@ -37,8 +63,6 @@ class MyQueue {
         else return false;
     }
 }
-
-
 
 /** 
  * Your MyQueue object will be instantiated and called as such:
