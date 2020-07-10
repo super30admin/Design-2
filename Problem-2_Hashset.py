@@ -1,5 +1,6 @@
 # Time Complexity : O(1) - get_main_ind, get_aux_ind, add, remove, contains
-# Space Complexity : O(nm) - n : length of the primary array and m : length of secondary array (present at those entries of the primary array which has an entry).
+# Space Complexity : O(nm) - n : length of the primary array and m : length of secondary array (present at those entries of the primary array which has an entry). 
+#                   But m,n are 1000 here (will always be some constatnt). So the CORRECT SC: O(1)
 # Did this code successfully run on Leetcode : Yes
 # Any problem you faced while coding this : Didn't check if the primary ind was None or had secondary array in remove and contains function
 #
