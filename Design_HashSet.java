@@ -2,6 +2,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Design_HashSet {
+	
+	//Approach: 1. I have created an array of List of integers, and once i get a key, with help of getIndex function will generate an index.
+	//2. Will create an object of list of integers with key value and insert it at that index, if it already has a list of integers, 
+	//will traverse along to check the key, and will insert on its absence
+	//3. Similarly, will do for contains and remove function.
     List<Integer>[] keys;
     /** Initialize your data structure here. */
     public Design_HashSet() {
@@ -77,3 +82,8 @@ class Design_HashSet {
  * obj.remove(key);
  * boolean param_3 = obj.contains(key);
  */
+
+//Time Complexity : O(n) for add, remove, contains operations, since by worst case we might have to iterate through the list of integers. 
+//Space Complexity : O(n), where n is the number of elements in the Hash Set 
+//Did this code successfully run on Leetcode : Yes
+//Any problem you faced while coding this :
