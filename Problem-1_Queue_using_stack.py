@@ -28,21 +28,26 @@ class MyQueue:
         """
         Removes the element from in front of queue and returns that element.
         """
-        if len(self.stack_2) == 0:
-            while len(self.stack_1) != 0:
-                self.stack_2.append(self.stack_1.pop(-1))
-            
+        if len(self.stack_2) <= 0:
+            if len(self.stack_1) > 0:
+                for _ in range(len(self.stack_1)):
+                    self.stack_2.append(self.stack_1.pop(-1))
+            else:
+                print("ERROR: Stack Underflow")
         return self.stack_2.pop(-1)
-
+        
+  
     # Returns the front element (same approach as Dequeue - only difference is we are returning the top of stack_2 and not popping it)
     def peek(self) -> int:
         """
         Get the front element.
         """
-        if len(self.stack_2) == 0:
-            while len(self.stack_1) > 0:
-                self.stack_2.append(self.stack_1.pop(-1))
-                
+       if len(self.stack_2) <= 0:
+            if len(self.stack_1) > 0:
+                for _ in range(len(self.stack_1)):
+                    self.stack_2.append(self.stack_1.pop(-1))
+            else:
+                print("ERROR: Stack Underflow")
         return self.stack_2[-1]
         
     # To check if queue is empty - both stack_1 and stack_2 must be empty
