@@ -17,9 +17,9 @@ public class QueueUsingStack{
     }
 
     public void pushonStack(int element){
-        System.out.println(element);
+        // System.out.println(element);
         pushStack.push(element);
-        System.out.println(pushStack);
+        // System.out.println(pushStack);
     }
 
     public int popFromStack(){
