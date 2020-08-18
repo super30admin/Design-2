@@ -6,7 +6,6 @@
 
 // Your code here along with comments explaining your approach
 
-
 class Bucket {
     List<Integer> list;
     
@@ -39,30 +38,30 @@ class MyHashSet {
     int size_of_hs;
     /** Initialize your data structure here. */
     public MyHashSet() {
-        size_of_hs = 2003;
+        size_of_hs = 10000;
         hs = new Bucket[size_of_hs];
         for(int i= 0;i<size_of_hs;i++){
             hs[i] = new Bucket();
         }
     }
     
-    // public int hashCode(int key){
-    //     return key % size_of_hs;
-    // }
+    public int hashCode(int key){
+        return key % size_of_hs;
+    }
     
     public void add(int key) {
-        int hash = key % size_of_hs;
+        int hash = hashCode(key);
         hs[hash].insert(key);
     }
     
     public void remove(int key) {
-        int hash = key % size_of_hs;
+        int hash = hashCode(key);
         hs[hash].delete(key);
     }
     
     /** Returns true if this set contains the specified element */
     public boolean contains(int key) {
-        int hash = key % size_of_hs;
+        int hash = hashCode(key);
         return hs[hash].keyExists(key);
     }
 }
