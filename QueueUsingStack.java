@@ -7,7 +7,8 @@ public class QueueUsingStack{
         queueUsingStack.pushonStack(10);
         queueUsingStack.pushonStack(1);
         int element = queueUsingStack.popFromStack();
-        System.out.println(element);
+        int element1 = queueUsingStack.popFromStack();
+        System.out.println(queueUsingStack.empty());
     }
 
     public QueueUsingStack(){
@@ -30,6 +31,21 @@ public class QueueUsingStack{
         if(!popAndPeekStack.isEmpty())
             element = popAndPeekStack.pop();
         return element;
+    }
+
+    public int peek() {
+        if(popAndPeekStack.isEmpty()){
+            while(! pushStack.isEmpty())
+                popAndPeekStack.push(pushStack.pop());
+        }
+        int element=0;
+        if(!popAndPeekStack.isEmpty())
+            element = popAndPeekStack.peek();
+        return element;       
+    }
+
+    public boolean empty() {
+        return (pushStack.isEmpty() && popAndPeekStack.isEmpty());
     }
 
 }
