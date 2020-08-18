@@ -7,49 +7,61 @@ import java.util.Stack;
 //Any problem you faced while coding this :
 
 //how to make the solution work using one-stack only to avoid extra stack.
-public class MyQueue {
+class MyQueue {
 
-	Stack<Integer> st;
+    Stack<Integer> st;
 	Stack<Integer> st2;
-	int count;
-
-	public MyQueue() {
-		// TODO Auto-generated constructor stub
-		st = new Stack<Integer>();
+    int val;
+    /** Initialize your data structure here. */
+    public MyQueue() {
+        st = new Stack<Integer>();
 		st2 = new Stack<Integer>();
-		count = 0;
-	}
+        val = 0;
+    }
+    
+    /** Push element x to the back of queue. */
+    public void push(int x) {
+        if (st.empty()) {
+            val = x;
+        }
+        st.push(x);
+      
+    }
+    
+    /** Removes the element from in front of queue and returns that element. */
+    public int pop() {
+        if (st2.empty()) {
+              while (!st.empty() ) {
 
-	public void push(int x) {
+			        st2.push(st.pop());
+		        } 
+        }
+     
+        return st2.pop();
+    }
+    
+    /** Get the front element. */
+    public int peek() {
+        if (!st2.empty()) 	   {
+            return st2.peek();
+        }
+		return val;
+    }
+    
+    /** Returns whether the queue is empty. */
+    public boolean empty() {
+        return st.isEmpty() && st2.isEmpty();
+    }
+}
 
-		st.add(x);
-
-	} // -- Push element x to the back of queue.
-
-	public void pop() {
-		// if (st2.empty()) {
-
-		// }
-
-		st2.pop();
-
-	}// -- Removes the element from in front of queue.
-
-	public int peek() {
-		while (!st.empty()) {
-
-			st2.push(st.pop());
-		}
-		return st2.peek(); // -- Get the front element.
-
-	}
-
-	public boolean empty() { // -- Return whether the queue is empty.
-		if (st2.empty()) {
-			return true;
-		}
-		return false;
-	}
+/**
+ * Your MyQueue object will be instantiated and called as such:
+ * MyQueue obj = new MyQueue();
+ * obj.push(x);
+ * int param_2 = obj.pop();
+ * int param_3 = obj.peek();
+ * boolean param_4 = obj.empty();
+ */
 
 	public static void main(String[] args) {
 		MyQueue queue = new MyQueue();
