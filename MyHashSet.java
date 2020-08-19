@@ -1,8 +1,13 @@
-// Time Complexity :
-// contains(): O(N); add(): O(N); remove: O(N)
+/**
+ * Create an array of Buckets with a restricted size and all the values are processed through modulus function
+ * A Bucket has a LinkedList of type HashKey
+ */
 
-// Space Complexity :
-// O(N)
+// Time Complexity
+// Average: O(N/K), Worst case O(N); N: number of keys; K: number of buckets
+
+// Space Complexity
+// O(M + K); M: number of unique values in set; K: number of buckets
 
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : No
@@ -23,39 +28,73 @@ class HashKey<V> {
     }
 }
 
+/**
+ * Each Bucket pointing to a LinkedList of Integers
+ */
+class Bucket {
+    List<HashKey<Integer>> buckets;
+
+    Bucket() {
+        this.buckets = new LinkedList<>();
+    }
+
+    public boolean contains(int key) {
+        for (HashKey<Integer> hashKey : this.buckets)
+            if (hashKey.value.equals(key))
+                return true;
+        return false;
+    }
+
+    public void insert(int key) {
+        boolean exists = false;
+        for (HashKey<Integer> hashKey : this.buckets)
+            if (hashKey.value.equals(key)) {
+                exists = true;
+                break;
+            }
+        if (!exists) {
+            this.buckets.add(new HashKey<Integer>(key));
+        }
+    }
+
+    public void remove(int key) {
+        for (HashKey<Integer> hashKey : this.buckets)
+            if (hashKey.value.equals(key)) {
+                this.buckets.remove(hashKey);
+                break;
+            }
+    }
+}
+
 class MyHashSet {
-    List<HashKey<Integer>> hashSet;
+    private Bucket[] hashSet;
+    private int keySize;
 
     /**
      * Initialize your data structure here.
      */
     public MyHashSet() {
-        this.hashSet = new LinkedList<HashKey<Integer>>();
+        this.keySize = 2999;
+        this.hashSet = new Bucket[this.keySize];
+        for (int i = 0; i < this.keySize; i++)
+            hashSet[i] = new Bucket();
     }
 
     /**
      * Returns true if this set contains the specified element
      */
     public boolean contains(int key) {
-        for (HashKey<Integer> hashKey : this.hashSet) {     // Iterate over hashSet to find a key
-            if (hashKey.value.equals(key))
-                return true;
-        }
-        return false;
+        int hash = key % this.keySize;
+        return this.hashSet[hash].contains(key);
     }
 
     public void add(int key) {
-        if (!contains(key)) {                               // If key doesn't exist, add it
-            this.hashSet.add(new HashKey<Integer>(key));
-        }
+        int hash = key % this.keySize;
+        this.hashSet[hash].insert(key);
     }
 
     public void remove(int key) {
-        for (HashKey<Integer> hashKey : this.hashSet) {
-            if (hashKey.value.equals(key)) {
-                this.hashSet.remove(hashKey);               // Remove a key if found
-                break;
-            }
-        }
+        int hash = key % this.keySize;
+        this.hashSet[hash].remove(key);
     }
 }
