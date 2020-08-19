@@ -1,3 +1,8 @@
+# // Time Complexity : O(1) for push(), Amortized O(1) for pop() and peek()
+# // Space Complexity : O(n)
+# // Did this code successfully run on Leetcode : Yes
+# // Any problem you faced while coding this : No
+
 class MyQueue:
 
     def __init__(self):
