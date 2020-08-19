@@ -1,9 +1,9 @@
 import java.util.*;
 //Problem- Implement HashSet
-// Time Complexity : push - O(1), isEmpty - O(1), pop - O(n), peek - O(n)
-// Space Complexity : push - O(n), isEmpty - O(1), pop - O(1) or O(n), peek - O(n)
+// Time Complexity : O(N/K) N- number of values, K- number of buckets
+// Space Complexity : O(K+M) k - number of bucket, M - number of unique values inserted into hashset
 // Did this code successfully run on Leetcode : Yes
-// Any problem you faced while coding this : peek can be achieved in O(1) by maintaining a variable front. 
+// Any problem you faced while coding this : Not very clear about time and space complexity 
 
 
 class Bucket{
