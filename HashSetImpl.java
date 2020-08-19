@@ -1,31 +1,52 @@
-// Time Complexity : O(1)
-// Space Complexity : O(1)  as the size of arr is constant (correct me if i am wrong)
+// Time Complexity : O(1) for all operations
+// Space Complexity : O(n)
 // Did this code successfully run on Leetcode : Yes
-// Any problem you faced while coding this : couldnt come up with optimal solution, Looking forward to class for better approach.
+// Any problem you faced while coding this : No
 
+//Implemented boolean array of arrays solution discussed in class
 class MyHashSet {
 
     /** Initialize your data structure here. */
-    boolean[] arr;
+    private int bucket=1000;
+    private int bucketItem=1000;
+    private int hashfunc1(int key){
+        return key % bucket;
+    }
+    private int hashfunc2(int key){
+        return key/bucketItem;
+    }
+    
+    private boolean[][] hashSet;
     public MyHashSet() {
-        arr=new boolean[10000001];                          //initialized arr ds with the upper limit of the range
-       
-        
+        hashSet=new boolean[bucket][];  
     }
     
     public void add(int key) {
-        arr[key]=true;                                     //making the value at the index(key) as true(index equal to key)
+        int index1=hashfunc1(key);
+        int index2=hashfunc2(key);
+        if(hashSet[index1]==null){
+            hashSet[index1]=new boolean[bucketItem];
+        }
+        hashSet[index1][index2]=true;
         
     }
     
     public void remove(int key) {
-        arr[key]=false;                                  //making the value at index(key) as false to remove the ele  
+        int index1=hashfunc1(key);
+        int index2=hashfunc2(key);
+         if(hashSet[index1]==null){
+            return;
+        }
+        hashSet[index1][index2]=false;
+        
         
     }
     
     /** Returns true if this set contains the specified element */
     public boolean contains(int key) {
-        return arr[key];                                 //just return the value at the index(key) true-contains, false-doesnt
+        int index1=hashfunc1(key);
+        int index2=hashfunc2(key);
+        return hashSet[index1]!=null && hashSet[index1][index2];
     }
 }
 
