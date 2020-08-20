@@ -1,11 +1,12 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+// Time Complexity : O(1) 
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : No
 
 
 // Your code here along with comments explaining your approach
-
+Manage a boolean array and add true at the index of the key and false if it needs to be removed from the hasSet;
+Uses 2 hash functions to avoid collission and to get index
 
 class MyHashSet {
 
