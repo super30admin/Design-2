@@ -1,5 +1,5 @@
 # Time Complexity : O(1)
-# Space Complexity : O(N) N=no of elements in the hashset
+# Space Complexity : O(k^2) k=no of unique elements in the hashset
 # Did this code successfully run on Leetcode : Yes
 # Any problem you faced while coding this : No 
 
@@ -13,30 +13,38 @@ class MyHashSet:
         Initialize your data structure here.
         """
         
-        self.k=997
-        self.hash=[[] for _ in range(self.k)]   
+        self.bucket=1000
+        self.bucket1=1000
+        self.hash=[[] for _ in range(self.bucket)]   
         
     def getHashValue(self,key):
         
-        return key%self.k
+        return key%self.bucket
+    
+    def getHashBucket(self,key):
+        return key//self.bucket1
 
     def add(self, key: int) -> None:
         
         hashVal=self.getHashValue(key)
+        hashBucket=self.getHashBucket(key)
         
-        if key not in self.hash[hashVal]:
-            self.hash[hashVal].append(key)
+        if len(self.hash[hashVal])==0:
+            self.hash[hashVal]=[False]*self.bucket1
+            
+        self.hash[hashVal][hashBucket]=True
+            
         
     def remove(self, key: int) -> None:
         
         hashVal=self.getHashValue(key)
         
-        for index,element in enumerate(self.hash[hashVal]):
-            
-            if element==key:
-                self.hash[hashVal].remove(key)
-                break
-    
+        
+        if len(self.hash[hashVal])!=0:
+            hashBucket=self.getHashBucket(key)
+            self.hash[hashVal][hashBucket]=False
+        
+        
     def contains(self, key: int) -> bool:
         """
         Returns true if this set contains the specified element
@@ -44,12 +52,11 @@ class MyHashSet:
         
         hashVal=self.getHashValue(key)
         
-        for index,element in enumerate(self.hash[hashVal]):
-            
-            if element==key:
-                return True
+        if len(self.hash[hashVal])==0:
+            return False
         
-        return False
+        hashBucket=self.getHashBucket(key)
+        return self.hash[hashVal][hashBucket]
         
         
 
