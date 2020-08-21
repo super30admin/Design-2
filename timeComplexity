@@ -5,3 +5,5 @@ Space: O(1)
 
 
 Problem 2:(https://leetcode.com/problems/design-hashset/)
+Runtime: O(1)
+Space: O(n)
