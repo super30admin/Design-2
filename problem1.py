@@ -1,66 +1,56 @@
 # 232. Implement Queue using Stacks
 
 # Implement the following operations of a queue using stacks.
-
-# push(x) -- Push element x to the back of queue.
-# pop() -- Removes the element from in front of queue.
-# peek() -- Get the front element.
-# empty() -- Return whether the queue is empty.
-
-# Example:
-# MyQueue queue = new MyQueue();
-
-# queue.push(1);
-# queue.push(2);  
-# queue.peek();  // returns 1
-# queue.pop();   // returns 1
-# queue.empty(); // returns false
-
-# Notes:
-
-# You must use only standard operations of a stack -- which means only push to top, peek/pop from top, size, and is empty operations are valid.
-# Depending on your language, stack may not be supported natively. You may simulate a stack by using a list or deque (double-ended queue), as long as you use only standard operations of a stack.
-# You may assume that all operations are valid (for example, no pop or peek operations will be called on an empty queue).
-
 class MyQueue:
 
     def __init__(self):
         """
         Initialize your data structure here.
         """
-        self.res = []
+        self.pushstk = []
+        self.popnpeek = []
         
 
     def push(self, x: int) -> None:
         """
         Push element x to the back of queue.
         """
-        self.res.append(x)
-        print("Values in the queue : ", self.res)
+        self.pushstk.append(x)
         
 
     def pop(self) -> int:
         """
         Removes the element from in front of queue and returns that element.
         """
-        if len(self.res)>0:
-            return self.res.pop(0)
-        return -1
+        if len(self.popnpeek)==0:
+            while self.pushstk:
+                x= self.pushstk.pop()
+                self.popnpeek.append(x)
+                
+        return self.popnpeek.pop()
+        
         
 
     def peek(self) -> int:
         """
         Get the front element.
         """
-        return self.res[0]
+        if len(self.popnpeek)==0:
+            while self.pushstk:
+                self.popnpeek.append(self.pushstk.pop())
+        
+        return self.popnpeek[-1]
 
     def empty(self) -> bool:
         """
         Returns whether the queue is empty.
         """
-        return len(self.res)==0
-        
+        return len(self.pushstk)==0 and len(self.popnpeek)==0
 
+#  Time Complexity : O(1)
+#  Space Complexity : O(n)
+#  Did this code successfully run on Leetcode : Yes
+#  Any problem you faced while coding this : No
 
 # Your MyQueue object will be instantiated and called as such:
 # obj = MyQueue()
@@ -68,11 +58,3 @@ class MyQueue:
 # param_2 = obj.pop()
 # param_3 = obj.peek()
 # param_4 = obj.empty()
-
-obj = MyQueue()
-
-obj.push(1)
-obj.push(2)
-print(obj.peek())  # returns 1
-print(obj.pop())   # returns 1
-print(obj.empty()) # returns false
