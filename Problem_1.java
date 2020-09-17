@@ -11,7 +11,7 @@ Any problem you faced while coding this : None
 
 */
 
-// Your code here along with comments explaining your approach
+// Your code here along with comments explaining your approach 
 class MyQueue {
 
   Stack<Integer> stack1;
@@ -48,7 +48,7 @@ class MyQueue {
               stack2.push(elem);
           }
       }
-      return stack2.peek();
+      return stack2.peek();  
   }
   
   /** Returns whether the queue is empty. */
