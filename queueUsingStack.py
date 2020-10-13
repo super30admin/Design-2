@@ -1,4 +1,5 @@
-# Work in Progress
+# In this problem I use list as a stack to implement queue from the stack.
+# Time Complexity - push - O(1), pop,peek - O(n), isEmpty - O(1)
 class MyQueue:
 
     def __init__(self):
@@ -18,21 +19,27 @@ class MyQueue:
         """
         Removes the element from in front of queue and returns that element.
         """
-        elem = self.queue[-1]
-        del self.queue[-1]
-        return elem
+        stack = list()
+        if (len(self.queue)!=0):
+            for i in range((len(self.queue)-1),-1,-1):
+                stack.append(self.queue[i])
+            elem = stack[-1]
+            self.queue.remove(elem)
+            return elem
+        else:
+            return -1
 
     def peek(self) -> int:
         """
         Get the front element.
         """
-        que = list()
+        stack = list()
         if (len(self.queue)!=0):
-            for i in range(len(self.queue)):
-                que.append(self.queue[i])
-        que[::-1]
-        return que[-1]
-
+            for i in range((len(self.queue)-1),-1,-1):
+                stack.append(self.queue[i])
+            return stack[-1]
+        else:
+            return -1
 
     def empty(self) -> bool:
         """

@@ -1,4 +1,7 @@
-# Work in Progress
+# Hash Set does not allow presence of duplicate keys, so when the collision occurs it has to be handled precisely. As designed a hashmap earlier, I used chaining.
+# The difference here will be there are no duplicates allowed.
+# This approach can be modified to using double hashing as taught in class.
+# Time Complexity: add - O(1), remove - O(n), contains - O(n) 
 class MyHashSet:
 
     def __init__(self):
