@@ -1,4 +1,4 @@
-# // Time Complexity : O(1) push, O(n) pop, peek
+# // Time Complexity : O(1) push, O(1) pop, peek (Amortized), O(n) worst case
 # // Space Complexity : O(n) auxillary stacks
 # // Did this code successfully run on Leetcode : Yes
 # // Any problem you faced while coding this : No
