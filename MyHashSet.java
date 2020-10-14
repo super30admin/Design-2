@@ -2,117 +2,77 @@ package Day1;
 
 class MyHashSet {
 	  
-    // Time Complexity: O(1) 
+    // Time Complexity: O(1)
+    // All operations involved array(1-d/2-d) insertion, deletion or retrieval which has O(1) complexity.
     
-    // Space Complexity: O(n)
-    // Not sure on complexity aspects.
+    // Space Complexity: O(n) 
+   //  Worst case scenario when all 1000000 elements are initialized in the 2-d boolean storage array.
     
     // Did this code successfully run on Leetcode : No
-    // Any problem you faced while coding this : Difficulty in understanding and implementing the points mentioned in Note in the problem statement.
+    // Any problem you faced while coding this : No
     
-    int MAX_SIZE = 10000;
-   
-    Node[] mySet ;
+    int buckets;
+    int bucketSize;
+    boolean[][] storage;
 
     /** Initialize your data structure here. */
-    // Initialized an array of custom class Node type of size 10000.
+    // Initialized a 2d array of colsize = underroot of permissible Max value, i.e. 1000000.
+    // rowsize declared in a variable but yet not initialized in array
+    // rowsize will be initialized when a value has to be inserted on that specific index.
     public MyHashSet() {
-        mySet =  new Node[MAX_SIZE];
+        buckets =  1000;
+        bucketSize = 1000;
+        storage = new boolean[buckets][];
     }
     
-    // get hashcode of the new key
-    // use this hashcode as index in 'mySet' array
+    // get hashcodes of the new key using both the hashfunctions which will yield two different values
+    // check if a value has been inserted at hashValue1 index in 'storage' array
+    // if yes => array rowsize has also been initialized already => just insert boolean value of 'true' on array element indexed at (hashvalue1 , hashvalue2).
+    // if no => initialize rowSize array on col index = hashValue1 => then insert boolean value of 'true' on array element indexed at (hashvalue1 , hashvalue2). 
     public void add(int key) {
-        int hash = hasIndex(key);
-        
-        // if No collision happens
-        if (mySet[hash] == null) {
-            mySet[hash] = new Node(key);
-        } 
-        // if collision happens and key is not already present in mySet:
-        //     add the key as the last node in the linked list
-        else {
-            Node root = mySet[hash];
-            while (root.next != null) {
-                if (root.nodeVal == key) {
-                    return;
-                }
-                root = root.next;
-            }
-            if (root.nodeVal == key) {
-                return;
-            } 
-            else {
-            root.next = new Node(key);
-            }
+        int hashValue1 = hashFunct1(key);
+        int hashValue2 = hashFunct2(key);
+        if (storage[hashValue1] == null) {
+            storage[hashValue1] = new boolean[bucketSize];
         }
+        storage[hashValue1][hashValue2] = true;
     }
     
-    // if collision happens:
-    //     remove the node matching the given key in the linked list
+    // get hashcodes of the new key using both the hashfunctions which will yield two different values
+    // check if a value has been inserted at hashValue1 index in 'storage' array
+    //     if true => check if array element indexed at (hashvalue1 , hashvalue2) is true
+    //         if true => set the array value to false.
     public void remove(int key) {
-         int hash = hasIndex(key);
-         Node pre = null;
-         Node root = mySet[hash];
-         if (root == null) {
-             return;
-         }
-         if (root.next == null) {
-             mySet[hash] = null;
-             return;
-         }
-         else {
-             while (root != null) {
-                 if (root.nodeVal == key) {
-                     if(pre==null){
-                          mySet[hash]=root.next;
-                         return;
-                     }
-                      else  {
-                          pre.next = root.next;
-                     return; 
-                      }
-                    
-                 } 
-                 pre = root;
-                 root = root.next;
-             }
-         }  
+        int hashValue1 = hashFunct1(key);
+        int hashValue2 = hashFunct2(key);
+        
+        if (storage[hashValue1] != null && storage[hashValue1][hashValue2] == true) {
+            storage[hashValue1][hashValue2] = false;
+        }
     }
     
     /** Returns true if this set contains the specified element */
-    // if collision happens:
-    //     traverse through the linked list
-    //    check if any of the nodes in the linked list match key in the funct argument
+    // get hashcodes of the new key using both the hashfunctions which will yield two different values
+    // check if a value has been inserted at hashValue1 index in 'storage' array
+    //     if true => check if array element indexed at (hashvalue1 , hashvalue2) is true
+    //         if true => return true since boolean value of true implies that an element is present at the array indexed corresponding to hash functions for key. 
     public boolean contains(int key) {
-         int hash = hasIndex(key);
-        
-         Node root = mySet[hash];
-          
-         while (root != null) {
-                 if (root.nodeVal == key) {
-                    return true;
-                 } 
-                 root = root.next;
-          }
+        int hashValue1 = hashFunct1(key);
+        int hashValue2 = hashFunct2(key);
+        if (storage[hashValue1] != null && storage[hashValue1][hashValue2] == true) {
+            return true;
+        } 
         return false;
     }
     
-    // function to return hashcode for a numeric input
-    public int hasIndex(int val){
-        return Integer.hashCode(val) % MAX_SIZE;
+    // first hashcode function to return hashcode for a numeric input
+    private int hashFunct1 (int val) {
+        return Integer.hashCode(val) % buckets;
     }
   
-    // custom class for Node containing the values contained in a set
-    class Node {
-        
-        int nodeVal;
-        Node next;
-        
-        public Node(int v) {
-            nodeVal = v;
-            next = null;
-        }
+    // first hashcode function to return hashcode for a numeric input
+    private int hashFunct2 (int val) {
+        return Integer.hashCode(val) / buckets;
     }
     
 }
