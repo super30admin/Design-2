@@ -1,3 +1,5 @@
+//Did it work on LeetCode: Yes. 
+
 class MyQueue {
     
 
