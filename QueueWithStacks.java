@@ -1,4 +1,4 @@
-// Time Complexity : O(N)  - Push O(N), Pop O(1)
+// Time Complexity : O(N)  - Push O(1), Pop O(N), Peek O(N), Empty O(1)
 // Space Complexity : O(N) - No of elements
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : No, straightforward
@@ -15,35 +15,34 @@ class MyQueue {
     
     /** Push element x to the back of queue. */
     public void push(int x) {
-        if(s1.empty()){
-            front = x;
-        }
-        while(!s1.isEmpty()){
-            s2.push(s1.pop());
-        }
-        s2.push(x);
-        while(!s2.isEmpty()){
-            s1.push(s2.pop());
-        }
+        s1.push(x);
     }// Takes O(N) time, we add the previous elemnts into auxillary stack and then move all back.
     
     /** Removes the element from in front of queue and returns that element. */
     public int pop() {
-        int p = s1.pop();
-        if(!s1.empty()){
-            front = s1.peek();
-        }
-        return p;
+        if(s2.isEmpty())
+       {
+           while(!s1.isEmpty()){
+               s2.push(s1.pop());
+           }
+       }
+       return s2.pop();
     }
     
     /** Get the front element. */
     public int peek() {
-        return front;
+        if(s2.isEmpty())
+       {
+           while(!s1.isEmpty()){
+               s2.push(s1.pop());
+           }
+       }
+       return s2.peek();
     }
     
     /** Returns whether the queue is empty. */
     public boolean empty() {
-        return s1.isEmpty();
+        return s1.isEmpty() && s2.isEmpty();
     }
 }
 
