@@ -1,3 +1,5 @@
+# Time Complexity : push O(1) pop O(1) peek O(1) worst O(n) remove O(1)
+# Space Complexity :O(N)
 from collections import deque
 class MyQueue:
 

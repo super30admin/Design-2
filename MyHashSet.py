@@ -1,3 +1,6 @@
+# Time Complexity : add O(1) contain O(1) remove O(1)
+# Space Complexity :???
+
 class MyHashSet:
 
     def __init__(self):
