@@ -40,3 +40,11 @@ public class queueusingStack232 {
 	}
 
 }
+// Time Complexity
+// Push O(1)
+// Pop O(1)
+//  peek O(1)
+// Empty O(1)
+
+/*
+*/
