@@ -1,5 +1,5 @@
 // Time Complexity : O(1) for all operations
-// Space Complexity : O(10^6) 10^6 is the total number of items
+// Space Complexity : O(N) N = 10^6 is the total number of items
 // for all operations
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : NA
