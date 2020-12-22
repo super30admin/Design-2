@@ -1,7 +1,7 @@
 # Approach:  To avoid collision the following can be implemented
 # Choose a large prime number as the hashing key
 # The primary data type used is array in which we bucket the elements into buckets (indexed at indexes calculated by hash function) created with the data type Linked lists
-# Here, arrays can also be chosen but we know that we only get O(N) complexities if we need to insert/delete elements in array, the same can bedone in O(1) complexities for Linked lists
+# Here, arrays can also be chosen but we know that we only get O(N) complexities if we need to insert/delete elements in array, the same can be done in O(1) complexities for Linked lists
 # Time Complexity: O(M/N) where M is the number of elements inserted at N buckets
 # Space Complexity: O(M + N) 
 # Constraint: As discussed in class, we could do much better than LL as well, since searching through LL is O(N) -- We could opt for BST since it results in O(log(N)) complexity

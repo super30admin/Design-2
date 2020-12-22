@@ -1,4 +1,4 @@
-# Approach: Queues follwo the FIFO which means we add elements from the rear and remove from the front
+# Approach: Queues follow the FIFO which means we add elements from the rear and remove from the front
 # While using a stack removal/pop is done based on LIFO hence we need 2 stacks, one for storing push operation (in_stack) and another one which reverses the order of the in stack, out_stack
 # Anytime we push new values, we append it to the in_stack and when we need to remove an element, we transfer the contents from in to out stack and pop the top value
 # Similar operation for peek, as peek in queue is for the front elements.
