@@ -1,5 +1,5 @@
-// Time Complexity :O(log(m*n))
-// Space Complexity :all the operation will take O(1)
+// Time Complexity :all the operation will take O(1)
+// Space Complexity :O(n)
 // Did this code successfully run on Leetcode :yes
 // Any problem you faced while coding this :mapping the the midpoint element to matrix.
 
