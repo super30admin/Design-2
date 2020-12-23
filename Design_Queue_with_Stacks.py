@@ -1,3 +1,7 @@
+# Time Complexity : write/access- O(1) as before, pop front element - O(1) average, O(n) average
+# Space Complexity : O(n)
+# Did this code successfully run on Leetcode : Yes
+# Any problem you faced while coding this : No
 class MyQueue:
     # Using two stacks. 
     # stack is LIFO hence using single stack will increase TC - to access the front element of the queue we would require removing all elements, access front element and then store back the removed elements

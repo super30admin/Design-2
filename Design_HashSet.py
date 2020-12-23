@@ -1,3 +1,8 @@
+# Time Complexity : O(n/2069) = O(n)
+# Space Complexity : same as hashmap - O(k+m) k=2069 buckets and m is number of unique values which would not require bucket.
+# Did this code successfully run on Leetcode : Yes
+# Any problem you faced while coding this : No
+
 # Here, we will implement Lineae chaining to handle collisions
 # As per yesterday's(12/21) discussion, we can implement bucket using LinkedList, array or BST. Here, I will be using LinkedList.
 
@@ -40,7 +45,6 @@ class Bucket:
                 return True
             curr = curr.next
         return False
-
     
 class MyHashSet:
     def __init__(self):
