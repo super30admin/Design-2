@@ -53,3 +53,6 @@ class QueueUsingTwoStacks {
 	        System.out.println("The new Peek element is: "+ob.peek());
 	    } 
 }
+
+//Time complexity: O(1) for push and isempty, O(1) for pop but in worst case it is O(N), same complexity as pop for peek
+// Space complexity: O(N) for push inorder to store new elements, O(1) for ppop, peek and isempty
