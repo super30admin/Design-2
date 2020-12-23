@@ -1,3 +1,6 @@
+"""
+Hashset using Linear Chaining discussed in class
+"""
 class MyHashSet:
 
     def __init__(self):

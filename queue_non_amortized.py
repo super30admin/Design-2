@@ -1,3 +1,6 @@
+"""
+Construction of queue in non amortized fashion. Complexity of pop is O(n)
+"""
 class MyQueue:
     def __init__(self):
         """

@@ -1,3 +1,6 @@
+"""
+Construction of Queue in Amortized Fashion. Average complexity in push, pop is O(1)
+"""
 class MyQueue:
 
     def __init__(self):
