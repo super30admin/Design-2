@@ -6,19 +6,13 @@ class MyQueue:
         """
         self.stack1 = []
         self.stack2 = []
-        self.front = None
         
-    
+
     def push(self, x: int) -> None:
         """
         Push element x to the back of queue.
         """
-        if(len(self.stack1)==0):
-            while(len(self.stack2)>0):
-                self.stack1.append(self.stack2.pop())
         self.stack1.append(x)
-        if(len(self.stack1) == 1):
-            self.front = x
         
     def pop(self) -> int:
         """
@@ -30,10 +24,6 @@ class MyQueue:
             while(len(self.stack1)>0):
                 self.stack2.append(self.stack1.pop())
         element = self.stack2.pop()
-        if(len(self.stack2)>0):
-            self.front = self.stack2[-1]
-        else:
-            self.front = None
         return element
 
     def peek(self) -> int:
@@ -41,7 +31,12 @@ class MyQueue:
         Get the front element.
         """
         if(not self.empty()):
-            return self.front
+            if(len(self.stack2)>0):
+                return self.stack2[-1]
+            else:
+                while(len(self.stack1)>0):
+                    self.stack2.append(self.stack1.pop())
+                return self.stack2[-1]
         else:
             return -1
         
