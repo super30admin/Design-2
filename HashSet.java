@@ -1,12 +1,13 @@
 // Time Complexity :all the operation will take O(1)
 // Space Complexity :O(n)
 // Did this code successfully run on Leetcode :yes
-// Any problem you faced while coding this :mapping the the midpoint element to matrix.
+// Any problem you faced while coding this :
 
 
 // Your code here along with comments explaining your approach
 
-//one way is the brute force approach which will take O(n^2)
+//We can use double hashing and create a 2d boolean array.
+//we can use our hashing formulas to find out the index at which the key will be placed.
 class MyHashSet {
 
    int firstBucket;
