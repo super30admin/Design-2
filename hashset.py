@@ -1,61 +1,40 @@
-class LinkNode:
-    def __init__(self,key):
-        self.key = key
-        self.next = None
-
 class MyHashSet:
 
     def __init__(self):
         """
         Initialize your data structure here.
         """
-        self.size = 1000
-        self.array = [None] * self.size
+        self.numBuckets = 1000
+        self.sizeBucket = 1001
+        self.Buckets = [None] * self.numBuckets
 
     def add(self, key: int) -> None:
-        index = key % self.size    #hashing function
-        if self.array[index]:
-            i = self.array[index]
-            while i:
-                if i.key == key:
-                    return
-                i = i.next
-            newnode = LinkNode(key)
-            newnode.next = self.array[index]
-            self.array[index] = newnode  
-            return
-        else:
-            self.array[index] = LinkNode(key)
-        return
+        bucket = key % self.numBuckets                          #hashing function 1
+        item = (key // self.numBuckets) % self.sizeBucket       #hashing function 2
+        if not self.Buckets[bucket]:
+            self.Buckets[bucket] = [False] * self.sizeBucket
+        self.Buckets[bucket][item] = True
+        return    
 
     def remove(self, key: int) -> None:
-        index = key % self.size
-        i = self.array[index]
-        prev = None
-        while i and i.key != key:
-            prev = i
-            i = i.next
-        if not i:
+        bucket = key % self.numBuckets
+        item = (key // self.numBuckets) % self.sizeBucket
+        if not self.Buckets[bucket]:
             return
         else:
-            if prev == None:
-                self.array[index] = i.next
-                return
-            else:
-                prev.next = i.next
-                return
-
+            self.Buckets[bucket][item] = False
+            return
+        
     def contains(self, key: int) -> bool:
         """
         Returns true if this set contains the specified element
         """
-        index = key % self.size
-        i = self.array[index]
-        while i:
-            if i.key == key:
-                return True
-        return False
-
+        bucket = key % self.numBuckets
+        item = (key // self.numBuckets) % self.sizeBucket
+        if not self.Buckets[bucket]:
+            return False
+        else:
+            return self.Buckets[bucket][item]
 
 # Your MyHashSet object will be instantiated and called as such:
 # obj = MyHashSet()
