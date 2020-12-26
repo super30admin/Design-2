@@ -1,4 +1,4 @@
-// Problem : Implement Queue using Stacks
+// Problem :  Design HashSet
 // Time Complexity :O(1)
 // Space Complexity : O(n) // where n is range of elements
 // Did this code successfully run on Leetcode : Yes
