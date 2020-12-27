@@ -32,32 +32,29 @@ class List:
 
 
     def add(self, data):                                        # O(n)
-        if self.contains(data):
+        prev = self._find_prev(data)
+        if prev.next is not None:
             return
-
-        node = self.Node(data)
-        walk = self.head
-        while walk.next is not None:
-            walk = walk.next
-        walk.next = node
+        prev.next = self.Node(data)
 
 
     def remove(self, data):                                     # O(n)
-        walk = self.head
-        while walk.next is not None:
-            if walk.next.data == data:
-                walk.next = walk.next.next
-                return
-            walk = walk.next
+        prev = self._find_prev(data)
+        if prev.next is None:
+            return
+        prev.next = prev.next.next
 
 
     def contains(self, data):                                   # O(n)
-        walk = self.head.next
-        while walk is not None:
-            if walk.data == data:
-                return True
+        prev = self._find_prev(data)
+        return prev.next is not None
+
+
+    def _find_prev(self, data):
+        walk = self.head
+        while walk.next is not None and walk.next.data != data:
             walk = walk.next
-        return False
+        return walk
 
 
 class MyHashSet:
@@ -66,21 +63,21 @@ class MyHashSet:
         """
         Initialize your data structure here.
         """
-        self._bkt_size = 1000
+        self._bkt_size = 10000
         self._bucket = [List() for _ in range(self._bkt_size)]
 
 
-    def add(self, key: int) -> None:                            # O(n/1000)
+    def add(self, key: int) -> None:                            # O(1)
         bkt = self._bkt(key)
         self._bucket[bkt].add(key)
 
 
-    def remove(self, key: int) -> None:                         # O(n/1000)
+    def remove(self, key: int) -> None:                         # O(1)
         bkt = self._bkt(key)
         self._bucket[bkt].remove(key)
 
 
-    def contains(self, key: int) -> bool:                       # O(n/1000)
+    def contains(self, key: int) -> bool:                       # O(1)
         """
         Returns true if this set contains the specified element
         """
