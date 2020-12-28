@@ -1,3 +1,9 @@
+/**
+* Time complexity of add = O(n) (As we are adding at calculated key index)
+* Time complexity of remove = O(n) (As we are removing at calculated key index)
+*  Time complexity of contains = O(n) (As we are getting element at calculated key index)
+*/
+
 class MyHashSet {
     
     private int initialBucket;
