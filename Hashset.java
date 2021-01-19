@@ -1,31 +1,33 @@
-//I tried to make arraylist of linkedlist and store value in those linked list but my code does not work. I am not sure what is the issue.
+//The code ran but takes a lot of time . Complexity for add-O(n), remove-O(n),contains-O(n)
 class MyHashSet {
 
     /** Initialize your data structure here. */
     
-    ArrayList<LinkedList<Integer>> hashset;
+    LinkedList<Integer> hashset[];
     int hash;
     public MyHashSet() {
-        hashset= new ArrayList<>();
+       
         hash=2096;  
+         hashset= new LinkedList[hash];
         for(int i=0;i<hash;i++)
-            hashset.add(new LinkedList< >());
+            hashset[i]=new LinkedList<Integer>();
     }
     
     public void add(int key) {
-        if(hashset.get(key%hashset.size())==null)
-            hashset.get(key%hash).add(key);
+         if(hashset[key%hash]!=null && hashset[key%hash].contains(key))
+              return;
+        hashset[key%hash].add(key);
     }
     
     public void remove(int key) {
-         
-                hashset.get(key%hash).remove(key);
-        
+        if(hashset[key%hash]!=null && hashset[key%hash].contains(key))
+            hashset[key%hash].remove(new Integer(key));
+        return;
     }
     
     /** Returns true if this set contains the specified element */
     public boolean contains(int key) {
-        if(hashset.get(key%hash).contains(key))
+        if(hashset[key%hash].contains(key))
             return true;
         return false;
         
