@@ -14,43 +14,24 @@ class MyHashSet:
         """
         Initialize your data structure here.
         """
-        # initialize size of the hashSet and the hashSet as 2D array
-        self.ind1_sz = 1000
-        self.ind2_sz = 1000
-        self.hashSet = [[None for i in range(self.ind1_sz)]for k in range(self.ind2_sz)]
-    
-    def hashfunc1(self, key):
-        return key % self.ind1_sz
-    
-    def hashfunc2(self, key):
-        return key // self.ind2_sz
+        self.hashSet = [False] * 1000001
 
     def add(self, key: int) -> None:
-        ind1 = self.hashfunc1(key)
-        ind2 = self.hashfunc2(key)
-        # update the value at that particular key to True to show that it is added
-        self.hashSet[ind1][ind2] = True
+        # update the value to True
+        self.hashSet[key] = True
 
     def remove(self, key: int) -> None:
-        ind1 = self.hashfunc1(key)
-        ind2 = self.hashfunc2(key)
-        # check if hashSet is empty or not at that particular key
-        if self.hashSet[ind1] is not None:
-            # update the value at that particular key to False to show that the value is removed
-            self.hashSet[ind1][ind2] = False
+        # update the value to False
+        self.hashSet[key] = False
 
     def contains(self, key: int) -> bool:
         """
         Returns true if this set contains the specified element
         """
-        ind1 = self.hashfunc1(key)
-        ind2 = self.hashfunc2(key)
-        # check if hashSet is empty or not at that particular key
-        if self.hashSet[ind1] is not None:
-            # return the value at that particular key
-            return self.hashSet[ind1][ind2]
-        # otherwise return False
-        return False
+        # return the value at given key
+        return self.hashSet[key]
+    
+# all the operations have O(1) complexity
 
 # Your MyHashSet object will be instantiated and called as such:
 # obj = MyHashSet()
