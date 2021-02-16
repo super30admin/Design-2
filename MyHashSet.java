@@ -5,7 +5,7 @@ class MyHashSet {
 
   /** Initialize your data structure here. */
   public MyHashSet() {
-    this.keyRange = 103;
+    this.keyRange = 1001;
     this.bucketArray = new Bucket[this.keyRange];
     for (int i = 0; i < this.keyRange; ++i)
       this.bucketArray[i] = new Bucket();
