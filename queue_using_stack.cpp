@@ -1,4 +1,16 @@
+/*
+TC: 
+Push - O(1)
+Pop - O(n) worst case
+Top - O(n) worst case
 
+SC: (not extra space)
+Push - O(n)
+Pop - O(1)
+Top - O(1)
+
+
+*/
 class MyQueue {
 public:
     

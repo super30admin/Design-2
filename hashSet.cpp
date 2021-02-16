@@ -1,3 +1,10 @@
+/*
+TC: O(N/K), K - number of buckets
+SC (extra space) : O(M) where M is number of values in the hashSet
+
+*/
+
+
 class MyHashSet {
 public:
     /** Initialize your data structure here. */
