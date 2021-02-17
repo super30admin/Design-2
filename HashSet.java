@@ -1,8 +1,8 @@
 // Time Complexity : O(1) for all approaches
 // Space Complexity : O(n) if we store atleast one element in each bucket.
 // Did this code successfully run on Leetcode :
-// Any problem you faced while coding this : No, I felt double hashing is quite easy compared to chaining. Got an null pointer exception while i was trying, It got cleared with S
-Sanchit sir explanation.
+// Any problem you faced while coding this : No, I felt double hashing is quite easy compared to chaining. Got an null pointer exception while i was trying, It got 
+//cleared with Sanchit sir explanation.
 
 
 // Your code here along with comments explaining your approach
