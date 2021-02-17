@@ -1,49 +1,46 @@
-// Time Complexity :
-// Space Complexity : O(n)
+// Time Complexity : O(1)
+// Space Complexity : O(n); n = total no of elements
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : No
 
 class MyQueue {
 
-    Stack<Integer> stack;
-    Stack<Integer> helper;
+    Stack<Integer> in;
+    Stack<Integer> out;
     /** Initialize your data structure here. */
-    //Constuctor
     public MyQueue() {
-        stack = new Stack<>();
-        helper = new Stack<>();
+        in = new Stack<>();
+        out = new Stack<>();
     }
 
     /** Push element x to the back of queue. */
     //Time Complexity: O(1)
     public void push(int x) {
-        stack.push(x);
+        in.push(x);
     }
 
     /** Removes the element from in front of queue and returns that element. */
-    //Time Complexity: O(n)
+    //Time Complexity: Amortized O(1)
     public int pop() {
-        while (!stack.isEmpty()) {
-            helper.push(stack.pop());
+        if (!out.isEmpty()) return out.pop();
+
+        while (!in.isEmpty()) {
+            out.push(in.pop());
         }
-        int val = helper.pop();
-        while (!helper.isEmpty()) {
-            stack.push(helper.pop());
-        }
-        return val;
+
+        return out.pop();
     }
 
     /** Get the front element. */
-    //Time Complexity: O(n)
+    //Time Complexity: Amortized O(1)
     public int peek() {
-        while (!stack.isEmpty()) {
-            helper.push(stack.pop());
+        if (!out.isEmpty()) return out.peek();
+
+        while (!in.isEmpty()) {
+            out.push(in.pop());
         }
-        int top = helper.peek();
-        while (!helper.isEmpty()) {
-            stack.push(helper.pop());
-        }
-        return top;
+
+        return out.peek();
     }
 
     /** Returns whether the queue is empty. */
