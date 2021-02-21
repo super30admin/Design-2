@@ -1,3 +1,9 @@
+"""
+Time Complexity:
+Push: O(1)
+Pop: O(1)[Amortised average complexity]
+Space Complexity : O(n)
+"""
 class MyQueue:
 
     def __init__(self):
