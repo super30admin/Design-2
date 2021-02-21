@@ -17,7 +17,7 @@ class MyQueue:
         """
         Removes the element from in front of queue and returns that element.
         """
-        while len(self.OUT) == 0:
+        if len(self.OUT) == 0:
             while len(self.IN) != 0:
                 self.OUT.append(self.IN.pop())
             return self.OUT.pop()
@@ -28,7 +28,7 @@ class MyQueue:
         """
         Get the front element.
         """
-        while len(self.OUT) == 0:
+        if len(self.OUT) == 0:
             while len(self.IN) != 0:
                 self.OUT.append(self.IN.pop())
             return self.OUT[-1]
@@ -58,4 +58,4 @@ Pop : Amortized O(1)
 # obj.push(x)
 # param_2 = obj.pop()
 # param_3 = obj.peek()
-# param_4 = obj.empty()
+# param_4 = obj.empty()Q
