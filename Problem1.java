@@ -14,7 +14,7 @@ class MyQueue {
         }
         s1.push(x);
     }
-    //time - O(N), space - O(N)
+    //time - O(1), space - O(N)
     
     /** Removes the element from in front of queue and returns that element. */
     public int pop() {
@@ -25,17 +25,19 @@ class MyQueue {
         }
         return s2.pop();
     }
-    //time - O()
+    //time - O(N), space - O(1)
     
     /** Get the front element. */
     public int peek() {
         return s2.isEmpty() ? front : s2.peek();
     }
+    //time - O(1), space - O(1)
     
     /** Returns whether the queue is empty. */
     public boolean empty() {
         return s1.isEmpty() && s2.isEmpty();
     }
+    //time - O(1), space - O(1)
 }
 
 /**
