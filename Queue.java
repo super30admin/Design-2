@@ -68,3 +68,58 @@ class MyQueue {
  * int param_3 = obj.peek();
  * boolean param_4 = obj.empty();
  */
+ 
+ //This is the brute force method using the two stacks.
+ class MyQueue {
+
+    /** Initialize your data structure here. */
+    Stack<Integer> inStack;
+    Stack<Integer> outStack;
+    public MyQueue() {
+        inStack=new Stack<Integer>();
+        outStack=new Stack<Integer>();
+    }
+    
+    /** Push element x to the back of queue. */
+    public void push(int x) {
+        if(!inStack.isEmpty()){
+            while(!inStack.isEmpty()){
+                // System.out.println("hi");
+                 int temp=inStack.pop();
+                 outStack.push(temp); 
+            }
+        }
+        //System.out.println("-"+outStack);
+        inStack.push(x);
+        if(!outStack.isEmpty()){
+            while(!outStack.isEmpty()){
+               inStack.push(outStack.pop()); 
+            }
+        }
+        //System.out.println(inStack);
+    }
+    
+    /** Removes the element from in front of queue and returns that element. */
+    public int pop() {
+        return inStack.pop();
+    }
+    
+    /** Get the front element. */
+    public int peek() {
+        return inStack.peek();
+    }
+    
+    /** Returns whether the queue is empty. */
+    public boolean empty() {
+        return inStack.isEmpty();
+    }
+}
+
+/**
+ * Your MyQueue object will be instantiated and called as such:
+ * MyQueue obj = new MyQueue();
+ * obj.push(x);
+ * int param_2 = obj.pop();
+ * int param_3 = obj.peek();
+ * boolean param_4 = obj.empty();
+ */
