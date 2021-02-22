@@ -23,6 +23,7 @@ class MyHashSet {
         }
         storage[bucket][bucketItem] = true;
     }
+    //time - O(1), space - O(1)
     
     public void remove(int key) {
         int bucket = bucket(key);
@@ -31,6 +32,7 @@ class MyHashSet {
             storage[bucket][bucketItems] = false;
         }
     }
+    //time - O(1), space - O(1)
     
     /** Returns true if this set contains the specified element */
     public boolean contains(int key) {
@@ -38,6 +40,7 @@ class MyHashSet {
         int bucketItems = bucketItems(key);
         return storage[bucket] != null && storage[bucket][bucketItems];
     }
+    //time - O(1), space - O(1)
 }
 
 /**
