@@ -1,5 +1,5 @@
 # Time Complexity : O(1)
-# Space Complexity : O(1)
+# Space Complexity : O(n + m), where n is the number of buckets and m is the number of elements inserted
 # Did this code successfully run on Leetcode : Yes
 # Any problem you faced while coding this : No
 
