@@ -4,35 +4,40 @@ class MyHashSet:
         """
         Initialize your data structure here.
         """
-        self.storage = [[False] * 1001] * 1000
 
-    def buckets(self, key):
-        return key // 1001
+        self.buckets = 10 ** 3
+        self.bucketitems = 1001
+        self.storage = [None] * self.buckets
 
-    def bucketitems(self, key):
-        return key % 1000
+    def bucket(self, key):
+        return key % self.buckets
+
+    def bucketitem(self, key):
+        return key // self.bucketitems
 
     def add(self, key: int) -> None:
-        keys_index = self.buckets(key)
-        keys_bucket = self.bucketitems(key)
-        self.storage[keys_index][keys_bucket] = True
-        return None
+        bucket_key = self.bucket(key)
+        bucketitem_key = self.bucketitem(key)
+        if not self.storage[bucket_key]:
+            self.storage[bucket_key] = [False] * self.bucketitems
+        self.storage[bucket_key][bucketitem_key] = True
 
     def remove(self, key: int) -> None:
-        keys_index = self.buckets(key)
-        keys_bucket = self.bucketitems(key)
-        self.storage[keys_index][keys_bucket] = False
-        return None
+        bucket_key = self.bucket(key)
+        bucketitem_key = self.bucketitem(key)
+        if not self.storage[bucket_key]:
+            return
+        self.storage[bucket_key][bucketitem_key] = False
+        return
 
     def contains(self, key: int) -> bool:
-        keys_index = self.buckets(key)
-        keys_bucket = self.bucketitems(key)
-        if self.storage[keys_index][keys_bucket]:
-            return True
-        else:
+        bucket_key = self.bucket(key)
+        bucketitem_key = self.bucketitem(key)
+        if not self.storage[bucket_key]:
             return False
+        return self.storage[bucket_key][bucketitem_key]
 
-        # Your MyHashSet object will be instantiated and called as such:
+# Your MyHashSet object will be instantiated and called as such:
 # obj = MyHashSet()
 # obj.add(key)
 # obj.remove(key)
