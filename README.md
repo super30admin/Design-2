@@ -1,10 +1,5 @@
-# Design-2
+# Leetcode
 
-## Problem 1: (https://leetcode.com/problems/implement-queue-using-stacks/)
-
-
-## Problem 2:(https://leetcode.com/problems/design-hashset/)
-
-
-
-
+| # | Title | Solution | Runtime |
+|---| ----- | -------- | ------- |
+|705|[ Design HashSet](https://leetcode.com/problems/design-hashset/)|[Java](./solutions/705.%20Design%20HashSet.java)|10 ms|
