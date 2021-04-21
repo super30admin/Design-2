@@ -10,7 +10,7 @@ The 'row' or the 'ith' index of the key is obtainted by getting computing: key %
 The 'column' or the 'jth' index of the key is obtainted by getting computing: key / perfectSquare(numberOfElements)
 
 #####################################################################
-Add Method: Inserting a value at a key if the key is present. The vlaue will be overwritten if the key is not present.
+Add Method: Inserting a value at a key if the key is present. The value will be overwritten if the key is not present.
 Time Complexity : O(1)
 Space Complexity : O(perfectSquare(N)) if collision occurs, where N = perfectSquare(numberOfElements)
 Space Complexity : O(1) if collision has already occured and array is already created.
