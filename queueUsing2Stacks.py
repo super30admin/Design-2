@@ -2,7 +2,7 @@
 Intuition: In this program, 2 stacks are used to implement a queue
 
 First stack is used to push elements.
-Second stack is used to pop elements.
+Second stack is used to pop an element.
 
 #####################################################################
 Push Method: Adding an element in the stackOne
