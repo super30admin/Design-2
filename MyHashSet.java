@@ -4,51 +4,69 @@
 // Any problem you faced while coding this : no
 
 class MyHashSet {
-
+    // a 2-D array reprsenting our set
     boolean[][] set;
-    int bucket, bucketItem;
+    //number of bucket
+    int bucket;
+    //number of items within bucket
+    int bucketItem;
 
-    /** Initialize your data structure here. */
+    // Initializing member variables
     public MyHashSet() {
+        //initializing number of buckets
         this.bucket = 1000;
+        //initilizing our set
         this.set = new boolean[this.bucket][];
     }
-
+    // first hash function to fetch bucket number
     public int hash1(int key){
         return key%1000;
     }
-
+    //second hash function to find item location inside bucket
     public int hash2(int key){
         return key/1000;
     }
 
+    // puts a key/value in set
     public void add(int key) {
-
+        //fetching bucket index from the key
         int bucket = this.hash1(key);
+        //checking if the bucket doesn't exists
         if(this.set[bucket]==null){
+            //create a bucket
             this.bucketItem = 1001;
             this.set[bucket] = new boolean[this.bucketItem];
         }
+        //get item index within bucket
         int bucketItem = this.hash2(key);
+        //mark item as available
         this.set[bucket][bucketItem] = true;
     }
-
+    //remove a key/value from Set
     public void remove(int key) {
+        //fetching bucket index
         int bucket = this.hash1(key);
+        //checking if the bucket doesn't exists
         if(this.set[bucket]==null){
             return;
         }
+        //get key index within bucket
         int bucketItem = this.hash2(key);
+        //mark current location as empty
         this.set[bucket][bucketItem] = false;
     }
 
-    /** Returns true if this set contains the specified element */
+    // checks if an item exists in our set
     public boolean contains(int key) {
+        //fetching bucket index
         int bucket = this.hash1(key);
+        //checking if the bucket doesn't exists
         if(this.set[bucket]==null){
             return false;
         }
+        //get key index within bucket
         int bucketItem = this.hash2(key);
+        //return value at the index
         return this.set[bucket][bucketItem];
     }
 }
