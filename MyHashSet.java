@@ -2,6 +2,10 @@
 // Space Complexity : O(n)
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : No
+// Approach: Create a 2D array, intialize it with only primary array size to utilize space, Compute two hash functions for primary and secondary array index to avoid coliisions.
+// For add operation, if primary element is null then create a secondary array at primary index and enter true for the given element.
+// For remove operation, check if primary index is absent and if yes then return otherwise make element at primary and secondary index as false
+// For contains operation, check if primary index is absent and if yes then return false otherwise return value of element at primary and secondary index 
 
 class MyHashSet {
     // Creating a two dimensional array for primary and secondary storage
