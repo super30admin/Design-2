@@ -3,7 +3,9 @@
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : No
 // Approach : Create two stacks and push all the elements in first stack. 
-// For pop/peek operation, if the out stack is empty push all the elements from in stack to out stack and perform pop/peek operation
+// For peek operation, if the out stack is empty push all the elements from in stack to out stack and perform peek operation on out stack
+// For pop operation, perform peek operation to take care of transferring elements from in to out stack and then perform pop on out stack
+// For empty operation, check if in and out stack is empty
 class MyQueue {
     private Stack<Integer> in;
     private Stack<Integer> out;
