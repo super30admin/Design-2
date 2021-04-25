@@ -1,28 +1,25 @@
 package Hashset;
 
-/*S30 Big N Problem #4 {Easy}
+/*
+  add method:
+  Time complexity : o(1)
+  Space complexity : o(n) for the first time array is created
+  Space complexity : o(1) after the array is created
+  ---------------------------------------------------
+  remove method:
+  Time complexity : o(1)
+  Space complexity : o(1)
+  ---------------------------------------------------
+  contains method:
+  Time complexity : o(1)
+  Space complexity : o(1)
+  ---------------------------------------------------
+  Did this code run succesfully in leetcode : yes
+  problems faces : no
+  create 2d array with 1000 * 1000 size. basically squareroot of the number of unique elements10 power 6.
+   evey element can be stored in a[i][j] where i = element value%1000 and j=value/1000
+*/ 
 
-Implement HashSet without using any built-in libraries.
-
-your design should include these functions:
-
-add(value): Insert a value into the HashSet. 
-contains(value) : Return whether the value exists in the HashSet or not.
-remove(value): Remove a value in the HashSet. If the value does not exist in the HashSet, do nothing.
-Example:
-
-MyHashSet hashSet = new MyHashSet();
-
-hashSet.add(1);         
-hashSet.add(2);         
-hashSet.contains(1);    // returns true
-hashSet.contains(3);    // returns false (not found)
-hashSet.add(2);          
-hashSet.contains(2);    // returns true
-hashSet.remove(2);          
-hashSet.contains(2);    // returns false (already removed)
-Source Link: https://leetcode.com/problems/design-hashset/
-*/
 public class MyHashSet {
     boolean[][] storage = null;
     int buckets;

@@ -2,29 +2,33 @@ package Queue;
 
 import java.util.Stack;
 
-/*S30 Big N Problem #3  https://www.youtube.com/watch?v=F2qyQidQ1mI
-Design the following operations 
-
-push(x) -- Push element x to the back of queue.
-pop() -- Removes the element from in front of queue.
-peek() -- Get the front element.
-empty() -- Return whether the queue is empty.
-Example:
-
-MyQueue queue = new MyQueue();
-
-queue.push(1);
-queue.push(2);  
-
-queue.peek();  // returns 1
-queue.pop();   // returns 1
-queue.empty(); // returns false
-Notes:
-
-You must use only standard operations of a stack 
-You may assume that all operations are valid (for example, no pop or peek operations will be called on an empty queue).
-Source Link: https://leetcode.com/problems/implement-queue-using-stacks/
-*/public class MyQueue {
+/*
+  push method:
+  Time complexity : o(1)
+  Space complexity : o(1)
+  ---------------------------------------------------
+  pop method:
+  Amortized Time complexity : o(1)
+  worstcase time complexity : o(n)
+  Space complexity : o(1)
+  ---------------------------------------------------
+  peek method:
+  Time complexity : o(1)
+  Space complexity : o(1)
+  ---------------------------------------------------
+  empty method:
+  Time complexity : o(1)
+  Space complexity : o(1)
+  ---------------------------------------------------
+  Did this code run succesfully in leetcode : yes
+  problems faces : no
+  create two stacks 1 and 1. for everypush operation put element into stack 1
+  for first pop operation , fetch all the lements from stack 1 and insert into stack 2.and retur first element from stack2
+  for subsequest pop operations , keep popping element from stack2 and return that element.
+  when stack 2 becomes empty, insert all the elements from stack 1 to stack 2
+  
+*/ 
+public class MyQueue {
     
 
    private Stack<Integer> in = new Stack<>();
