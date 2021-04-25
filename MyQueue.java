@@ -1,5 +1,5 @@
 // Time Complexity : Worse case Time Complexity: O(n) Amortized or Average case complexity: O(1) 
-// Space Complexity : O(n)
+// Space Complexity : O(2n)
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : No
 // Approach : Create two stacks and push all the elements in first stack. 
