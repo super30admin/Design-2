@@ -1,9 +1,13 @@
 """
+Space Complexity: O(n)
 Runtime Complexity:
 push --> O(1)
 pop --> O(1)
 peek --> O(1)
 empty --> O(1)
+
+Yes it ran successfully run on LeetCode
+No problems faced other than the ones already discussed in class.
 """
 
 class MyQueue:
