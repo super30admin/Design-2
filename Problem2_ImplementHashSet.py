@@ -37,8 +37,8 @@ Constraints:
 #-----------------------
 # Ran Successfully?: Yes
 # Time             : 192 ms (64.34 %ile)
-# Space            : 19.3 MB (46.07 %ile)
-
+# Space            : 19.3 MB (46.07 %ile) 
+# Tradeoff using large keysize (space) and handling many collisions (time)
 
 
 class MyHashSet:
