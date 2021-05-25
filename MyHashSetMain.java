@@ -1,4 +1,18 @@
+// Time Complexity : O(1)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : no
 
+
+// Your code here along with comments explaining your approach
+/**
+ * 1. Define a Node to maintain a linked list in each bucket .
+ * 2. Define bucketsize as a prime number to reduce the hash collision. We may need to increase or decrease based on performance.
+ * 3. add:Check bucket first element. if it is null add new node to bucket. Otherwise find if exist, if not exist add it as last node in the linked list.
+ * 4. contain:Check bucket first element. if it is null return false.Otherwise find and return true if exist, if not exist return false.
+ * 5. remove:Check bucket first element. if it is null return.Otherwise find and remove node and adjust the previous node next node.   
+ *
+ */
 class MyHashSet {
 
 	private final int bucketSize = 1999;
