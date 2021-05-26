@@ -1,3 +1,5 @@
+//Time complexity: O(1)
+//Space complexity: O(n)
 import java.util.Stack;
 
 class MyQueue {
