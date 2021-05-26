@@ -1,5 +1,6 @@
 /* push/peek operations here are O(1)
 pop operation takes O(n) since we are moving elements from stack 1 to stack 2
+Ran on leetcode without issues
 */
 class QueueWithStack {
     
