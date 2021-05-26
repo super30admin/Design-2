@@ -29,8 +29,11 @@ class MyHashSet {
             storage[bucket] = new boolean[bucketItems];
         }
         
+        //for 0th index in primary array if we have 1 million included - then that will make it (10^6 + 1) elements
+        //so there will be no space for 1 element and it will be 1000000th ele (1000000%1000 = 0) 
+        //so its at 0th index of primary array that we will have 999 indexes only in array
         if (bucket == 0) {
-            storage[bucket][bucketItem+1] = true;
+            storage[bucket][bucketItem + 1] = true;
         } else {
             storage[bucket][bucketItem] = true;
         }
