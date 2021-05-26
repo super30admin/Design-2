@@ -1,5 +1,5 @@
 // Time Complexity :  Push O(1), Pop O(n), Peek O(1), Empty O(1)
-// Space Complexity : Push O(1), Pop O(n), Peek O(1), Empty O(1)
+// Space Complexity : O(n)
 // Did this code successfully run on Leetcode : Yes. 
 // Any problem you faced while coding this : There can be a better method for solving it than transferring data between stacks.
 
