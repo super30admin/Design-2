@@ -26,17 +26,16 @@ class MyHashSet {
         int bucketItem = hashBucketItem(key);
 
         if (storage[bucket] == null) {
-            storage[bucket] = new boolean[bucketItems];
-        }
-        
         //for 0th index in primary array if we have 1 million included - then that will make it (10^6 + 1) elements
         //so there will be no space for 1 element and it will be 1000000th ele (1000000%1000 = 0) 
         //so its at 0th index of primary array that we will have 999 indexes only in array
         if (bucket == 0) {
-            storage[bucket][bucketItem + 1] = true;
+            storage[bucket] = new boolean[bucketItems + 1]; // increase space for that 1 element
         } else {
-            storage[bucket][bucketItem] = true;
+            storage[bucket] = new boolean[bucketItems];
         }
+    }
+        storage[bucket][bucketItem] = true;
     }
     
     public void remove(int key) {
