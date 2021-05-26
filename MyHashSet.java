@@ -1,3 +1,4 @@
+/* Ran on leetcode without issues */
 class MyHashSet {
     
     boolean[][] storage;
