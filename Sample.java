@@ -57,7 +57,7 @@ class MyQueue {
  */
 
  // Time Complexity : O(1)
-// Space Complexity : O(2N)
+// Space Complexity : O(N)
 // Did this code successfully run on Leetcode : yes
 // Any problem you faced while coding this : no 
 
