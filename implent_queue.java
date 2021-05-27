@@ -3,38 +3,55 @@
 // Did this code successfully run on Leetcode : yes
 // Any problem you faced while coding this : No
 
-class MyQueue {
-    
-    Stack s1;
-    Stack s2;
-    /** Initialize your data structure here. */
-    public MyQueue() {
-        s1 = new Stack<>();
-        s2 = new Stack<>();
-    }
-    
-    /** Push element x to the back of queue. */
-    public void push(int x) {
-        s1.push(x);
-    }
-    
-    /** Removes the element from in front of queue and returns that element. */
-    public int pop() {
-        peek();
-        s2.pop();
-    }
-    
-    /** Get the front element. */
-    public int peek() {
-        if (s2.empty())
-            while (!s1.empty()){
-                s2.push(s1.pop());
-            }
-        return s2.peek();
-    }
-    
-    /** Returns whether the queue is empty. */
-    public boolean empty() {
-        return s1.isEmpty() && s2.isEmpty();
-    }
-}
+class MyQueue:
+
+    def __init__(self):
+        """
+        Initialize your data structure here.
+        """
+        self.s1 = []
+        self.s2 = []
+
+    def push(self, x: int) -> None:
+        """
+        Push element x to the back of queue.
+        
+        """
+        self.s1.append(x)
+        
+
+    def pop(self) -> int:
+        """
+        Removes the element from in front of queue and returns that element.
+        """
+        if not self.s2:
+            while self.s1:
+                self.s2.append(self.s1.pop())  
+        return self.s2.pop()
+        
+        
+    def peek(self) -> int:
+        """
+        Get the front element.
+        """
+        if not self.s2:
+            while self.s1:
+                self.s2.append(self.s1.pop()) 
+        return self.s2[-1]
+        
+        
+        
+    def empty(self) -> bool:
+        """
+        Returns whether the queue is empty.
+        """
+        return not self.s1 and not self.s2
+        
+
+
+# Your MyQueue object will be instantiated and called as such:
+# obj = MyQueue()
+# obj.push(x)
+# param_2 = obj.pop()
+# param_3 = obj.peek()
+# param_4 = obj.empty()
