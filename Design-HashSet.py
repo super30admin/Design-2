@@ -26,20 +26,23 @@ class MyHashSet:
             self.array[hash_value].append(key) 
 
     def remove(self, key: int) -> None:
+        
         #calculate hash value
-        hash_value = self.calculateHash(self.key)
+        hash_value = self.calculateHash(key)
+        print(self.array[hash_value])
         #if the array at index hash_value is not empty
         if self.array[hash_value] != None: 
         #lookup if the key exists and while loop to remove all existances of the key
-            while key in self.array:
-                self.array[hashvalue].remove(key)
+            while key in self.array[hash_value]:
+                self.array[hash_value].remove(key)
+        # print( self.array[hash_value])
 
     def contains(self, key: int) -> bool:
         """
         Returns true if this set contains the specified element
         """
         #calculate hash value
-        hash_value = self.calculateHash(self.key)
+        hash_value = self.calculateHash(key)
         if self.array[hash_value] != None: 
             return key in self.array[hash_value]
         #if there is no value at index hash_value of array or 
