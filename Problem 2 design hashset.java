@@ -7,7 +7,7 @@
 // Your code here along with comments explaining your approach
 class MyHashSet {
 
-    List<Integer> hashSet;
+    List<Integer> hashSet; 
     
     /** Initialize your data structure here. */
     public MyHashSet() {
