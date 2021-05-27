@@ -35,54 +35,36 @@ class MyQueue:
         """
         self.pushStack = Stack()
         self.popStack = Stack()
-        self.top = None
         
 
     def push(self, x: int) -> None:
         """
         Push element x to the back of queue.
         """
-        if self.top == None:
-            self.top = x
-        if self.pushStack.size() == 0:
-            if self.popStack.size() == 0:
-                self.pushStack.push(x)
-            else:
-                while self.popStack.size() != 0:
-                    self.pushStack.push(self.popStack.pop())
-                self.pushStack.push(x)
-        else:
-            self.pushStack.push(x)
+        self.pushStack.push(x)
+        
         
 
     def pop(self) -> int:
-        if self.popStack.size() == 0:
-            if self.pushStack.size() == 0:
-                self.top = None
-                return None
-            else:
-                while self.pushStack.size() != 0:
-                    self.popStack.push(self.pushStack.pop())
-                x = self.popStack.pop()
-                self.top = self.popStack.top()
-                return x
-        else:
-            x = self.popStack.pop()
-            self.top = self.popStack.top()
-            return x
+        self.peek()
+        return self.popStack.pop()
         
 
     def peek(self) -> int:
-        return self.top
+        if self.popStack.isEmpty():
+            while self.pushStack.isEmpty() == False:
+                self.popStack.push(self.pushStack.pop())
+        return self.popStack.top()
         
 
     def empty(self) -> bool:
         """
         Returns whether the queue is empty.
         """
-        if self.popStack.size() == 0 and self.pushStack.size() == 0:
-            return True
-        return False
+        if self.popStack.isEmpty() and self.pushStack.isEmpty():
+            return True;
+        return False;
+
 
 
 # Your MyQueue object will be instantiated and called as such:
