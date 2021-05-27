@@ -27,28 +27,32 @@ class MyQueue {
 
 	/** Push element x to the back of queue. */
 	public void push(int x) {
-		while (!original.isEmpty()) {
-			temp.push(original.pop());
-		}
-		temp.push(x);
-		while (!temp.isEmpty()) {
-			original.push(temp.pop());
-		}
+		original.push(x);
 	}
 
 	/** Removes the element from in front of queue and returns that element. */
 	public int pop() {
-		return original.pop();
+		popAllToTemp();
+		return temp.pop();
+	}
+
+	private void popAllToTemp() {
+		if(temp.isEmpty()) {
+			while(!original.isEmpty()) {
+				temp.push(original.pop());
+			}
+		}
 	}
 
 	/** Get the front element. */
 	public int peek() {
-		return original.peek();
+		popAllToTemp();
+		return temp.peek();
 	}
 
 	/** Returns whether the queue is empty. */
 	public boolean empty() {
-		return original.isEmpty();
+		return original.isEmpty()&&temp.isEmpty();
 	}
 }
 

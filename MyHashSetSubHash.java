@@ -1,5 +1,5 @@
 // Time Complexity : best case O(1) , worst case 0(n)
-// Space Complexity : O(m + n)
+// Space Complexity : O(n)
 // Did this code successfully run on Leetcode : yes
 // Any problem you faced while coding this : no
 
