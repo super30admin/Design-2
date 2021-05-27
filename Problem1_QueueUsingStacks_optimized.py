@@ -48,8 +48,8 @@ Follow-up: Can you implement the queue such that each operation is amortized
 # Leet Code Performance: 
 #-----------------------
 # Ran Successfully?: Yes
-# Time             : 28 ms (77.13 %ile)
-# Space            : 14.3 MB (90.15 %ile)
+# Time             : 20 ms (98.48% %ile)
+# Space            : 14.3 MB (41.32 %ile)
 
 
 class MyQueue:
