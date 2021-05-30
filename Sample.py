@@ -1,4 +1,4 @@
-""" Time Complexity :
+""" Time Complexity :    
 // Space Complexity :
 // Did this code successfully run on Leetcode : yes
 // Any problem you faced while coding this : while returning the top element i was returning self.peek in the peek function but after a little brainstorming I realized that I have to return the last element if i am calling a peek operation for pop i need it only to fill the second stack and the peek() in pop just does that and not remove the element here i am removing the first element by the default pop() function for list in python. 
@@ -8,6 +8,7 @@ I can do one more thing, which he store the value from peek in one function and 
 // Your code here along with comments explaining your approach """
 
 class MyQueue:
+    
     def __init__(self) -> None: # this is the constuctor for this class
         self.Stack1 = [] #I am declaring two stacks for every object of class MyQueue 
         self.Stack2 = []
