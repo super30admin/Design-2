@@ -3,43 +3,46 @@
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : No
 class MyQueue {
-    Stack<Integer> stack1; 
-    Stack<Integer> stack2; 
-    
+    private Stack<Integer> s1 = new Stack<>();
+    private Stack<Integer> s2 = new Stack<>();
+
     /** Initialize your data structure here. */
     public MyQueue() {
-        stack1 = new Stack<Integer>();
-        stack2 = new Stack<Integer>(); 
     }
-    
+
     /** Push element x to the back of queue. */
     public void push(int x) {
-        while (!stack1.isEmpty())
-        { 
-            stack2.push(stack1.pop()); 
-        } 
+        s1.push(x);
+    }
 
-        stack1.push(x); 
-  
-        while (!stack2.isEmpty()) 
-        { 
-            stack1.push(stack2.pop()); 
-        } 
-    }
-    
     /** Removes the element from in front of queue and returns that element. */
+
     public int pop() {
-        return stack1.pop();
+        if(s2.isEmpty())
+        {
+            while(!s1.isEmpty()){
+                s2.push(s1.pop());
+            }
+        }
+        return s2.pop();
     }
-    
+
     /** Get the front element. */
+
     public int peek() {
-        return stack1.peek();
+        if(s2.isEmpty())
+        {
+            while(!s1.isEmpty()){
+                s2.push(s1.pop());
+            }
+        }
+        return s2.peek();
     }
-    
+
     /** Returns whether the queue is empty. */
+
     public boolean empty() {
-        return stack1.isEmpty()?true:false;
+        return s1.isEmpty() && s2.isEmpty();
     }
 }
 
