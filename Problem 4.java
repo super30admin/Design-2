@@ -2,7 +2,7 @@
 // Space Complexity : O(N)
 // Did this code successfully run on Leetcode : yes
 // Any problem you faced while coding this : understood from class, but a little unsure about the space complexity
-
+ 
 class MyQueue {
     
     private Stack<Integer> out;
