@@ -1,5 +1,6 @@
 class MyQueue {
-    
+    // Time complexity will be O(n)
+    // Space complexity will be O(n)
     Stack<Integer> s1;
     Stack<Integer> s2;
 
