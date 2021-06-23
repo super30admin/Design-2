@@ -1,5 +1,4 @@
 class MyQueue:
-
     def __init__(self):
         """
         Initialize your data structure here.
@@ -25,12 +24,10 @@ class MyQueue:
         while(x>0):
             x-=1
             self.stack2.append(self.stack1.pop())
-        v=self.stack2.pop()
-        x=len(self.stack2)
-        while(x>0):
-            x-=1
+        final=self.stack2.pop()#pop the last element in stack2 which will be first element if stack1
+        while(len(self.stack2)>0):
             self.stack1.append(self.stack2.pop())
-        return v
+        return final
 
     def peek(self) -> int:
         """
@@ -42,17 +39,15 @@ class MyQueue:
         while(x>0):
             x-=1
             self.stack2.append(self.stack1.pop())
-        v=self.stack2[-1]
-        x=len(self.stack2)
-        while(x>0):
-            x-=1
+        final=self.stack2[-1]#show the last element in stack2 which will be first element if stack1
+        while(len(self.stack2)>0):
             self.stack1.append(self.stack2.pop())
-        return v
+        return final
 
     def empty(self) -> bool:
         """
         Returns whether the queue is empty.
         """
-        if  len(self.stack1)==0:
+        if len(self.stack1)==0:
             return True
         return False
