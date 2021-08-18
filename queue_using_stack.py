@@ -82,6 +82,75 @@ class MyQueue:
 		return (len(self.stack1) == 0)
 		
 
+# Slightly optimized approach based on discussion in class
+# No need to transfer all elements from stack2 to stack1 everytime
+# let pop() operation 
+
+class MyQueue:
+
+	def __init__(self):
+		"""
+		Initialize your data structure here.
+		SC: O(N)
+		"""
+		self.stack1 = []
+		self.stack2 = []
+		
+
+	def push(self, x: int) -> None:
+		"""
+		Push element x to the back of queue.
+		TC: O(1)
+		---------
+		arguments:
+		x: int, value to put in queue
+		---------
+		"""
+		self.stack1.append(x)
+		
+
+	def pop(self) -> int:
+		"""
+		Removes the element from in front of queue and returns that element.
+		TC: O(1) in best and average case and O(n) in worst case
+		---------
+		returns:
+		front_elem: int, element in first position in queue
+		"""
+		if self.stack2:
+			return self.stack2.pop()
+		self.peek()
+		front_elem = self.stack2.pop()
+		return front_elem
+		
+
+	def peek(self) -> int:
+		"""
+		Get the front element.
+		TC: O(1) in best and average case and O(n) in worst case
+		since pop n elements from stack1 and push same n elements into stack2
+		---------
+		returns:
+		front_elem: int, element at first position in queue
+		"""
+		if self.stack2:
+			return self.stack2[-1]
+		while self.stack1:
+			self.stack2.append(self.stack1.pop())
+		return self.stack2[-1]
+		
+
+	def empty(self) -> bool:
+		"""
+		Returns whether the queue is empty.
+		---------
+		returns:
+		empty: bool, True if queue is empty else False
+		TC: O(1)
+		SC: O(1)
+		"""
+		return (len(self.stack1) == 0 and len(self.stack2) == 0)
+
 
 # Your MyQueue object will be instantiated and called as such:
 # obj = MyQueue()
