@@ -1,8 +1,14 @@
 # // Time Complexity :O(1)
-# // Space Complexity :O(n)
+# // Space Complexity :O(1000)
 # // Did this code successfully run on Leetcode : Yes
 # // Any problem you faced while coding this : Not sure whether correct
 
+
+class Node:
+    def __init__(self,key,data):
+        self.key=key
+        self.data=data
+        self.next=None
 
 class MyHashMap:
 
@@ -12,8 +18,15 @@ class MyHashMap:
         
         """
         self.hashs=[[]]*1000
-        self.bucket=1000
-        self.bucketItems=1000
+    def find(self,head,key):
+        prev=head
+        current=head.next
+        while(current!= None and current.key!=key):
+            prev=current
+            current=current.next
+        return prev
+        
+        
         
         
 
@@ -21,21 +34,18 @@ class MyHashMap:
         """
         value will always be non-negative.
         """
-        
-        
-        hashed_key=key%self.bucket
-       
-        d_hashed_key=key//self.bucketItems
-        
-        if(self.hashs[hashed_key]==[]):
-            if hashed_key==0:
-                
-                self.hashs[hashed_key]=[False]*1001
-            else:
-                self.hashs[hashed_key]=[False]*1000
-        self.hashs[hashed_key][d_hashed_key]=[key,value]
-        print(self.hashs[hashed_key][d_hashed_key])
+        index=hash(key)%1000
+        if self.hashs[index] == []:
+            self.hashs[index]=Node(-1,-1)
+        prev=self.find(self.hashs[index],key)
+        if prev.next == None :
+            prev.next=Node(key,value)
+        else:
+            prev.next.data=value
+        print(prev.next.data)
             
+        
+        
             
         
 
@@ -43,29 +53,27 @@ class MyHashMap:
         """
         Returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key
         """
-        hashed_key=key%self.bucket
-        
-        d_hashed_key=key//self.bucketItems
-        if self.hashs[hashed_key]==[]:
+        index=hash(key)%1000
+        if self.hashs[index]==[]:
             return -1
-        if self.hashs[hashed_key][d_hashed_key]==False:
+        prev=self.find(self.hashs[index],key)
+        if prev.next==None:
             return -1
         else:
-            a=self.hashs[hashed_key][d_hashed_key]
-            return a[1]
-
+            return prev.next.data
     def remove(self, key: int) -> None:
         """
         Removes the mapping of the specified value key if this map contains a mapping for the key
         """
-        hashed_key=key%self.bucket
-        
-        d_hashed_key=key//self.bucketItems 
-        if self.hashs[hashed_key]==[]:
-            return
-        self.hashs[hashed_key][d_hashed_key]=False
-        
-        
+        index=hash(key)%1000
+        if self.hashs[index]==[]:
+            return 
+        prev=self.find(self.hashs[index],key)
+        if prev.next==None:
+            return 
+        else:
+            prev.next=prev.next.next
+            
 
 
 # Your MyHashMap object will be instantiated and called as such:

@@ -1,7 +1,7 @@
 # // Time Complexity :O(1)
 # // Space Complexity :O(n)
 # // Did this code successfully run on Leetcode :yes
-# // Any problem you faced while coding this :no, not sure whether the logic is right but working well
+# // Any problem you faced while coding this :no
 
 # // Your code here along with comments explaining your approach
 
@@ -13,38 +13,49 @@ class MyQueue:
         Initialize your data structure here.
         
         """
-        self.arr=[]
+        self.inst=[]
+        self.outst=[]
         
 
     def push(self, x: int) -> None:
         """
         Push element x to the back of queue.
         """
-        self.arr.append(x)
-        print(self.arr)
+        self.inst.append(x)
+        print(self.inst)
+        print(self.outst)
         
 
     def pop(self) -> int:
         """
         Removes the element from in front of queue and returns that element.
         """
-        a=self.arr[0]
-        self.arr.pop(0)
-        return a
+        if (len(self.outst)==0):
+            while(len(self.inst)!=0):
+                a=self.inst.pop()
+                self.outst.append(a)
+        return self.outst.pop()
         
 
     def peek(self) -> int:
         """
         Get the front element.
         """
-        return self.arr[0]
+        if (len(self.outst)==0):
+             while(len(self.inst)!=0):
+                a=self.inst.pop()
+                self.outst.append(a)
+        return self.outst[-1]
+        
         
 
     def empty(self) -> bool:
         """
         Returns whether the queue is empty.
         """
-        if len(self.arr)!=0:
+        print(self.inst)
+        print(self.outst)
+        if len(self.inst)!=0 or len(self.outst)!=0:
             return False
         else:
             return True
