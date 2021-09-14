@@ -1,3 +1,15 @@
+"""
+Time Complexity:
+"m stands for hashspace"
+add: O(m)
+remove: O(m)
+contains: O(m)
+
+Space Complexity:
+add: O(m*n)
+remove: O(m*n)
+contains: O(m*n)
+"""
 class MyHashSet:
 
     def __init__(self):
