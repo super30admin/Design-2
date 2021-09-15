@@ -1,34 +1,61 @@
-// Time Complexity : 0(1)
+// Time Complexity : 0(n)
 // Space Complexity : 0(n)
 // Did this code successfully run on Leetcode : yes
 // Any problem you faced while coding this :
 
-class MyHashSet {
+class MyQueue {
 
     /** Initialize your data structure here. */
-    var array : [Int]
+    var firstStack :  [Int]
+    var secondStack : [Int]
     init() {
-      array = Array(repeating: -1, count: 1000002) 
+         firstStack = [Int]()
+         secondStack = [Int]()
     }
     
-    func add(_ key: Int) {
-        if array[key] == -1 {
-        array[key] = key
-        }
+    /** Push element x to the back of queue. */
+    func push(_ x: Int) {
+        firstStack.append(x)
     }
     
-    func remove(_ key: Int) {
-        array[key] = -1
+    /** Removes the element from in front of queue and returns that element. */
+    func pop() -> Int {
+        var poppedElement: Int
+        for i in (0..<firstStack.count).reversed() {
+            secondStack.append(firstStack[i])
+            firstStack.remove(at: i)
+            }
+        
+        poppedElement = secondStack.removeLast()
+        for i in (0..<secondStack.count).reversed() {
+            firstStack.append(secondStack[i])
+            secondStack.remove(at: i)
+            }
+        return poppedElement
+        
     }
+    
+    /** Get the front element. */
+    func peek() -> Int {
+        var poppedElement: Int
+        for i in (0..<firstStack.count).reversed() {
+            secondStack.append(firstStack[i])
+            firstStack.remove(at: i)
+            }
+        
+        poppedElement = secondStack.last!
+        
+        for i in (0..<secondStack.count).reversed() {
+            firstStack.append(secondStack[i])
+            secondStack.remove(at: i)
+            }
 
+        return poppedElement 
+    }
     
-    
-    /** Returns true if this set contains the specified element */
-    func contains(_ key: Int) -> Bool {
-        if array[key] != -1  {
-            return true
-        }
-        return false
+    /** Returns whether the queue is empty. */
+    func empty() -> Bool {
+        return firstStack.isEmpty
     }
 }
 
