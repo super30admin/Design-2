@@ -11,7 +11,6 @@ class MyQueue {
     public MyQueue() {
         st1 = new Stack<>();
         st2 = new Stack<>();
-
     }
 
     /** Push element x to the back of queue. */
