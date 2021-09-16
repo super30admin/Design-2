@@ -28,8 +28,8 @@ class MyHashSet {
             }else{
                 storage[bucketsIndex]= new boolean[bucketItems];
             }
-            storage[bucketsIndex][bucketItemsIndex] =true;
         }
+         storage[bucketsIndex][bucketItemsIndex] =true;
     }
     
     public void remove(int key) {
