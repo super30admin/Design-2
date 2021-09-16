@@ -5,7 +5,7 @@ class MyQueue:
         Initialize your data structure here.
         """
         self.instack = []
-        self.outstack = []
+        self.outstack= []
 
     def push(self, x: int) -> None:
         """
