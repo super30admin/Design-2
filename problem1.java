@@ -33,3 +33,6 @@ class MyHashSet {
  * obj.remove(key);
  * boolean param_3 = obj.contains(key);
  */
+
+//  Space Complexity: O(n)
+// Time complexity: Add, Remove contains all are O(1)

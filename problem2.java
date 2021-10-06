@@ -46,3 +46,7 @@ class MinStack {
  * int param_3 = obj.top();
  * int param_4 = obj.getMin();
  */
+
+
+//  space complexity is O(n)
+// Time complexity for push, pop, top and getmin is o(1)
