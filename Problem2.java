@@ -1,6 +1,6 @@
-// Time complexity is O(1+lf), depends on the Load factor(lf): lf = n/m, n=number of elements stored in hash table and m=number of slots
+// Time Complexity : O(1)
 // Space Complexity : O(n)
-// Did this code successfully run on Leetcode: Yes (https://leetcode.com/submissions/detail/567066705/)
+// Did this code successfully run on Leetcode: Yes (https://leetcode.com/submissions/detail/567000956/)
 // Any problem you faced while coding this:
 
 import java.util.Stack;
