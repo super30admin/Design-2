@@ -31,12 +31,12 @@ class MyQueue {
 //         return temp;
         if(stack2.empty())             /////amortized approach
         {
-            while(stack1.empty()==false){            
-                stack2.push(stack1.pop());
+            while(stack1.empty()==false){             
+                stack2.push(stack1.pop());               ///// push stack1 contents into stack2 when stack2 is empty
             }
             
         }
-        return stack2.pop();
+        return stack2.pop();   //// keep popping from the stack2 only since the front elements are here in order
         
     }
     
@@ -55,7 +55,7 @@ class MyQueue {
         if(!stack2.empty())                          //// amortized approach
         {
             
-            return stack2.peek();
+            return stack2.peek(); 
         }
         return front;
     }
