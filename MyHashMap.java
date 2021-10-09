@@ -6,7 +6,7 @@
 
 // Your code here along with comments explaining your approach
 
-class MyHashMap {
+class DesignHashSet_705 {
 
     class Node {
         int key;
@@ -22,7 +22,7 @@ class MyHashMap {
     
     Node[] nodes;
     /** Initialize your data structure here. */
-    public MyHashMap() {
+    public DesignHashSet_705() {
         nodes= new Node[10000];
     }
     

@@ -9,12 +9,12 @@ import java.util.Stack;
 // Your code here along with comments explaining your approach
 
 
-class MyQueue {
+class ImplementQueueUsingStacks_232{
 
     Stack<Integer> st1;
     Stack<Integer> st2;
     /** Initialize your data structure here. */
-    public MyQueue() {
+    public ImplementQueueUsingStacks_232() {
         st1 = new Stack<>();
         st2 = new Stack<>();
     }
