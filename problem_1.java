@@ -1,38 +1,64 @@
-// Time Complexity
-// add - O(1)
-// remove - O(1)
-// contains - O(1)
-// Space Complexity - O(n)
-// Ran Successfully on the leetcode
+/ Time complexity
+// push - O(1)
+// pop -O(n)
+// peek- O(n)
+// Space complexity O(n)
 
-class MyHashSet {
-    boolean[] hash= new boolean[1000001];
-    public MyHashSet() {
+
+
+class MyQueue {
+    
+    Stack<Integer> s1;
+    Stack<Integer> s2;
+    
+    public MyQueue() {
+        s1 = new Stack<>();
+        s2 = new Stack<>();
+    }
+    
+    public void push(int x) {
+        s1.push(x);
+    }
+    
+    public int pop() {
         
-    }
-    
-    public void add(int key) {
-        if(hash[key]==false){
-            hash[key]=true;
+        while(!s1.isEmpty()){
+            s2.push(s1.pop());
         }
-    }
-    
-    public void remove(int key) {
-        hash[key]=false;
-    }
-    
-    public boolean contains(int key) {
-        if(hash[key]==true){
-            return true;
+        int temp = s2.pop();
+        
+        while(!s2.isEmpty()){
+            s1.push(s2.pop());
         }
-        return false;
+        
+        return temp;
+    }
+    
+    
+    public int peek() {
+        while(!s1.isEmpty()){
+            s2.push(s1.pop());
+        }
+        int temp = s2.peek();
+        
+        while(!s2.isEmpty()){
+            s1.push(s2.pop());
+        }
+        
+        return temp;
+    }
+    
+    public boolean empty() {
+        
+        return (s1.isEmpty());
     }
 }
 
 /**
- * Your MyHashSet object will be instantiated and called as such:
- * MyHashSet obj = new MyHashSet();
- * obj.add(key);
- * obj.remove(key);
- * boolean param_3 = obj.contains(key);
+ * Your MyQueue object will be instantiated and called as such:
+ * MyQueue obj = new MyQueue();
+ * obj.push(x);
+ * int param_2 = obj.pop();
+ * int param_3 = obj.peek();
+ * boolean param_4 = obj.empty();
  */
