@@ -1,38 +1,56 @@
-class MyHashSet {
+class MyQueue {
     
-    boolean [] array = new boolean[1000001];
+    Stack<Integer> s1;
+    Stack<Integer> s2;
     
-    public MyHashSet() {
-      
+    public MyQueue() {
+        s1 = new Stack<>();
+        s2 = new Stack<>();
     }
     
-    public void add(int key) {
-        if(!array[key]){
-            array[key] = true;
-        }
+    public void push(int x) {
+        s1.push(x);
     }
     
-    public void remove(int key) {
-        if(array[key] == true){
-            array[key] = false;
+    public int pop() {
+        
+        while(!s1.isEmpty()){
+            s2.push(s1.pop());
         }
+        int temp = s2.pop();
+        
+        while(!s2.isEmpty()){
+            s1.push(s2.pop());
+        }
+        
+        return temp;
     }
     
-    public boolean contains(int key) {
-        if(array[key] == true){
-            return true;
+    
+    public int peek() {
+        while(!s1.isEmpty()){
+            s2.push(s1.pop());
         }
-        return false;
+        int temp = s2.peek();
+        
+        while(!s2.isEmpty()){
+            s1.push(s2.pop());
+        }
+        
+        return temp;
+    }
+    
+    public boolean empty() {
+        
+        return (s1.isEmpty());
     }
 }
 
 /**
- * Your MyHashSet object will be instantiated and called as such:
- * MyHashSet obj = new MyHashSet();
- * obj.add(key);
- * obj.remove(key);
- * boolean param_3 = obj.contains(key);
+ * Your MyQueue object will be instantiated and called as such:
+ * MyQueue obj = new MyQueue();
+ * obj.push(x);
+ * int param_2 = obj.pop();
+ * int param_3 = obj.peek();
+ * boolean param_4 = obj.empty();
  */
-
-//  Space Complexity: O(n)
-// Time complexity: Add, Remove contains all are O(1)
