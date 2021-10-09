@@ -1,3 +1,10 @@
+# Time Complexity: 
+# Push: O(1)
+# Pop: O(n)
+# Peep: O(n)
+
+# Space Complexity: O(n)
+
 class MyQueue:
 
     def __init__(self):
@@ -28,7 +35,6 @@ class MyQueue:
 
     def empty(self) -> bool:
         return len(self.head) == 0
-
 
 # Your MyQueue object will be instantiated and called as such:
 obj = MyQueue()
