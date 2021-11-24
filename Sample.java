@@ -68,11 +68,9 @@ class MyQueue {
 
     private Stack<Integer> stack1;
     private Stack<Integer> stack2;
-    private int size;
     public MyQueue() {
         stack1= new Stack<>();
         stack2= new Stack<>();
-        size=0;
     }
     
     public void push(int x) {
