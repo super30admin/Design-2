@@ -1,3 +1,8 @@
+// Time Complexity : O(1) for all methods
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
 var MyHashSet = function () {
   this.set = {};
 };
