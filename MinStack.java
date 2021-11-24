@@ -1,5 +1,6 @@
 //Difficulties: On Popping the lement one needs to update the top pointer in the Min Stack otherwise WHen Min Operation comes after Pop, the min Stack.peek() 
 //will be looking for the same element;
+//Code Run on leetcode: Yes
 //TC: O(1)
 // SC: O(n)
 
