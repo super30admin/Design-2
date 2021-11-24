@@ -16,60 +16,60 @@ class MyHashSet {
         
         
         buckets = 1000;
-        bucketItems = 1000 ;
+        bucketItems = 1000 ; 
         storage = new boolean[buckets][];
         
     }
     private int getBucket(int key){
-        return key % buckets;
+        return key % buckets;           //fun to get key for the first array
     }
     
     private int getBucketItem(int key){
-        return key / bucketItems; 
+        return key / bucketItems;       //fun to get key for the second array
     }
     
     public void add(int key) {
-        int bucket = getBucket(key);
+        int bucket = getBucket(key);            
         int bucketItem = getBucketItem(key);
-        if(storage[bucket] == null){
+        if(storage[bucket] == null){                    //initialise the second array to bucketItem + 1 for edge case, 10^6 as input
            if(bucket == 0){
             storage[bucket] = new boolean[bucketItems + 1]; 
         }
             else{
         
-                storage[bucket] = new boolean[bucketItems];
+                storage[bucket] = new boolean[bucketItems];     //Just initialse the second array
                 }
            
         }
-         storage[bucket][bucketItem] = true;
+         storage[bucket][bucketItem] = true;        //add true to the second array;
         
     }
     
     public void remove(int key) {
          int bucket = getBucket(key);
         int bucketItem = getBucketItem(key);
-        
+                                    
        
-        if(storage[bucket] == null){
+        if(storage[bucket] == null){        // no such key
             return;
         }
         
-            storage[bucket][bucketItem] = false; 
+            storage[bucket][bucketItem] = false; //remove key
         
         
     }
     
     public boolean contains(int key) {
         int bucket = getBucket(key);
-        int bucketItem = getBucketItem(key);
+        int bucketItem = getBucketItem(key);        
         
        
         if(storage[bucket] == null){
-            return false;
+            return false;               //no key
         }
         
         else{
-            return storage[bucket][bucketItem] ;
+            return storage[bucket][bucketItem] ;  //return present or not;
         }
         
     }
