@@ -1,6 +1,15 @@
+// TC: O(1)
+// SC: O(N)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+
 import java.util.Stack;
 
 public class MyQueue {
+
+    // Push only to the instack and pop from the outstack. 
+    // Transfer all elements from the instack to outstack, when outstack is empty
     
     Stack<Integer>inStack;
     Stack<Integer>outStack;
