@@ -1,63 +1,50 @@
-// Time Complexity : O(1)
-// Space Complexity :O(1)
-// Did this code successfully run on Leetcode : Yes
-// Any problem you faced while coding this : No
+import java.util.Stack;
 
+class MyQueue {
+    Stack<Integer> main_stack ;
+    Stack<Integer> secondary_stack;
 
-// Your code here along with comments explaining your approach
-
-class MyHashSet {
-    boolean[][] storage;
-    int bucketItemsSize = 1000;
-    public MyHashSet() {
-        int bucketSize = 1000;
-        storage = new boolean[bucketSize][];
+    public MyQueue() {
+        main_stack = new Stack<>();
+        secondary_stack = new Stack<>();
         
     }
-    public int getHash1(int val){
-        return val%bucketItemsSize;
-    }
-    public int getHash2(int val){
-        return val/bucketItemsSize;
-    }
-    public void add(int key) {
-        int val1 = getHash1(key);
-        if(storage[val1]==null){
-            if(val1==0){
-                storage[val1] = new boolean[bucketItemsSize+1];
-            }
-            else{
-            storage[val1] = new boolean[bucketItemsSize];}
-        }
-        int val2 = getHash2(key);
-        storage[val1][val2] = true;
+    
+    public void push(int x) {
+        main_stack.push(x);
     }
     
-    public void remove(int key) {
-        int val1 = getHash1(key);
-        if(storage[val1]!=null){
-            int val2 = getHash2(key);
-            storage[val1][val2] = false;
+    public int pop() {
+        if(secondary_stack.isEmpty()){
+            while(!main_stack.isEmpty()){
+            secondary_stack.push(main_stack.pop());}
         }
-
+        return secondary_stack.pop();
     }
     
-    public boolean contains(int key) {
-
-        int val1 = getHash1(key);
-        if(storage[val1]!=null){
-            int val2 = getHash2(key);
-            return storage[val1][val2];
+    public int peek() {
+        if(secondary_stack.isEmpty()){
+            while(!main_stack.isEmpty()){
+            secondary_stack.push(main_stack.pop());}
+        }
+        return secondary_stack.peek();
+        
+    }
+    
+    public boolean empty() {
+        if(main_stack.isEmpty()&&secondary_stack.isEmpty()){
+            return true;
         }
         return false;
-
+        
     }
 }
 
 /**
- * Your MyHashSet object will be instantiated and called as such:
- * MyHashSet obj = new MyHashSet();
- * obj.add(key);
- * obj.remove(key);
- * boolean param_3 = obj.contains(key);
+ * Your MyQueue object will be instantiated and called as such:
+ * MyQueue obj = new MyQueue();
+ * obj.push(x);
+ * int param_2 = obj.pop();
+ * int param_3 = obj.peek();
+ * boolean param_4 = obj.empty();
  */
