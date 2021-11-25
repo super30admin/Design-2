@@ -5,7 +5,7 @@
 
 // Your code here along with comments explaining your approach
 /* Create hash chain using linked list. 
- * Create 10^4 buckets. And use following hash function to find bucket for value - value % 10^5.
+ * Create 10^4 buckets. And use following hash function to find bucket for value - value % 10^4.
  * For put :- Find bucket using hash function, if bucket is empty then create a new linked list starting with dummy node.
  * For get :- Find bucket using hash function, then perform linear search on linked list and return its value.
  * For remove :- Find bucket using hash function, and then adjust the linked list pointers to delete node.
