@@ -1,51 +1,57 @@
 #include <stdio.h>
+#include <vector>
 #include "stack"
+
 using namespace std;
 
-class MyQueue {
+class MyHashMap {
 public:
-    stack<int> s1;//1,2,
-    stack<int> s2;
-    MyQueue() {
-
+    vector<vector<int>> storage;
+    int buckets;
+    int bucketItems;
+    MyHashMap() {
+        buckets = 1000;
+        bucketItems = 1000;
+        storage.resize(buckets);
     }
-
-    void push(int x) {
-        s1.push(x);
+    int getBucket(int key){
+        return key%1000;
     }
-
-    int pop() {
-        peek();
-        int x = s2.top();
-        s2.pop();
-        return x;
+    int getBucketItems(int key){
+        return key/1000;
     }
-
-    int peek() {
-        if(s2.empty()){
-            while(!s1.empty()){
-                int x = s1.top();
-                s1.pop();
-                s2.push(x);
-            }
+    void put(int key, int value) {
+        int bucket = getBucket(key);
+        int bucketItem = getBucket(key);
+        if(storage[bucket].empty()){
+            storage[bucket] = vector<int> (1000,-1);
         }
-        return s2.top();
-
+        storage[bucket][bucketItem] = value;
     }
 
-    bool empty() {
-        if(s1.empty() && s2.empty()){
-            return true;
+    int get(int key) {
+        int bucket = getBucket(key);
+        int bucketItem = getBucket(key);
+        if(storage[bucket].empty() || storage[bucket][bucketItem] == -1){
+            return -1;
         }
-        return false;
+        return storage[bucket][bucketItem];
+    }
+
+    void remove(int key) {
+        int bucket = getBucket(key);
+        int bucketItem = getBucket(key);
+        if(storage[bucket].empty() || storage[bucket][bucketItem] == -1){
+            return;
+        }
+        storage[bucket][bucketItem] = -1;
     }
 };
 
 /**
- * Your MyQueue object will be instantiated and called as such:
- * MyQueue* obj = new MyQueue();
- * obj->push(x);
- * int param_2 = obj->pop();
- * int param_3 = obj->peek();
- * bool param_4 = obj->empty();
+ * Your MyHashMap object will be instantiated and called as such:
+ * MyHashMap* obj = new MyHashMap();
+ * obj->put(key,value);
+ * int param_2 = obj->get(key);
+ * obj->remove(key);
  */
