@@ -1,5 +1,9 @@
-Time Complexity: O(1)
-Space Complexity:Amortized O(1)
+Time Complexity: 
+Push: O(1)
+Pop: Amortized O(1)
+Peek: Amortized O(1)
+Empty: O(1)
+Space Complexity:O(n)
 
   class MyQueue {
     private Stack<Integer> in;
