@@ -10,7 +10,6 @@
  * For get :- Find bucket using hash function, then perform linear search on linked list and return its value.
  * For remove :- Find bucket using hash function, and then adjust the linked list pointers to delete node.
  * findPrevious() returns previous pointer, used to keep solution modular.
- * For pop and peek operation : If "out stack" is empty then move all the elements of in stack in out stack and return the top element of out stack.
  */
 
 
