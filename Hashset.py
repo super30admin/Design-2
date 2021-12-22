@@ -10,7 +10,7 @@
 // Your code here along with comments explaining your approach
 """
 class MyHashSet:
-
+#1 million int, 1000x1000
     def __init__(self):
         self.initialSet = 10
         self.hashTable = [None] * self.initialSet
@@ -20,6 +20,7 @@ class MyHashSet:
     def hashFxn(self,key):
         return key % self.initialSet
 
+#use boolean to store numbers
     def add(self, key: int) -> None:
         fxn = self.hashFxn(key)
         if self.hashTable[fxn] == None:
