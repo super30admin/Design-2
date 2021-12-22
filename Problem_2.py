@@ -2,7 +2,7 @@
 # Space Complexity : O(n)
 # Did this code successfully run on Leetcode : YES
 # Any problem you faced while coding this : It took me some time to figure out 
-
+# Redo according to solution discussed in class
 class MyHashSet:
 
     def __init__(self):
