@@ -1,4 +1,4 @@
-#Time Complexity : O(1) to look up
+#Time Complexity : O(n) to look up
 #Space Complexity : O(n) size of the hash table
 #Did this code successfully run on Leetcode : Yes
 #Any problem you faced while coding this : 
