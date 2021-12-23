@@ -1,3 +1,8 @@
+//Time Complexity
+// add:O(1)
+//Remove:O(1)
+//Contains:O(1)
+
 class MyHashSet {
     int buckets=1000;
     int bucketItems=1000;
