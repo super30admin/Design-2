@@ -1,3 +1,9 @@
+//Time Complexity
+//push time O(1),space O(1)
+//pop time amortized O(1)
+//peek time amortized O(1)
+//empty time O(1)
+
 class MyQueue {
 
     Stack<Integer> in;
