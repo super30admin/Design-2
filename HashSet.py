@@ -1,3 +1,7 @@
+# Time Complexity : O(1) for all operations
+#  Space Complexity : O(10 ** 6) in worst case
+#  Did this code successfully run on Leetcode Yes:
+# Any problem you faced while coding this : No
 class MyHashSet:
     BUCKETS = 1000
     BUCKETITEMS = BUCKETS
