@@ -1,3 +1,8 @@
+'''
+T.C: O(1) - add, remove, contains
+S.C: O(N)
+'''
+
 class MyHashSet:
 
     def __init__(self):
