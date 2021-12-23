@@ -27,7 +27,28 @@ class MyQueue:
 
 
 ## Problem 2:(https://leetcode.com/problems/design-hashset/)
+class MyHashSet:
 
+    def __init__(self):
+        self.capacity = 1000
+        self.s = [[] for i in range(self.capacity)]
+    
+    def hashfunc(self,key):
+        return key%self.capacity 
+
+    def add(self, key: int) -> None:
+        hashfunc = self.hashfunc(key)
+        if not self.contains(key):
+            self.s[hashfunc].append(key)
+        
+    def remove(self, key: int) -> None:
+        hashfunc = self.hashfunc(key)
+        if self.contains(key):
+            self.s[hashfunc].remove(key)
+
+    def contains(self, key: int) -> bool:
+        hashfunc = self.hashfunc(key)
+        return (key in self.s[hashfunc])
 
 
 
