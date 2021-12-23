@@ -1,3 +1,8 @@
+'''
+T.C: O(1) - push, pop, peek
+S.C: O(N)
+'''
+
 class MyQueue:
 
     def __init__(self):
@@ -7,31 +12,32 @@ class MyQueue:
         
 
     def push(self, x: int) -> None:
-        self.s_list = [val for val in self.f_list] #[self.f_list[idx] for idx in range(self.len - 1, -1, -1)]
-        self.f_list = [x]
-        self.f_list += [val for val in self.s_list] #[self.f_list[idx] for idx in range(self.len - 1, -1, -1)]
-        self.s_list = list()
+        self.empty()
+        self.f_list.append(x)
         self.len += 1
-        # print(self.f_list)
-        
-    
+
+
     def pop(self) -> int:
-        if self.empty():
-            return -1
-        self.len -= 1
-        return self.f_list.pop()
+        if not self.empty():
+            return self.s_list.pop()
+        return -1
         
 
     def peek(self) -> int:
         if self.empty():
             return -1
-        return self.f_list[-1]
+        return self.s_list[-1]
         
 
     def empty(self) -> bool:
-        return True if not self.f_list else False
-        
-        
+        if self.s_list:
+            return False
+        if self.f_list:
+            while self.f_list:
+                self.s_list.append(self.f_list.pop())
+        if self.s_list:
+            return False
+        return True
 
 
 # Your MyQueue object will be instantiated and called as such:
