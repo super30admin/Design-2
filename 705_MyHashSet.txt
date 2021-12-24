@@ -1,0 +1,78 @@
+// Time Complexity : O(1)
+// Space Complexity :O(1000 + x).. x is number of bucketItems that have been initiated.
+// Did this code successfully run on Leetcode : Yes.
+// Any problem you faced while coding this : No
+
+
+// Your code here along with comments explaining your approach
+// We first start from a 1 d array of length 1000. we are planning to create a 2d array of full capacity 1000000. (1000*1001..to accomodate 1000000)
+//we use 2 hash functions, one for finding index in base array and othe rfor nested array. we never get collision this way.
+//for 0th bucketitem, we initialize array of length 1001 to accomodate 1000000.
+//the array is boolean, whenever we add a number we make the index of that number as true as we have capacity to the full million.
+
+class MyHashSet {
+	boolean[][] storage;
+    int bucketSize=1000;
+    int bucketItemsSize=1000;
+    int[] buckets;
+    
+    public MyHashSet() {
+        storage= new boolean[bucketSize][];
+        
+    }
+    
+    int bucket(int key) {
+    	return key % bucketSize;
+    }
+    
+    int bucketItem(int key) {
+    	return key / bucketItemsSize;
+    	
+    }
+    public void add(int key) {
+    	int bucket = bucket(key);
+    	int bucketItem = bucketItem(key);
+    	
+    	if(storage[bucket]==null) {
+    		if(bucket==0) {
+    			storage[bucket]= new boolean[bucketItemsSize+1];
+    		}else {
+    			storage[bucket]= new boolean[bucketItemsSize];
+    			
+    		}	
+    	}
+    	storage[bucket][bucketItem] = true;
+    	
+    }
+    
+    public void remove(int key) {
+    	int bucket = bucket(key);
+    	int bucketItem = bucketItem(key);
+    	
+    	if(storage[bucket]==null) {
+    		return;
+    	}
+    	
+    	storage[bucket][bucketItem]=false;
+    }
+    
+    public boolean contains(int key) {
+    	int bucket = bucket(key);
+    	int bucketItem = bucketItem(key);
+    	if(storage[bucket]==null) {
+    		return false;
+    	}
+    	
+    	return storage[bucket][bucketItem];
+        
+    }
+}
+
+
+/**
+ * Your MyHashSet object will be instantiated and called as such:
+ * MyHashSet obj = new MyHashSet();
+ * obj.add(key);
+ * obj.remove(key);
+ * boolean param_3 = obj.contains(key);
+ */
