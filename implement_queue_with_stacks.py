@@ -1,4 +1,6 @@
-        
+# time complexity pop  O(n)
+# time complexity push O(1)
+# Space compexity O(n)        
 class MyQueue:
 
     def __init__(self):
