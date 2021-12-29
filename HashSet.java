@@ -1,3 +1,5 @@
+//Time Complexity - O(1)
+//Space Complecity - O(n)
 class MyHashSet {
     
     int buckets = 1001;
