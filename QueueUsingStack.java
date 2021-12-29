@@ -1,3 +1,5 @@
+//Time Complexity - Push - O(1), pop - O(n)
+//Space Complecity - O(n)
 class MyQueue {
     
     Stack<Integer> st1 = new Stack<>();
