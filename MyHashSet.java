@@ -16,6 +16,7 @@ class MyHashSet {
         storage = new boolean[buckets][];
     }
 
+    // double hashing
     private int bucket(int key) {
         return key % buckets;
     }
@@ -29,12 +30,14 @@ class MyHashSet {
         int bucketItem = bucketItem(key);
 
         if (storage[bucket] == null) {
+            // we have 1001*1000... the first index will have 1001 araay
             if (bucket == 0) {
                 storage[bucket] = new boolean[bucketItems + 1];
             } else {
                 storage[bucket] = new boolean[bucketItems];
             }
         }
+        // making it true to indicate that position has an key
         storage[bucket][bucketItem] = true;
     }
 
@@ -42,8 +45,10 @@ class MyHashSet {
         int bucket = bucket(key);
         int bucketItem = bucketItem(key);
 
+        // if the nested array isn't there, implies the key is not there
         if (storage[bucket] == null)
             return;
+        // if key exists, make the key location false
         storage[bucket][bucketItem] = false;
     }
 

@@ -25,11 +25,13 @@ class MyQueue {
     }
 
     public int peek() {
+        // when out stack is empty, insert values from in stack
         if (out.isEmpty()) {
             while (!in.isEmpty()) {
                 out.push(in.pop());
             }
         }
+        // else directly peek the top element in out stack
         return out.peek();
     }
 
