@@ -68,7 +68,7 @@ class MyQueue:
         
 
     def empty(self) -> bool:
-        return self.stack1 == []
+        return (self.stack1 or self.stack2) == []
 
     def show(self):
       return self.stack2
