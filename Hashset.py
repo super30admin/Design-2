@@ -35,13 +35,13 @@ class MyHashSet:
     # To remove the value, we follow same process as adding except at the end we remove the key
     def remove(self, key: int) -> None:
         bucket = self.bucket(key)
-        if not self.contains(key):
+        if self.contains(key):
             self.storage[bucket].remove(key)
 
     # Return key if present
     def contains(self, key: int) -> bool:
-        bucket1 = self.bucket(key)
-        return (key in self.storage[bucket1])
+        bucket = self.bucket(key)
+        return key in self.storage[bucket]
 
 
 s = MyHashSet() 
