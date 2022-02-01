@@ -1,3 +1,10 @@
+# // Time Complexity : O(n/k) n is no.of all possible values and k is no.of buckets.
+# // Space Complexity : O(m+k) m is predefined buckets and k is inserted values.
+# // Did this code successfully run on Leetcode : Yes
+# // Any problem you faced while coding this : No
+
+
+
 class MyHashSet(object):
 
     def __init__(self):
