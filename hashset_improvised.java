@@ -5,6 +5,7 @@
 
 class MyHashSet {
     
+    // Initialize boolean array, hash1 and hash2 size.
     private boolean [][] arr;
     private static int H1 = 1000;
     private static int H2 = 1000;
@@ -21,6 +22,7 @@ class MyHashSet {
         return key / H2;
     }
     
+    // if the key is not present ass the key using hash functions
     public void add(int key) {
         if (!contains(key)){
             int hash1 = getHash1(key);
@@ -42,6 +44,7 @@ class MyHashSet {
         }
     }
     
+    // use hash functions to find whether the key exists or not
     public boolean contains(int key) {
         int hash1 = getHash1(key);
         if (arr[hash1] == null) {
