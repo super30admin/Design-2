@@ -1,4 +1,11 @@
 import java.util.LinkedList;
+
+// Time Complexity : o(1) for all operations
+// Space Complexity : o(HASH_LEN1*HASH_LEN2+1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+// Approach : Double hashing collision resolution strategy.
 class MyHashSet {
 
     final private  int HASH_LEN1 = 1000;

@@ -1,8 +1,10 @@
 
 //o(n) time for add and o(1) tiem for other functions
 //o(n) space
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
 
-//to add element recursive;ly go to the  bottom of stack and ad the element
+//Approach : to add element recursive;ly go to the  bottom of stack and ad the element
 import java.util.Stack;
 class MyQueue {
 
