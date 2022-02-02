@@ -135,9 +135,9 @@ class MyHashSet2:
             if not self.arr[hash1]:
                 # Handle edge case of 10^6
                 if hash1 == 0:
-                    self.arr[hash1] = [False]*(self.h1_helper+1)
+                    self.arr[hash1] = [False]*(self.h2_helper+1)
                 else:
-                    self.arr[hash1] = [False]*self.h1_helper
+                    self.arr[hash1] = [False]*self.h2_helper
             hash2 = self.getHash2(key)
             self.arr[hash1][hash2] = True
                     
