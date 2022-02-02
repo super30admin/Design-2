@@ -23,7 +23,6 @@ class MyHashMap:
         if key in self.hashMap:
             del self.hashMap[key]
 
-
 # Your MyHashMap object will be instantiated and called as such:
 # obj = MyHashMap()
 # obj.put(key,value)
