@@ -1,39 +1,54 @@
 import java.util.LinkedList;
-
 class MyHashSet {
 
-  public final static int SIZE = 10000;
-  LinkedList<Integer>[] set;
+    final private  int HASH_LEN1 = 1000;
+    final private  int HASH_LEN2 = 1000;
+
+    private  boolean[][] hashValMatrix;
 
     public MyHashSet() {
-        set = new LinkedList[SIZE];
+        hashValMatrix = new boolean[HASH_LEN1][];
     }
 
     public void add(int key) {
-      remove(key);
-      int index = getIndex(key);
-      if(set[index] == null){
-        set[index] = new LinkedList<>();
-      }
-      set[index].addFirst(key);
+
+        if(contains(key)) return;
+
+        int hash1 = getHash1(key);
+        if(hashValMatrix[hash1] == null){
+            if(hash1 == 0){
+               hashValMatrix[hash1] = new boolean[HASH_LEN2+1];
+            }
+            else{
+               hashValMatrix[hash1] = new boolean[HASH_LEN2];
+            }
+        }
+        int hash2 = getHash2(key);
+        hashValMatrix[hash1][hash2] = true;
+
     }
 
     public void remove(int key) {
-        int index = getIndex(key);
-        if(set[index] != null){
-          set[index].remove(new Integer(key));
+        if(contains(key)){
+            int hash1 = getHash1(key);
+            int hash2 = getHash2(key);
+            hashValMatrix[hash1][hash2] = false;
         }
     }
 
     public boolean contains(int key) {
-      int index = getIndex(key);
-      if(set[index] != null){
-        return set[index].contains(key);
-      }
-      return false;
+        int hash1 = getHash1(key);
+        int hash2 = getHash2(key);
+        if(hashValMatrix[hash1] == null) return false;
+        return hashValMatrix[hash1][hash2];
     }
 
-    public int getIndex(int key){
-      return key%SIZE;
+    public int getHash1(int key){
+        return key%HASH_LEN1;
     }
+    public int getHash2(int key){
+        return key/HASH_LEN2;
+    }
+
+
 }
