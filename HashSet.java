@@ -1,5 +1,7 @@
 /**
 
+Linear Chaining approach
+
 // Time Complexity :
     Insert - 
 // Space Complexity :
@@ -112,3 +114,128 @@ class MyHashSet {
  * obj.remove(key);
  * boolean param_3 = obj.contains(key);
  */
+ ------------------------------------------------------------------------------------------
+ 
+ /**
+Optimal Approach Using the Double hashing
+
+// Time Complexity :
+    Add - O(1)
+    search - O(1)
+    delete - O(n) or can do the default value to achieve O(1)
+    update - O(1)
+// Space Complexity :
+    Total space complexity = Auxilary space + space used towards input.
+    n * O(m) - where n is the length of set and m is the size of list at each index.
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+
+doublehashing -> 2 hashfunctions 
+
+array -> 2D array 
+1000
+1000
+
+h1 -> K % 1000
+h2 -> k / 1000
+
+12
+
+2000000 / 1000 = 
+
+    0 1 2 3 4 5
+0   
+1
+2
+3
+4
+5
+999
+
+
+1000000
+
+Add - O(1)
+search - 8 % 6 ->  8/ 6 O(1)
+delete - O(n) or can do the default value to achieve O(1)
+update - O(1)
+
+
+
+**/
+
+
+class MyHashSet {
+    
+    private int max_row = 1000;
+    private int max_col = 1000;
+    
+    boolean arr[][];
+
+    public MyHashSet() {
+        arr = new boolean[max_row][];
+    }
+    
+    public void add(int key) {
+        
+        if (contains(key))
+        {
+            return;
+        }
+        
+        int hash_key1 = getHashKey1(key);    
+         
+        if (arr[hash_key1] == null)
+        {
+            arr[hash_key1] = new boolean[max_col + 1];
+        }
+        
+        int hash_key2 = getHashKey2(key);
+        arr[hash_key1][hash_key2] = true;
+    }
+    
+    private int getHashKey1(int key)
+    {
+        return key % max_row;
+    }
+    
+    private int getHashKey2(int key)
+    {
+        return key / max_col;
+    }
+    
+    public void remove(int key) {
+        
+        if (!contains(key))
+        {
+            return;
+        }
+        
+        int hash_key1 = getHashKey1(key);
+        int hash_key2 = getHashKey2(key);
+        
+        arr[hash_key1][hash_key2] = false;
+        
+    }
+    
+    public boolean contains(int key) {
+        
+        int hash_key1 = getHashKey1(key);
+        int hash_key2 = getHashKey2(key);
+        
+        return arr[hash_key1] != null && arr[hash_key1][hash_key2];
+    }
+}
+
+/**
+ * Your MyHashSet object will be instantiated and called as such:
+ * MyHashSet obj = new MyHashSet();
+ * obj.add(key);
+ * obj.remove(key);
+ * boolean param_3 = obj.contains(key);
+ */
+ 
+ 
+ 
+ 
