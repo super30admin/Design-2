@@ -1,38 +1,55 @@
-
-public class MyHashSet {
-    ArrayList<Integer> hashSet = new ArrayList<Integer>();
+class MyHashSet {
+    //as this is a hashset we need to prove whether the element is present or not
+    private boolean[][] arr;
+    private static int H1_Helper = 1000;
+    private static int H2_Helper =1000;
     
     
 
     public MyHashSet() {
-        this.hashSet = new ArrayList<Integer>();
-    
+        arr = new boolean[H1_Helper][]; // we are not adding 2nd value coz we can
+        // add the array whenever we need
     }
-    
+     
+    private int getHash1(int key){
+        return key%H1_Helper;
+    }
+    private int getHash2(int key){
+        return key / H2_Helper;
+    }
     public void add(int key) {
-      
-hashSet.add(key);            
+      if(!contains(key)){
+          int hash1 = getHash1(key);
+          if (arr[hash1] == null){
+              if (hash1 ==0){
+                  arr[hash1]= new boolean[H1_Helper + 1];
+                  
+              }else arr[hash1]= new boolean[H1_Helper];
+          }
             
+        int hash2 = getHash2(key);
+        arr[hash1][hash2]=true;
+      }
         
         
     }
     
     public void remove(int key) {
-        Iterator i = hashSet.iterator();
-        while ( i.hasNext()){
-            if ( i.next().equals(key)){
-                i.remove();
-            }
+        if(contains(key)){
+            int hash1 = getHash1(key);
+            int hash2 = getHash2(key);
+            arr[hash1][hash2]= false;
         }
+        
     }
     
     public boolean contains(int key) {
-        for( int i = 0; i < hashSet.size(); i++){
-           if (hashSet.get(i).equals(key))
-               return true;
+        int hash1 = getHash1(key);
+        if (arr[hash1]==null){
+             return false;
         }
-        return false;
-            
+        int hash2 = getHash2(key);
+        return arr[hash1][hash2];
         
     }
 }
