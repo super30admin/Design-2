@@ -43,7 +43,7 @@ class MyQueue {
     public int pop() {
         if(stk2.isEmpty())
         {
-            while (!stk1.empty())                           // Pushing all elements to Stack 2 from Stack 1
+            while (!stk1.isEmpty())                           // Pushing all elements to Stack 2 from Stack 1
                 stk2.push(stk1.pop());
         }
         return stk2.pop() ;
@@ -59,7 +59,7 @@ class MyQueue {
     }
 
     public boolean empty() {
-        return (stk1.isEmpty() && stk2.empty()) ;           // If both Stacks are empty then no element left
+        return (stk1.isEmpty() && stk2.isEmpty()) ;           // If both Stacks are empty then no element left
     }
 }
 
