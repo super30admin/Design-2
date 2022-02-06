@@ -52,7 +52,7 @@ class MyQueue {
     public int peek() {
         if(stk2.isEmpty())
         {
-            while (!stk1.empty())                           // Pushing all elements to Stack 2 from Stack 1
+            while (!stk1.isEmpty())                           // Pushing all elements to Stack 2 from Stack 1
                 stk2.push(stk1.pop());
         }
         return stk2.peek();
