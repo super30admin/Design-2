@@ -1,3 +1,9 @@
+
+//TC: O(1)
+//SC: O(2n)
+
+import java.util.Stack;
+
 class MyQueue {
     
     private Stack<Integer> st1;
