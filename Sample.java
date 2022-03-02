@@ -8,6 +8,7 @@ Used arrays instead LinkedList. Array of LinkedList worked properly
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Stack;
 
 // Your code here along with comments explaining your approach
 class MyHashSet {
@@ -51,3 +52,40 @@ class MyHashSet {
  * obj.remove(key);
  * boolean param_3 = obj.contains(key);
  */
+//Implement Queues using Stacks
+// Time Complexity : O(n)
+// Space Complexity :O(n)
+// Did this code successfully run on Leetcode : Yes
+
+class MyQueue {
+    Stack<Integer> pushStack = new Stack<>();
+    Stack<Integer> popStack = new Stack<>();
+    public MyQueue() {
+    }
+
+    public void push(int x) {
+        pushStack.push(x);
+    }
+
+    public int pop() {
+        if(popStack.isEmpty()){
+            while (!pushStack.isEmpty()){
+                popStack.push(pushStack.pop());
+            }
+        }
+        return popStack.pop();
+    }
+
+    public int peek() {
+        if(popStack.isEmpty()){
+            while (!pushStack.isEmpty()){
+                popStack.push(pushStack.pop());
+            }
+        }
+        return popStack.peek();
+    }
+
+    public boolean empty() {
+        return popStack.isEmpty() && pushStack.isEmpty();
+    }
+}
