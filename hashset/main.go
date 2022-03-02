@@ -1,6 +1,15 @@
 package main
 
+// hashSet - unordered unique elements
+// which means, we do not have to necessarily store the value
+// but just store whether it exists or not at a specific idx
+
 const (
+	// where did I get this magic number?
+	// well given I knew the biggest key to be inserted
+	// I had 2 choices
+	// 1. allocate $biggestKey size from the start ( space heavy )
+	// 2. allocate sqrt($biggestKey) and use nested array when time comes ( space optimized )
 	bucketSize      = 1000
 	bucketItemsSize = bucketSize + 1
 )
@@ -19,6 +28,10 @@ func Constructor() MyHashSet {
 	}
 }
 
+// we will use double hashing to avoid collision of hash results that result to same idx.
+// collision is when multiple different keys after hashing point to same idx in array,
+// if they do point to same idx in array we will use nested list and double hashing to
+// find uniq idx for each colliding key
 /*
 	time: o(1)
 	space: o(1)
