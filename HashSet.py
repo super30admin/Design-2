@@ -1,3 +1,5 @@
+Time complexity all operations are O(1).
+
 class MyHashSet(object):
 
     def __init__(self):
