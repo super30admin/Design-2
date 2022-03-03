@@ -1,52 +1,60 @@
-// Time Complexity :for adding O(1), for removing and containing  O(n)
+// Time Complexity :O(1)
 // Space Complexity : used one array O(n), variables
 // Did this code successfully run on Leetcode : yes
-// Any problem you faced while coding this : in removing the element, the java defaults the value to zero so i added -1 while initilizing contructor
-I used array to implement the given problem, do I need to implement with same time complexity as in hashset
-
 
 class MyHashSet {
-    int top=-1;
-    int[] arr=new int[10001];
+    boolean[][] hs;
     public MyHashSet() {
+        hs = new boolean[1000][]; 
+    }
+    
+    public int getBuc(int key)
+    {
+        int buc = key%1000;
         
-        //MyHashSet hs = new MyHashSet();
-        //hs.add(1);
-         for(int i=0;i<arr.length;i++){
-                arr[i] = -1;
-            }
+        return buc;      
+    }
+    
+    public int getBucVal(int key)
+    {
+        int buc = key/1000;
+        
+        return buc;        
     }
     
     public void add(int key) {
-        
-        if(!contains(key)){
-            top++;
-            arr[top] = key;
+        int buc = getBuc(key);
+        int bucVal = getBucVal(key);
+        if(hs[buc] == null){
+            if(buc == 0){
+                boolean[] bArr = new boolean[1001];
+                hs[0] = bArr;
+            }else{
+                boolean[] bArr = new boolean[1000];
+                hs[buc] = bArr;    
+            }
         }
+        hs[buc][bucVal] = true;
+        
     }
     
     public void remove(int key) {
-        if(contains(key)){
-            int temp=arr.length;
-            for(int i=0;i<arr.length;i++){
-                if(arr[i]==key){
-                    temp=i;
-                }
-            }
-            for(int i=temp;i<arr.length-1;i++){
-                
-                arr[i] = arr[i+1];
-            }
-        }
+        int buc = getBuc(key);
+        int bucVal = getBucVal(key);  
+        if(hs[buc] != null)            
+            hs[buc][bucVal] = false;
+        
+        
     }
     
     public boolean contains(int key) {
-            for(int i=0;i<arr.length;i++){
-                if(arr[i]==key){
-                    return true;
-                }
-            }   
-        return false;
+        int buc = getBuc(key);
+        int bucVal = getBucVal(key);   
+        if(hs[buc] == null){
+            return false; 
+        }else{
+            return hs[buc][bucVal];
+        }
     }
 }
 
