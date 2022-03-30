@@ -18,21 +18,17 @@ public class MinStack {
     }
     
     public void push(int val) {
-        stack.push(val);
-        if(val<min)
-        {
-            min = val;
+        if(val<=min){
+            stack.push(min);
+            min=val;
         }
+        stack.push(val);
     }
     
     public void pop() {
-        if(stack.isEmpty())
+        if(stack.pop()==min)
         {
-            System.out.println("Stack is empty");
-        }
-        else{
-            System.out.println("The element "+stack.peek()+" is popped.");
-            stack.pop();
+            min=stack.pop();
         }
     }
     
