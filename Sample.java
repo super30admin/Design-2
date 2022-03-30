@@ -8,21 +8,30 @@ import java.util.Stack;
 
 // Your code here along with comments explaining your approach
 class MinStack{
-    Stack<Integer> stack = new Stack<>();
-    Stack<Integer> min = new Stack<>();
+    int minValue;
+    Stack<Integer> stack;
+    Stack<Integer> min;
+
+    public MinStack(){
+        minValue = Integer.MAX_VALUE;
+        stack = new Stack<>();
+        min = new Stack<>();
+        min.push(minValue);
+    }
+    
 
     public void push(int val){
-        if(min.isEmpty() || val < min.peek()){
-            min.push(val);
+        if(val <= minValue){
+            minValue = val;
         }
         stack.push(val);
+        min.push(minValue);
     }
 
     public void pop(){
-        if(stack.peek().equals(min.peek())){
-            min.pop();
-        }
         stack.pop();
+        min.pop();
+        minValue = min.peek();
     }
 
     public int top(){
