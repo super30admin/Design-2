@@ -1,33 +1,51 @@
-# Time Complexity :
-# Space Complexity :
-# Did this code successfully run on Leetcode :
-# Any problem you faced while coding this :
+# Time Complexity : O(1)
+# Space Complexity : O(1)
+# Did this code successfully run on Leetcode : Yes
+# Any problem you faced while coding this : No
 
 
 # Your code here along with comments explaining your approach
 
-class MinStack:
+class MyHashSet:
 
     def __init__(self):
-        self.stack = []
-        self.minVal = math.inf
-        self.minStack = [self.minVal]
-
-    def push(self, val: int) -> None:
-        if val < self.minVal:
-            self.minVal = val
-        self.stack += [val]
-        self.minStack += [self.minVal]
-
-    def pop(self) -> None:
-        if not self.stack:
-            return
-        self.stack.pop()
-        self.minStack.pop()
-        self.minVal = self.minStack[-1]
+        self.bucket = 1000
+        self.bucketItems = 1000
+        self.storage = [False]*(self.bucket)
         
-    def top(self) -> int:
-        return self.stack[-1]
-           
-    def getMin(self) -> int:
-        return self.minVal
+    def getBucket(self, key):
+        return key % self.bucket
+    
+    def getBucketKey(self,key):
+        return key // self.bucketItems
+        
+    def add(self, key: int) -> None:
+        bucket = self.getBucket(key)
+        bucketItem = self.getBucketKey(key)
+        
+        if self.storage[bucket] is False:
+            if bucket == 0:
+                self.storage[bucket] = [False]*(self.bucketItems+1)
+            else:
+                self.storage[bucket] = [False]*self.bucketItems
+    
+
+        self.storage[bucket][bucketItem] = True
+            
+    def remove(self, key: int) -> None:
+        bucket = self.getBucket(key)
+        bucketItem = self.getBucketKey(key)
+        
+        if self.storage[bucket] is False:
+            return
+        
+        self.storage[bucket][bucketItem] = False
+        
+    def contains(self, key: int) -> bool:
+        bucket = self.getBucket(key)
+        bucketItem = self.getBucketKey(key)
+        
+        if self.storage[bucket] is False:
+            return self.storage[bucket]
+        
+        return self.storage[bucket][bucketItem]  
