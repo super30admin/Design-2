@@ -1,42 +1,46 @@
 import java.util.Stack;
 
-class MinStack {
+class MyQueue {
 
-    int min;
-    Stack<Integer> stack;
-    public MinStack() {
-        min = Integer.MAX_VALUE;
-        stack = new Stack<>();
+    Stack<Integer> reg;
+    Stack<Integer> min;
+
+    public MyQueue() {
+        reg = new Stack<>();
+        min = new Stack<>();
     }
 
-    public void push(int val) {
-        if (val <= min){
-            stack.push(min);
-            min = val;
+    public void push(int x) {
+        reg.push(x);
+    }
+
+    public int pop() {
+        if (min.isEmpty()) {
+            while (!reg.isEmpty()) {
+                min.push(reg.pop());
+            }
         }
-        stack.push(val);
+        return min.pop();
     }
 
-    public void pop() {
-        if (stack.pop() == min) {
-            min = stack.pop();
+    public int peek() {
+        if (min.isEmpty()) {
+            while (reg.empty()) {
+                min.push(reg.pop());
+            }
         }
+        return min.peek();
     }
 
-    public int top() {
-        return stack.peek();
-    }
-
-    public int getMin() {
-        return min;
+    public boolean empty() {
+        return reg.isEmpty() && min.isEmpty();
     }
 }
-
 /**
- * Your MinStack object will be instantiated and called as such:
- * MinStack obj = new MinStack();
- * obj.push(val);
- * obj.pop();
- * int param_3 = obj.top();
- * int param_4 = obj.getMin();
+ * Your MyQueue object will be instantiated and called as such:
+ * MyQueue obj = new MyQueue();
+ * obj.push(x);
+ * int param_2 = obj.pop();
+ * int param_3 = obj.peek();
+ * boolean param_4 = obj.empty();
  */
