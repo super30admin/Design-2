@@ -1,3 +1,12 @@
+// Time Complexity : O(N) to pop O(1) to push
+// Space Complexity : O(N) where n of integers in any of the stack
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+
+// Your code here along with comments explaining your approach: using two stacks in and out. 
+
+
 import java.util.Stack;
 
 class MyQueue {
