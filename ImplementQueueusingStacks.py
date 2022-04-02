@@ -1,3 +1,8 @@
+# Time Complexity : O(1) best and worst Time Complexity for Push and Empty
+                  # O(1) best Time Complexity and O(n) worst Time Complexity for Peek and Pop
+# Space Complexity : O(1) for Push and Empty and O(n) for Peek and Pop
+# Did this code successfully run on Leetcode : Yes
+# Any problem you faced while coding this : No
 class MyQueue:
 
     def __init__(self):
