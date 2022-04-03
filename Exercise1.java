@@ -25,7 +25,7 @@ class MyQueue {
 
     public int peek() {
         if (min.isEmpty()) {
-            while (reg.empty()) {
+            while (!reg.empty()) {
                 min.push(reg.pop());
             }
         }

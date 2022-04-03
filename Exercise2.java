@@ -14,12 +14,12 @@ class MyHashSet {
         return key / bucketSize;
     }
 
-    private int delimeterHashKey(int key) {
+    private int delimiterHashKey(int key) {
         return key % bucketSize;
     }
 
     public void add(int key) {
-        bucketValue = delimeterHashKey(key);
+        bucketValue = delimiterHashKey(key);
         bucketItems = divideHashKey(key);
         if (storage[bucketValue] == null) {
             if (bucketValue == 0) {
@@ -32,7 +32,7 @@ class MyHashSet {
     }
 
     public void remove(int key) {
-        bucketValue = delimeterHashKey(key);
+        bucketValue = delimiterHashKey(key);
         bucketItems = divideHashKey(key);
         if (storage[bucketValue] == null) {
             return;
@@ -42,7 +42,7 @@ class MyHashSet {
     }
 
     public boolean contains(int key) {
-        bucketValue = delimeterHashKey(key);
+        bucketValue = delimiterHashKey(key);
         bucketItems = divideHashKey(key);
         if (storage[bucketValue] == null) {
             return false;
