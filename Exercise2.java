@@ -1,4 +1,5 @@
-
+//Time Complexity O(logn)
+//Space Complexity O(1)
 class MyHashSet {
     public boolean[][] storage;
     int bucketSize;
