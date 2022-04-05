@@ -1,6 +1,8 @@
 /**
 
 Problem: Design a queue using a stack
+https://leetcode.com/problems/implement-queue-using-stacks/
+
 Solution: Maintain two stacks - in and out. During a push operation, we simply put the element into the in stack. In the case of pop / peek, we can pop / peek from the out stack if the out stack isn't empty.
 if the out stack is empty, we would transfer all the elements from the in stack to the out stack and then pop or peek from the out stack. 
 

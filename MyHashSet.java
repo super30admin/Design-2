@@ -1,6 +1,8 @@
 /**
 
-Problem: Design a hash set without using built-on data structures
+Problem: Design a hash set without using built-on data structures 
+https://leetcode.com/problems/design-hashset/
+
 Solution:
 
 Design a hash set using integer array and a double-hashing function.
