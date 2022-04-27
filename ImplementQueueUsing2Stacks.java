@@ -8,12 +8,15 @@ class MyQueue {
         this.second = new Stack();
     }
     
+    //Time Complexity : O(1)
+    //Space Complexity : O(1)
     public void push(int x) {
     if(first.isEmpty())
         front = x;    
     first.push(x);
     }
     
+    //Amortized Time Complexity : O(1)
     public int pop() {
     if(second.isEmpty()){
         while(!first.isEmpty()){
@@ -22,14 +25,14 @@ class MyQueue {
     }
        return second.pop();
     }
-    
+     //Time Complexity : O(1)
     public int peek() {
        if(!second.isEmpty())
             return second.peek();
         
         return front;
     }
-    
+     //Time Complexity : O(1)
     public boolean empty() {
         return first.isEmpty() && second.isEmpty() ;
     }
