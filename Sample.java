@@ -1,9 +1,11 @@
+////Implementation of Hashset
 // Time Complexity :O(1)
 // Space Complexity : O(N)
 // Did this code successfully run on Leetcode :Yes
 // Any problem you faced while coding this : I could not do the decrease of capacity by 20% when elements were removed
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Stack;
 
 // Your code here along with comments explaining your approach
 class MyHashSet {
@@ -92,13 +94,77 @@ class MyHashSet {
             return false;
         }
     }
+   //Implementing queue using two stacks
+// push into stack all into stk whenever pop or peek is performed push the top elements to stk1
+// Time Complexity :O(1)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode :Yes
+// Any problem you faced while coding this : No
+class MyQueue {
+    Stack<Integer> stk = new Stack<>();
+    Stack<Integer> stk1 = new Stack<>();
+        public MyQueue() {
+            
+            stk.push(null);
+            stk1.push(null);
+        }
+        
+        public void push(int x) {
+            // push into stack all into stk 
+            stk.push(x);
+        }
+        //For pop() copy stk to stk1 then pop() the top element from stk1 then push back all elements of stk1 to stk
+        public int pop() {
+            while(stk.peek()!=null){
+                  stk1.push(stk.peek());
+                  stk.pop();
+                }
+              int a= stk1.pop();
+            while(stk1.peek()!=null){
+                stk.push(stk1.pop());
+            }
+            return a;
+        }
+         //For pop() copy stk to stk1 then peek() the top element from stk1 then push back all elements of stk1 to stk
+        public int peek() {
+          while(stk.peek()!=null){
+                  stk1.push(stk.peek());
+                  stk.pop();
+                }
+             int a= stk1.peek();
+            while(stk1.peek()!=null){
+                stk.push(stk1.pop());
+            }
+            return a;
+              
+        }
+        //If both stk & stk1 contains null then return true else false
+        public boolean empty() {
+            if(stk1.peek()==null && stk.peek()==null ){
+                return true;
+            }
+            return false;
+        }
+    }
+    
+    
     class Main{
         public static void main(String args[]){
             MyHashSet set = new MyHashSet();
             set.add(10);
             set.add(20);
             set.remove(20);
-           boolean c = set.contains(20);
-           System.out.println(c);
-        }
+           boolean a = set.contains(20);
+           System.out.println(a);
+
+           MyQueue queue = new MyQueue();
+           queue.push(10);
+           queue.push(20);
+           int b = queue.pop();
+           int c = queue.peek();
+           boolean empTy = queue.empty();
+           int d = queue.pop();
+           boolean emp = queue.empty();
+           System.out.println(b+"|"+c+"|"+empTy+"|"+d+"|"+emp);
+                   }
     }
