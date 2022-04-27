@@ -1,5 +1,3 @@
-#Time complexity: O(1)
-#Space complexity: O(n)
 class MyHashSet:
 
     def __init__(self):
@@ -11,8 +9,10 @@ class MyHashSet:
     def add(self, key: int) -> None:
         i = self.hashKey(key)
         if self.storage[i] == None:
-            self.storage[i] = [None]*self.bucketItems
-            print(self.storage[i])
+            if i == 0:
+                self.storage[i] = [None]*((self.bucketItems)+1)
+            else:
+                self.storage[i] = [None]*self.bucketItems
         j = self.nestedhashKey(key)
         self.storage[i][j] = True
         
@@ -35,4 +35,3 @@ class MyHashSet:
     
     def nestedhashKey(self,key):
         return key//self.bucketItems
-
