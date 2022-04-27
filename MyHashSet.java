@@ -1,4 +1,21 @@
-import java.util.*;
+
+/**
+ *
+ // Time Complexity : Add on an average O(1), O(n) worst case, remove: O(n) worst case, O(1), Contains: O(n) worst case, O(1)
+// Space Complexity :
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this :
+I refered multiple places as I was coding this question.
+// Your code here along with comments explaining your approach
+1. Initial assumption values set to literal values.
+2. Created a HashTable of buckets(list of list)
+3. Each bucket in turn has a list as child bucket.
+4. Created a constructor with initial index calculated with modulo operator = key % sizeOfArray.
+5. Each bucket as an ArrayList and default values set to null.
+6. Created an add function if in the bucket childList is empty, we create a LL and add key else if key is not in list we add it.
+7. Created a remove function, where it check if list not empty then remove the valueofKey.
+8. Created a contains function by just return a boolean with a mutual exclusive condition checking list not empty and contains key.
+ */
 
 import java.util.*;
 
