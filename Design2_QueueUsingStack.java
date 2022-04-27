@@ -1,55 +1,44 @@
-/* Time Complexity: O(1) */
-/* Space Complexity: O(n) */
-/* Did this code successfully run on Leetcode : Yes */
-/* Any problem you faced while coding this :  No */
-
-
+//SC: O(1)
 class MyQueue {
-    Stack<Integer> stack1 = new Stack<>();
-    Stack<Integer> stack2 = new Stack<>();
-
+    Stack<Integer> st1;
+    Stack<Integer> st2;
+    private int front;
     public MyQueue() {
+        this.st1 = new Stack<>();
+        this.st2 = new Stack<>();
+    }
+    
+    public void push(int x) { //O(1) - amortized and O(1)
+        if(st1.isEmpty()){
+              front = x;
+        }
+      
+        st1.push(x);
         
     }
     
-    //push element x to the back of the queue
-    public void push(int x) {
-        stack1.push(x);
-        
+    public int pop() { //O(n)
+        if(st2.isEmpty()){
+            while(!st1.isEmpty()){
+                 st2.push(st1.pop());
+            }
+          
+        }
+        return st2.pop();
     }
     
-    //pop element from front of the queue and return that element
-    public int pop() {
-        if(stack2.isEmpty()){
-            shiftStacks();
-           
-        }
-         return stack2.pop();
+    public int peek() { //O(1)
+       
+            if(!st2.isEmpty()){
+                return st2.peek();
+            }
+        return front;
     }
     
-    //get the front element 
-    public int peek() {
-        if(stack2.isEmpty()){
-            shiftStacks();
-           
-        }
-         return stack2.peek();
-    }
-    
-    //return whether queue is empty
-    public boolean empty() {
-        return stack1.isEmpty() && stack2.isEmpty();
-    }
-    //push the element in 2nd stack
-    public void shiftStacks(){
-        while(!stack1.isEmpty()){
-        int temp = stack1.pop();
-        stack2.push(temp);
-        }
-            
+    public boolean empty() { //O(1)
+        return st1.isEmpty() && st2.isEmpty();
     }
 }
-
 
 /**
  * Your MyQueue object will be instantiated and called as such:
