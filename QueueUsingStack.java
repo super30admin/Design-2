@@ -1,3 +1,8 @@
+// Time Complexity :pop(),peek()->O(n), empty(),push()-> O(1)
+// Space Complexity :O(n)
+// Did this code successfully run on Leetcode :Yes
+// Any problem you faced while coding this :No
+
 class MyQueue {
     
     private Stack<Integer> stack1;
