@@ -20,7 +20,6 @@ I refered multiple places as I was coding this question.
 import java.util.*;
 
 public class MyHashSet {
-  private final int MAX_VAL = 1000000;
   private final int sizeOfArray = 100;
   private List<List<Integer>> mainBucket;
 
