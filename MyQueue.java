@@ -1,4 +1,5 @@
 import java.util.*;
+//pop is O(n), push is O(1);
 
 class MyQueue {
   private Stack<Integer> stack1;
