@@ -1,3 +1,5 @@
+//time complexity: m =slots in hashmap ,n = total keys Load factor α = n/m Expected time to search = O(1 + α),Expected time to delete = O(1 + α)
+//space complexity: O(n)
 class MyHashMap {
     class Node{
         int key;

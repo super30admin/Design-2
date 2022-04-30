@@ -1,3 +1,5 @@
+//time complexity: push and pop O(1)
+//space complexity: O(n) if I use two stacks 
 import java.util.Stack;
 
 class MyQueue {
