@@ -1,4 +1,5 @@
-//Space and Time complexity: O(1)
+// Time complexity: O(1)
+//space complexity: O(n) 2 stacks are used
 
 class MyQueue {
     private Stack<Integer>st1;
