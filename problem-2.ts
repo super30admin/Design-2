@@ -1,33 +1,56 @@
-class MyQueue {
-    addStack = [];
-    removeStack = [];
+// Time Complexity : O(1)
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
 
-    push(x: number): void {
-        this.addStack.push(x);
+// Your code here along with comments explaining your approach
+class MyQueue {
+    // define 2 stacks 
+    pushStack = [];
+    popStack = [];
+
+    push(element: number): void {
+        // push to stack
+        this.pushStack.push(element);
     }
 
     pop(): number {
-        if(!this.removeStack.length){
-            while(this.addStack.length){
-                this.removeStack.push(this.addStack.pop());
+        // check popStack length to verify it's empty
+        if(!this.popStack.length){
+            // move all elements to pop stack to extract the first element
+            while(this.pushStack.length){
+                this.popStack.push(this.pushStack.pop());
             }
         }
-        return this.removeStack.pop();
+        // extract the first element
+        return this.popStack.pop();
     }
 
     peek(): number {
-        if(!this.removeStack.length){
-            while(this.addStack.length){
-                this.removeStack.push(this.addStack.pop());
+        if(!this.popStack.length){
+            while(this.pushStack.length){
+                this.popStack.push(this.pushStack.pop());
             }
         }
-        return this.removeStack[this.removeStack.length - 1];
+        // peek first element
+        return this.popStack[this.popStack.length - 1];
     }
 
     empty(): boolean {
-        return !this.addStack.length && !this.removeStack.length;
+        return !this.pushStack.length && !this.popStack.length;
     }
 }
+
+// Example
+ const obj = new MyQueue()
+ obj.push(1);
+ obj.push(2);
+ obj.push(3);
+ obj.push(4);
+ const param_2 = obj.pop();
+ const param_3 = obj.peek();
+ const param_4 = obj.empty();
+
 
 /**
  * Your MyQueue object will be instantiated and called as such:
