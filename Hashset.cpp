@@ -1,3 +1,6 @@
+// Time Complexity : O(1) for all functions
+// Space Complexity : O(n)
+
 class MyHashSet {
 public:
     /** Initialize your data structure here. */
