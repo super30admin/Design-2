@@ -1,4 +1,6 @@
-
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 /* Time Complexity : O(1)
  * Space Complexity : O(n)
@@ -7,62 +9,49 @@
 
 class MyHashSet {
 
-    private boolean storage [][];
-    int buckets;
-    int bucketItems;
+	int initCapacity = 100;
+	List <List<Integer>> hashSet = null;
+
 
     public MyHashSet() {
-        this.buckets = 1000;
-        this.bucketItems = 1001;
-        this.storage = new boolean[buckets][];
-    }
-
-    public int bucket(int key){
-        return key%buckets;
-    }
-
-    public int bucketItem(int key){
-        return key/bucketItems;
-    }
-    
-    public void add(int key) {
-    	int bucket = bucket(key);
-        int bucketItem = bucketItem(key);
-        
-        if(storage[bucket] == null) {
-            if(bucket == 0) {
-                storage[bucket] = new boolean[bucketItems + 1];
-            }
-            else {
-                storage[bucket] = new boolean[bucketItems];
-            }
+    	hashSet = new ArrayList <>();
+        for (int i = 0; i < initCapacity; i++) {
+            hashSet.add (null);
         }
-        storage[bucket][bucketItem] = true;
+    }
+
+    public void add(int key) {
+    	int hash = hashing (key);
+        List <Integer> values = hashSet.get(hash);
+        if (values == null) {
+            values = new LinkedList<>();
+            values.add (key);
+            hashSet.set (hash, values);
+        } else if (!values.contains (key))
+            values.add (key);
         
     }
     
     public void remove(int key) {
     	
-    	int bucket = bucket(key);
-        int bucketItem = bucketItem(key);
-        
-        if(storage[bucket] == null) {
-            return;
+    	int hash = hashing (key);
+        List <Integer> values = hashSet.get(hash);
+        if (values != null && values.contains (key)) {
+            values.remove (Integer.valueOf(key));
         }
-        storage[bucket][bucketItem] = false;
         
     }
     
     public boolean contains(int key) {
     	
-    	int bucket = bucket(key);
-        int bucketItem = bucketItem(key);
+    	int hash = hashing (key);
+        List <Integer> values = hashSet.get(hash);
+        return values != null && values.contains (key);
         
-        if(storage[bucket] == null) 
-        	return false;
-        
-        return storage[bucket][bucketItem];
-        
+    }
+    
+    private int hashing (int key) {
+        return key % initCapacity;
     }
 }
 
