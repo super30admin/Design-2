@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+package HashSet;
 
 /* Time Complexity : O(1)
  * Space Complexity : O(n)
@@ -9,55 +7,68 @@ import java.util.List;
 
 class MyHashSet {
 
-	int initCapacity = 100;
-	List <List<Integer>> hashSet = null;
-
+    private boolean storage [][];
+    int buckets;
+    int bucketItems;
 
     public MyHashSet() {
-    	hashSet = new ArrayList <>();
-        for (int i = 0; i < initCapacity; i++) {
-            hashSet.add (null);
-        }
+        this.buckets = 1000;
+        this.bucketItems = 1000;
+        this.storage = new boolean[buckets][];
     }
 
+    public int bucket(int key){
+        return key%buckets;
+    }
+
+    public int bucketItem(int key){
+        return key/bucketItems;
+    }
+    
     public void add(int key) {
-    	int hash = hashing (key);
-        List <Integer> values = hashSet.get(hash);
-        if (values == null) {
-            values = new LinkedList<>();
-            values.add (key);
-            hashSet.set (hash, values);
-        } else if (!values.contains (key))
-            values.add (key);
+    	int bucket = bucket(key);
+        int bucketItem = bucketItem(key);
+        
+        if(storage[bucket] == null) {
+            if(bucket == 0) {
+                storage[bucket] = new boolean[bucketItems + 1];
+            }
+            else {
+                storage[bucket] = new boolean[bucketItems];
+            }
+        }
+        storage[bucket][bucketItem] = true;
         
     }
     
     public void remove(int key) {
     	
-    	int hash = hashing (key);
-        List <Integer> values = hashSet.get(hash);
-        if (values != null && values.contains (key)) {
-            values.remove (Integer.valueOf(key));
-        }
+    	int bucket = bucket(key);
+        int bucketItem = bucketItem(key);
+        
+        if(storage[bucket] == null)
+            return;
+ 
+        storage[bucket][bucketItem] = false;
         
     }
     
     public boolean contains(int key) {
     	
-    	int hash = hashing (key);
-        List <Integer> values = hashSet.get(hash);
-        return values != null && values.contains (key);
+    	int bucket = bucket(key);
+        int bucketItem = bucketItem(key);
         
-    }
-    
-    private int hashing (int key) {
-        return key % initCapacity;
+        if(storage[bucket] == null) 
+        	return false;
+        
+        return storage[bucket][bucketItem];
+        
     }
 }
 
 /**
- * Your MyHashSet object will be instantiated and called as such:
- * MyHashSet obj = new MyHashSet();
+ * Your MyHashSet_List object will be instantiated and called as such:
+ * MyHashSet_List obj = new MyHashSet_List();
  * obj.add(key);
  * obj.remove(key);
  * boolean param_3 = obj.contains(key);
