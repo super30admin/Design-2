@@ -1,5 +1,5 @@
 """"// Time Complexity : O(1)
-// Space Complexity :
+// Space Complexity :O(1)
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : Getting optimized method
 
@@ -41,3 +41,12 @@ class MyHashSet:
         if self.hash[self.hashfunc(key)] != None:
             return self.hash[self.hashfunc(key)][self.hashitm(key)]
             return None
+obj = MyHashSet()
+obj.add(1)
+obj.add(2)
+print(obj.contains(1))
+print(obj.contains(3))
+obj.add(2)
+print(obj.contains(2))
+obj.remove(2)
+print(obj.contains(2))

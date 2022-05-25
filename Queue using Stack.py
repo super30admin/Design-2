@@ -1,5 +1,5 @@
-""""// Time Complexity : 26ms
-// Space Complexity : O(1)
+""""// Time Complexity : O(1) for all except Push-O(n)
+// Space Complexity : O(n)
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this :No
 
