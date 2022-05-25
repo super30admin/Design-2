@@ -12,20 +12,38 @@
 class MyQueue:
     def __init__(self):
         self.queue = []
+        self.queue1 = []
+    # def push(self, x: int) -> None:
+    #     self.queue.insert(0, x)
+    #
+    # def pop(self) -> int:
+    #     if self.queue:
+    #         return self.queue.pop()
+    #
+    # def peek(self) -> int:
+    #     if self.queue:
+    #         return self.queue[-1]
+    #
+    # def empty(self) -> bool:
+    #     return self.queue == []
 
-    def push(self, x: int) -> None:
-        self.queue.insert(0, x)
+    def push(self, x):
+        self.queue.append(x)
 
-    def pop(self) -> int:
-        if self.queue:
-            return self.queue.pop()
+    def pop(self):
+        if not self.queue1:
+            while self.queue:
+                self.queue1.append(self.queue.pop())
+        return self.queue1.pop()
 
-    def peek(self) -> int:
-        if self.queue:
-            return self.queue[-1]
+    def peek(self):
+        if not self.queue1:
+            while self.queue:
+                self.queue1.append(self.queue.pop())
+        return self.queue1[-1]
 
-    def empty(self) -> bool:
-        return self.queue == []
+    def empty(self):
+        return self.queue == [] and self.queue1 == []
 
 
 # Your MyQueue object will be instantiated and called as such:
