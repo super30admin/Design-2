@@ -1,4 +1,6 @@
 class MyQueue {
+    //Time complexity:O(1)
+    //Space Complexity:O(n)
     Stack<Integer> st1=new Stack<>();
     Stack<Integer> st2=new Stack<>();
     //int top1=-1,top2=0;
