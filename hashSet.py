@@ -4,36 +4,42 @@
 # Any problem you faced while coding this : No
 #
 #
-# Your code here along with comments explaining your approach I used bucket approach in-case of the collisions.
-# let's randomly define a length of the hashset (primenumber to avoid collisions)
-# Here we used basic hash function that is modulo.
-# hash-key function returns the value of the index where the key should be in the hashset.
-# If 2 keys have the same index then there is a collision, so we make a list to every index and append every item in that key.
+# Your code here along with comments explaining your approach
+#
 
 class MyHashSet:
     def __init__(self):
-        self.hashsetlength = 199
-        self.hashset = [[]] * self.hashsetlength
+        self.bucketlength = 1000
+        self.bucket = [None] * self.bucketlength
 
     def hashkey(self, key):
-        return key % self.hashsetlength
+        return key % self.bucketlength
 
-    def add(self, key: int) -> None:
-        index = self.hashkey(key)
-        if not self.hashset[index]:
-            self.hashset[index] = [key]
-        else:
-            self.hashset[index].append(key)
+    def doublehash(self, key):
+        return key // self.bucketlength
 
-    def remove(self, key: int) -> None:
-        index = self.hashkey(key)
-        if key in self.hashset[index]:
-            while key in self.hashset[index]:
-                self.hashset[index].remove(key)
+    def add(self, key):
+        hi = self.hashkey(key)
+        dhi = self.doublehash(key)
+        # edge case. if the element is 10,00,000 so the primary hashing key is 0 and secondary hashing index = 1000
+        # which is out of range so for 0th index (for 10,00,000) we create a bucket with length 1001
+        if not self.bucket[hi] and hi == 0:
+            self.bucket[hi] = [False] * (self.bucketlength + 1)
+        elif not self.bucket[hi]:
+            self.bucket[hi] = [False] * self.bucketlength
+        self.bucket[hi][dhi] = True
 
-    def contains(self, key: int) -> bool:
-        index = self.hashkey(key)
-        return key in self.hashset[index]
+    def remove(self, key):
+        hi = self.hashkey(key)
+        dhi = self.doublehash(key)
+        if self.bucket[hi]:
+            self.bucket[hi][dhi] = False
+
+    def contains(self, key):
+        hi = self.hashkey(key)
+        dhi = self.doublehash(key)
+        if self.bucket[hi]:
+            return self.bucket[hi][dhi]
 
 
 # Your MyHashSet object will be instantiated and called as such:
@@ -46,4 +52,32 @@ obj.add(2)
 print(obj.contains(2))
 obj.remove(2)
 print(obj.contains(2))
+
+
+
+
+# class MyHashSet:
+#     def __init__(self):
+#         self.hashsetlength = 199
+#         self.hashset = [[]] * self.hashsetlength
+#
+#     def hashkey(self, key):
+#         return key % self.hashsetlength
+#
+#     def add(self, key: int) -> None:
+#         index = self.hashkey(key)
+#         if not self.hashset[index]:
+#             self.hashset[index] = [key]
+#         else:
+#             self.hashset[index].append(key)
+#
+#     def remove(self, key: int) -> None:
+#         index = self.hashkey(key)
+#         if key in self.hashset[index]:
+#             while key in self.hashset[index]:
+#                 self.hashset[index].remove(key)
+#
+#     def contains(self, key: int) -> bool:
+#         index = self.hashkey(key)
+#         return key in self.hashset[index]
 
