@@ -29,7 +29,8 @@ class MyHashSet(object):
         """
         self.bucketHash=key%self.bucket
         self.bucketItemHash=key//self.bucketItem
-        self.myHash[self.bucketHash][self.bucketItemHash]=False
+        if self.myHash[self.bucketHash]!=None:
+            self.myHash[self.bucketHash][self.bucketItemHash]=False
         
 
     def contains(self, key):
@@ -39,7 +40,9 @@ class MyHashSet(object):
         """
         self.bucketHash=key%self.bucket
         self.bucketItemHash=key//self.bucketItem
-        if self.myHash[self.bucketHash][self.bucketItemHash]==True :
+        if self.myHash[self.bucketHash]==None:
+            return False
+        elif self.myHash[self.bucketHash][self.bucketItemHash]==True :
             return True
         else:
             return False
