@@ -89,7 +89,7 @@ class MyHashMap {
         
         
     }
-//****DESIGN A QUEUE****
+//****DESIGN A QUEUE USING 2 STACKS****
 //Time complexity:o(1);
 //space complexity:o(1);
 // Did this code successfully run on Leetcode : yes
@@ -145,7 +145,7 @@ class MyQueue {
         
     }
 }
-//****IMPLEMENT QUEUE USING ARRAYS****
+//****DESIGN QUEUE USING ARRAYS****
 class MyQueue {
     int front;
     int rear;
