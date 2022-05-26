@@ -6,29 +6,48 @@ import java.util.*;
 // Any problem you faced while coding this : None
 class MyHashSet {
 
-    List<Integer> list;
+    boolean [][] storage;
+    int buckets;
+    int bucketItems;
     public MyHashSet() {
-        list = new ArrayList<>();
+        buckets = 1000;
+        bucketItems = 1000;
+        storage = new boolean[buckets][];
+    }
+    private int bucket(int key){
+        return key%buckets;
+    }
+    private int bucketItem(int key){
+        return key/bucketItems;
     }
 
     public void add(int key) {
-        if(!contains(key)){
-            list.add(key);
+        int bucket = bucket(key);
+        int bucketItem = bucketItem(key);
+        if(storage[bucket]==null){
+            if(bucket==0){
+                storage[bucket] = new boolean[bucketItems+1];
+            }
+            else{
+                storage[bucket] = new boolean[bucketItems];
+            }
         }
+        storage[bucket][bucketItem] = true;
     }
 
     public void remove(int key) {
-        list.remove(new Integer(key));
+        int bucket = bucket(key);
+        int bucketItem = bucketItem(key);
+        if(storage[bucket]==null) return;
+        storage[bucket][bucketItem] = false;
     }
 
     public boolean contains(int key) {
+        int bucket = bucket(key);
+        int bucketItem = bucketItem(key);
+        if(storage[bucket] == null) return false;
+        return storage[bucket][bucketItem];
 
-        for(int i=0;i<list.size();i++){
-            if(list.get(i)==key){
-                return true;
-            }
-        }
-        return false;
     }
 
     public static void main(String [] args){
