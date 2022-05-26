@@ -89,4 +89,56 @@ class MyHashMap {
         
         
     }
+//****DESIGN A QUEUE****
+
+class MyQueue {
+    Stack<Integer> instack;
+    Stack<Integer> outstack;
+
+    public MyQueue() {
+        instack=new Stack<>();
+        
+        outstack=new Stack<>();
+        
+    }
+    
+    public void push(int x) {
+        instack.push(x);
+        
+    }
+    
+    public int pop() {
+        int z;
+        if(outstack.isEmpty())
+        {
+            while(!instack.isEmpty())
+            {
+                z=instack.pop();
+                outstack.push(z);
+            }
+        }
+        return outstack.pop();
+        
+    }
+    
+    public int peek() {
+         int z;
+        if(outstack.isEmpty())
+        {
+            while(!instack.isEmpty())
+            {
+                z=instack.pop();
+                outstack.push(z);
+            }
+        }
+        return outstack.peek();
+        
+        
+    }
+    
+    public boolean empty() {
+        return instack.isEmpty() && outstack.isEmpty();
+        
+    }
+}
 
