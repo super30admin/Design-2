@@ -1,6 +1,6 @@
 // Your code here along with comments explaining your approach
 
-//Design a hashset using DoubleHashing
+//DESIGN HASHMAP LINEAR CHAINIG
 //Time complexity:o(1);
 //space complexity:o(1);
 // Did this code successfully run on Leetcode : yes
