@@ -1,6 +1,6 @@
 // Your code here along with comments explaining your approach
 
-//DESIGN HASHMAP LINEAR CHAINIG
+//DESIGN HASHMAP LINEAR CHAINING
 //Time complexity:o(1);
 //space complexity:o(1);
 // Did this code successfully run on Leetcode : yes
