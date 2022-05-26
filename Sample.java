@@ -145,4 +145,66 @@ class MyQueue {
         
     }
 }
+//****IMPLEMENT QUEUE USING ARRAYS****
+class MyQueue {
+    int front;
+    int rear;
+    int [] arr;
+    int max;
+
+    public MyQueue() {
+        max=1000;
+        front=0;
+        rear=0;
+        arr=new int[max];
+        
+    }
+    
+    public void push(int x) {
+        if(rear==max-1)
+        {
+            return;
+        }
+        else
+        {
+            arr[rear]=x;
+            rear++;
+        }
+        
+    }
+    
+    public int pop() {
+        if(rear==0)
+        {
+            return -1;
+        }
+        else
+        {
+            front++;
+            return arr[front-1];
+        }
+        
+    }
+    
+    public int peek() {
+        return arr[front];
+        
+    }
+    
+    public boolean empty() {
+        return rear==front;
+        
+    }
+}
+
+/**
+ * Your MyQueue object will be instantiated and called as such:
+ * MyQueue obj = new MyQueue();
+ * obj.push(x);
+ * int param_2 = obj.pop();
+ * int param_3 = obj.peek();
+ * boolean param_4 = obj.empty();
+ */
+
+
 
