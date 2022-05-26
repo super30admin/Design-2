@@ -1,3 +1,5 @@
+// Time complexity add,remove = O(1)
+// Space complexity = O(n)
 class MyHashSet {
     int buckets;
     int bucketItems;
