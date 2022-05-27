@@ -91,7 +91,7 @@ class MyHashMap {
     }
 //****DESIGN A QUEUE USING 2 STACKS****
 //Time complexity:o(1);
-//space complexity:o(2n);
+//space complexity:o(n square); as we are using 2 stacks
 // Did this code successfully run on Leetcode : yes
 // Any problem you faced while coding this : NO
 
