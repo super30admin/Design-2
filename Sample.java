@@ -2,7 +2,7 @@
 
 //DESIGN HASHMAP LINEAR CHAINING
 //Time complexity:o(1);
-//space complexity:o(1);
+//space complexity:o(n); n is number of spaces in the array
 // Did this code successfully run on Leetcode : yes
 // Any problem you faced while coding this : NO
 
@@ -91,7 +91,7 @@ class MyHashMap {
     }
 //****DESIGN A QUEUE USING 2 STACKS****
 //Time complexity:o(1);
-//space complexity:o(1);
+//space complexity:o(2n);
 // Did this code successfully run on Leetcode : yes
 // Any problem you faced while coding this : NO
 
