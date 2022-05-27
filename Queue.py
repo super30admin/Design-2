@@ -2,44 +2,43 @@
 class MyQueue(object):
 
     def __init__(self):
-        self.queue=[]
+        self.sin=[]
+        self.sout=[]
 
     def push(self, x):
         """
         :type x: int
         :rtype: None
         """
-        self.queue.append(x)
+        self.sin.append(x)
 
     def pop(self):
         """
         :rtype: int
         """
-        k=self.queue[0]
-        self.queue=self.queue[1:]
-        return k
+        self.peek()
+        return self.sout.pop()
+
 
     def peek(self):
         """
         :rtype: int
         """
-        return self.queue[0]
+        
+        if len(self.sout)==0:
+            while self.sin:
+                self.sout.append(self.sin.pop())
+        return self.sout[-1]
         
 
     def empty(self):
         """
         :rtype: bool
         """
-        if len(self.queue)==0:
+        if (len(self.sin)==0 and len(self.sout)==0):
             return True
         else:
             return False
         
 
 
-# Your MyQueue object will be instantiated and called as such:
-# obj = MyQueue()
-# obj.push(x)
-# param_2 = obj.pop()
-# param_3 = obj.peek()
-# param_4 = obj.empty()
