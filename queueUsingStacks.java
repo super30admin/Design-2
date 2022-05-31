@@ -1,3 +1,5 @@
+//time complexity : O(1)
+//space complexity : O(n)
 class MyQueue {
     Stack<Integer> in ;
     Stack<Integer> out ;
