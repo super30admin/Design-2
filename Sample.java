@@ -1,58 +1,63 @@
+import java.util.Stack;
+
 // Time Complexity :
 // Space Complexity :
 // Did this code successfully run on Leetcode :yes
 // Any problem you faced while coding this :
 // Your code here along with comments explaining your approach
-class MinStack {
+class MyQueue {
+    Stack<Integer> stack1 = new Stack();
+    Stack<Integer> stack2 = new Stack();
 
-    long minimum;
-    Stack<Long> userstack;
+    public MyQueue() {
 
-    public MinStack(){
-        userstack=new Stack<>();
     }
 
-    public void push(int val) {
-        if (userstack.isEmpty()){
-            userstack.push(0L);
-            minimum=val;
+    public void push(int x) {
+        if(!stack1.isEmpty()){
+            stack1.push(x);
         }else{
-            userstack.push(val-minimum);//
-            if (val<minimum) {
-                minimum = val;
+            while(!stack2.isEmpty()){
+                int popped2 = stack2.pop();
+                stack1.push(popped2);
+            }
+            stack1.push(x);
+        }
+    }
+
+    public int pop() {
+        if(!stack2.isEmpty()){
+            return stack2.pop();
+        }else{
+            while(!stack1.isEmpty()){
+                int popped1 = stack1.pop();
+                stack2.push(popped1);
             }
         }
+        return  stack2.pop();
     }
 
-    public void pop() {
-        if (userstack.isEmpty()) return;
-
-        long popedValue=userstack.pop();
-
-        if (popedValue<0) {
-            minimum = minimum - popedValue;//If negative, increase the min value
+    public int peek() {
+        if(!stack2.isEmpty()){
+            return stack2.peek();
         }
-    }
-
-    public int top() {
-        long upperValue=userstack.peek();
-        if (upperValue>0){
-            return (int)(upperValue+minimum);
-        }else{
-            return (int)(minimum);
+        else{
         }
+        return stack1.get(0);
     }
 
-    public int getMin() {
-        return (int)minimum;
+    public boolean empty() {
+        if(stack1.isEmpty() && stack2.isEmpty())
+            return true;
+        return false;
     }
 }
 
 /**
- * Your MinStack object will be instantiated and called as such:
- * MinStack obj = new MinStack();
- * obj.push(val);
- * obj.pop();
- * int param_3 = obj.top();
- * int param_4 = obj.getMin();
+ * Your MyQueue object will be instantiated and called as such:
+ * MyQueue obj = new MyQueue();
+ * obj.push(x);
+ * int param_2 = obj.pop();
+ * int param_3 = obj.peek();
+ * boolean param_4 = obj.empty();
  */
