@@ -1,3 +1,8 @@
+// Time Complexity : O(1) average and O(n) worst case - for push(), pop(), peek(), empty() methods.
+// Space Complexity : O(n) - where n is the number of entries in the stack
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
 import java.util.Stack;
 
 public class MyQueue {
