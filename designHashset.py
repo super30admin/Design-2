@@ -1,13 +1,16 @@
 """
+https://leetcode.com/problems/design-hashset/
+
 Hash set will only have values or keys and not key-value pair. Values will not be duplicated.
-Input is 10^6, so create matrix of size 10^3x10^3
-As list size is from 0 to 1000 (not including), this algorithm might fail for storing item 10^6 as it will lead to
-overflow i.e. hash1() --> 0, hash2() --> 1000, but array size if from 0 to 999 for both primary and nested array.
-So, either make the size 1001x1001 or make the nested array size of only the 0th primary array as 1001.
+
+Input is 10^6, so create matrix of size (10^3)x(10^3). As list size is from 0 to 1000 (not including), this algorithm
+might fail for storing item 10^6 as it will lead to overflow i.e. hash1() --> 0, hash2() --> 1000, but array size is
+from 0 to 999 for both primary and nested array. So, either make the size 1001x1001 or make the nested array size of only
+the 0th primary array as 1001.
 
 Space Complexity: O(n)
 Runtime Complexity:
-add --> O(n)
+add --> O(1); O(n) only once while initialization
 remove --> O(1)
 contains --> O(1)
 
@@ -38,10 +41,14 @@ class MyHashSet:
         # indicate that the item was added and not the number itself to save space as characters take less space.
         primaryIndex = self.primaryArray(key)
         nestedIndex = self.secondaryArray(key)
-        # Create nested array only if there are values to store in the primary array
+        # Create nested array only if there are values to store in the primary array. The below check is done so that
+        # we don;t reinitialize if primary array has already been initialized.
         if self.arr[primaryIndex] is None:
-            if primaryIndex == 0:
-                self.arr[primaryIndex] = [None for i in range(0, 1001)]
+            if primaryIndex == 0:  # As 1000000th value will lead to overflow as array of size 1000 can store values
+                # only from 0 to 999. But 1000000%1000 = 0 and 1000000//1000 = 1000, but secondary array only has size
+                # value range of 0 to 999. So, only for the value of 1000000 at primary array index 0, you can keep the
+                # size from 0 to 1001 range to get size range from 0 to 1000.
+                self.arr[primaryIndex] = [None for _ in range(0, 1001)]
                 self.arr[primaryIndex][nestedIndex] = True
             else:
                 self.arr[primaryIndex] = [None for i in range(0, 1000)]
