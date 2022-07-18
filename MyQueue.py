@@ -1,3 +1,7 @@
+#Time Complexity : O(1) for push, peek, and empty method
+                        O(n) for pop method
+#Space Complexity : O(n + n)
+#Did this code successfully run on Leetcode : Yes
 class MyQueue:
 
     def __init__(self):
