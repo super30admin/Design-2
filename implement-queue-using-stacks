@@ -29,3 +29,4 @@ class MyQueue:
 
 #Time Complexity : O(1)
 #Space Complexity : O(n)
+#Code run successfully on Leetcode
