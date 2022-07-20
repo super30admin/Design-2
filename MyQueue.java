@@ -1,5 +1,10 @@
 import java.util.Stack;
 
+//Time Complexity : o(n);
+//Space Complexity : not sure using 2 stacks 
+//Did this code successfully run on Leetcode : Yes
+//Any problem you faced while coding this : not able to understand the space required, where i can learn time and space complexity?
+
 public class MyQueue {
 	
 	 Stack<Integer> in = new Stack<>();
