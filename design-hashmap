@@ -22,3 +22,5 @@ class MyHashMap:
 
 #Time Complexity = #O(n)   
 #Space Complexity = O(1) 
+
+#Code run successfully on Leetcode
