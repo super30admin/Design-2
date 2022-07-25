@@ -1,5 +1,5 @@
-# Time Complexity : push -> O(1), pop -> amortized O(1) , peek -> O(1), empty -> O(1)
-# Space Complexity : push -> O(n), pop -> O(1) , peek -> O(1), empty -> O(1)
+# Time Complexity : put() - > O(size of bucket~constant), get() -> O(1), remove() -> O(1)
+# Space Complexity : O(n), where n is unique keys in hashmap
 # Did this code successfully run on Leetcode : Yes
 # Any problem you faced while coding this : No
 
