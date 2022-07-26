@@ -1,3 +1,11 @@
+# Time Complexity: O(100) or O(N/10000)? This is due to the range of the data. We are using a map of 10000 * 100 (where 100 represents the Linear chain of Linked List of type Node)
+# Space Complexity: O(n)? Is this correct?
+# Did code run on Leetcode: Yes
+# Approach: This approach uses Linear Chaining. We essentially initialize Linked lists where the key matches.
+# The main function used is the searchHashMap function, which returns the previous pointer. The two scenarios are at the end of the list, or when the next node has the key to be returned/removed
+# We return the previous because it becomes easy to manage the removal.
+
+
 class Node:
     def __init__(self, key=None, value=None):
         self.key = key
