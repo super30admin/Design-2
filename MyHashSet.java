@@ -1,4 +1,4 @@
-//Time Complexity : Depends on the size of hash Table
+//Time Complexity : O(1) for all functions
 
 import java.util.*;
 
