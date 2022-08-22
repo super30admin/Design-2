@@ -1,3 +1,7 @@
+"""
+Time Complexity: O(1) for all operations
+"""
+
 class MyQueue:
 
     def __init__(self):
