@@ -1,8 +1,4 @@
 import java.util.Stack;
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode : Yes
-// Any problem you faced while coding this :
 public class MyQueue {
     Stack<Integer> in;
     Stack<Integer> out;
