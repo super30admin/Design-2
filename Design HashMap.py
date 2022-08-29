@@ -12,7 +12,7 @@ class Node:
         self.next = None
 
 class MyHashMap:
-
+ 
     def __init__(self):
         self.hashmap = [None] * 1000
     
