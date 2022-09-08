@@ -1,3 +1,7 @@
+# Time Complexity : push - O(1), pop(amortized) - O(1)
+# Space Complexity : O(n)
+# Did this code successfully run on Leetcode : Yes
+
 class MyQueue:
 
     def __init__(self):

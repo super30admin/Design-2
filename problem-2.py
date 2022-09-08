@@ -1,6 +1,6 @@
-# Time Complexity :
-# Space Complexity :
-# Did this code successfully run on Leetcode :
+# Time Complexity : put, get, remove - O(n)
+# Space Complexity : Space complexity - O(k + n), k = 997
+# Did this code successfully run on Leetcode : yes
 
 
 class Node:
