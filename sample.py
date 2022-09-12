@@ -1,54 +1,43 @@
 #Time-Complexity: O(1)
 #Space-Complexity: O(n)
 
-class MyQueue:
+from inspect import stack
 
+class MyQueue(object):
     def __init__(self):
-        self.size=10
-        self.ls=[[] for _ in range(self.size)]
-        self.tail,self.head = -1,-1
+        self.in_stk = []
+        self.out_stk = []
 
-    def push(self, x: int) -> None:
-        if self.tail>=self.size:
-            return "The Queue is full!"
+	# Push element x to the back of queue...
+    def push(self, x):
+        self.in_stk.append(x)
+        print("Element Pushed :", x)
+        return ""
 
-        elif self.ls is None:
-            self.head+=1
-            self.tail+=1
-            self.ls[self.tail]=x
-            
-       
+	# Remove the element from the front of the queue and returns it...
+    def pop(self):
+        if not self.in_stk and not self.out_stk:
+            return "No Element in Queue!"
+
+         
+        self.peek()
+        print("The Popped Element is:")
+        return self.out_stk.pop()
+
+	# Get the front element...
+    def peek(self):
+        if not self.out_stk:
+            while self.in_stk:
+                self.out_stk.append(self.in_stk.pop())
+
+        if not self.out_stk and not self.in_stk:
+            return "No Element in Queue!"
         else:
-            self.tail+=1
-            self.ls[self.tail]=x
-            
-        print("Pushed Element is:")
-        return self.ls[self.tail]
-        
-    def pop(self) -> int:
-        if self.head+1>self.tail:
-            return "No Element in Queue!"
+            return self.out_stk[-1]
 
-        self.head+=1
-        print("Popped Element is:")
-        return self.ls[self.head]
-        
-
-    def peek(self) -> int:
-        if self.head+1>self.tail :
-            return "No Element in Queue!"
-
-        print("Peeked element: ")
-        return self.ls[self.head+1]
-        
-
-    def empty(self) -> bool:
-        return self.head+1>self.tail
-
-    def show(self):
-        while self.head<=self.tail:
-                self.head+=1
-                print(self.ls)
+	# Return whether the queue is empty...
+    def empty(self):
+        return not self.in_stk and not self.out_stk
 
 Q = MyQueue()
 print(Q.empty())
