@@ -1,3 +1,5 @@
+# Time Complexity - O(1) 
+# Space Complexity - O(2n) -> O(n) (2 stacks to store values)
 class MyQueue:
 
     def __init__(self):
