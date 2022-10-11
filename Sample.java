@@ -35,3 +35,39 @@ Stack<Integer> stack2 = new Stack<>();
         return stack1.isEmpty() && stack2.isEmpty();
     }
 }
+Problem 2 
+class MyHashMap {
+int arr[] = new int[99999];
+    public MyHashMap() {
+        
+    }
+    public int hash(int key) {
+        int hashfn=key%99999;
+        return hashfn;
+    }
+    public void put(int key, int value) {
+        int i = hash(key);
+        if (value == 0){
+            arr[i] = -2;
+        }
+       else{ arr[i] = value;}
+    }
+    
+    public int get(int key) {
+        int i = hash(key);
+        if (arr[i] != 0 || arr[i]==-1){
+            if (arr[i] == -2){
+            return 0;
+        }
+       else{ 
+            return arr[i];}
+        }else{
+            return -1;
+        }
+    }
+    
+    public void remove(int key) {
+        int i = hash(key);
+            arr[i] = -1;
+    }
+}
