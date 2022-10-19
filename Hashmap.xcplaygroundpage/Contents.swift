@@ -1,5 +1,5 @@
 // Time complexity O(1)
-// Space complexity O(n)
+// Space complexity O(mxn)
 
 
 
@@ -100,18 +100,18 @@ class Node {
 //["MyHashMap","put","put","get","get","put","get","remove","get"]
 //[[],[1,1],[2,2],[1],[3],[2,1],[2],[2],[2]]
 
-let obj = MyHashMap()
-obj.put(1, 1)
-obj.printList(1)
-obj.put(2, 2)
-obj.printList(2)
-obj.get(1)
-obj.get(3)
-obj.put(2, 1)
-obj.printList(2)
-obj.get(3)
-obj.remove(2)
-obj.get(2)
+// let obj = MyHashMap()
+// obj.put(1, 1)
+// obj.printList(1)
+// obj.put(2, 2)
+// obj.printList(2)
+// obj.get(1)
+// obj.get(3)
+// obj.put(2, 1)
+// obj.printList(2)
+// obj.get(3)
+// obj.remove(2)
+// obj.get(2)
 
 
 
