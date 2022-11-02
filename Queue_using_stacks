@@ -1,0 +1,63 @@
+//Time Complexity : 
+/*
+push : O(1)
+pop : avg O(1)
+peek : avg O(1)
+empty : O(1)
+*/
+//Space Complexity : O(1)
+//Does this problem successfully run in leetcode : Yes
+//Any problems faced : No
+//Approach
+/*
+As Queue is a first in first out data structure, we need two stacks to implement Queue using stacks.
+While pushing, we simply push the elements into first stack, and while popping we need the element which is first pushed into the first stack. To get that we tranfer all the elements one by one to the second stack so that top of second stack will be the required answer.
+This tranfer is only required if second stack is empty otherwise we can just retrieve the top of second stack for our answer.
+This process is similar to the peek() operation as well.
+So, instead of tranferring elements twice, we just transfer once in either peek() or pop() and use it for the other.
+*/
+
+class MyQueue {
+public:
+    
+    stack<int> in;
+    stack<int> out;
+    
+    MyQueue() {
+        
+    }
+    
+    void push(int x) {
+        in.push(x);
+        
+    }
+    
+    int pop() {
+        int topVal = peek();
+        out.pop();
+        return topVal;
+    }
+    
+    int peek() {
+        if(out.empty()) {
+            while(in.size() > 0) {
+                out.push(in.top());
+                in.pop();
+            }
+        }
+        return out.top();
+    }
+    
+    bool empty() {
+        return (in.empty() && out.empty());
+    }
+};
+
+/**
+ * Your MyQueue object will be instantiated and called as such:
+ * MyQueue* obj = new MyQueue();
+ * obj->push(x);
+ * int param_2 = obj->pop();
+ * int param_3 = obj->peek();
+ * bool param_4 = obj->empty();
+ */

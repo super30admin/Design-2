@@ -1,0 +1,98 @@
+// Time Complexity : O(100)
+// Space Complexity : O(N) 
+// Did this code successfully run in leetcode : Yes
+// Any problems faced : No
+//Approach
+/*
+we have a primary array with hash function, key % size and a linked list for each index
+To decrease the time complexity, primary array is taken of size 10000 and the size of linked list is 100
+As finding the element in mandatory in all the functions, a separate find function is written which returns the prev node value of the node present.
+*/
+
+class Node {
+    public:
+    int key, value;
+    Node* next;
+    Node(int k, int v) {
+        key = k;
+        value = v;
+        this->next = NULL;
+            
+    }
+};
+
+class MyHashMap {
+public:
+    
+    int buckets;
+    vector<Node*> nodes;
+    
+    MyHashMap() {
+        buckets = 10000;
+        nodes = vector<Node*>(10000, new Node(-1, -1));
+    }
+    
+    
+    int getBucket(int key) {
+        return key % 10000;
+    }
+    
+    Node* find(Node* head, int key) {
+        Node* prev = head;
+        Node* cur = prev -> next;
+        while(cur != NULL && cur -> key != key) {
+            prev = cur;
+            cur = cur -> next;
+        }
+        if(cur == NULL) {
+            return NULL;
+        }
+        return prev;
+    }
+    
+    void put(int key, int value) {
+        int bucket = getBucket(key);
+        // if(nodes[bucket] == NULL) {
+        //     //nodes[bucket] = new Node(-1, -1);
+        // }
+        Node* prev = find(nodes[bucket], key);
+        if(prev != NULL) {
+            prev->next->value = value;
+            return;
+        }
+        Node* n = new Node(key, value);
+        n -> next = nodes[bucket] -> next;
+        nodes[bucket] -> next = n;
+    }
+    
+    int get(int key) {
+        int bucket = getBucket(key);
+        // if(nodes[bucket] == NULL) {
+        //     return -1;
+        // }
+        Node* prev = find(nodes[bucket], key);
+        if(prev != NULL) {
+            return prev->next->value;
+        }
+        return -1;
+    }
+    
+    void remove(int key) {
+        int bucket = getBucket(key);
+        // if(nodes[bucket] == NULL) {
+        //     return;
+        // }
+        Node* prev = find(nodes[bucket], key);
+        if(prev != NULL) {
+            prev -> next = prev -> next -> next;
+        }
+    }
+};
+
+/**
+ * Your MyHashMap object will be instantiated and called as such:
+ * MyHashMap* obj = new MyHashMap();
+ * obj->put(key,value);
+ * int param_2 = obj->get(key);
+ * obj->remove(key);
+ */
