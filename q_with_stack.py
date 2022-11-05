@@ -1,6 +1,6 @@
 ## Problem 1: (https://leetcode.com/problems/implement-queue-using-stacks/)
 # // Time Complexity : push : O(1) | pop : O(n) | peek : O(n) | empty : O(1)
-# // Space Complexity : all : O(1)
+# // Space Complexity : all : O(n+n) = O(n)
 # // Did this code successfully run on Leetcode : yes
 # // Any problem you faced while coding this : this is my first time using deque, little difficult when started
 from collections import deque 

@@ -1,6 +1,6 @@
 ## Problem 2: Design Hashmap (https://leetcode.com/problems/design-hashmap/)
 # // Time Complexity : All : O(n)
-# // Space Complexity : O(1)
+# // Space Complexity : O(1) : constant 
 # // Did this code successfully run on Leetcode : yes
 # // Any problem you faced while coding this : collisions logic
 class MyHashMap:
