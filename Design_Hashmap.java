@@ -2,7 +2,7 @@
 // Space Complexity : O(10000)
 // Did this code successfully run on Leetcode : yes
 // Any problem you faced while coding this : the find function's tecnique was confusing at first. I needed to understand
-how to use the prev pointer
+//how to use the prev pointer
 
 
 // Your code here along with comments explaining your approach
