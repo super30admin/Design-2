@@ -4,7 +4,7 @@
 // Any problem you faced while coding this : no
 
 
-// Your code here along with comments explaining your approach
+// Your code here along with comments explaining your approach : Implemented using two stack
 
 import java.util.Stack;
 
@@ -44,12 +44,14 @@ class MyQueue {
         return stack1.empty() && stack2.empty();
     }
 
-    MyQueue myQueue = new MyQueue();
-myQueue.push(1); // queue is: [1]
-myQueue.push(2); // queue is: [1, 2] (leftmost is front of the queue)
-myQueue.peek(); // return 1
-myQueue.pop(); // return 1, queue is [2]
-myQueue.empty(); // return false
+    public static void main(String[] args){
+        MyQueue myQueue = new MyQueue();
+        myQueue.push(1); // queue is: [1]
+        myQueue.push(2); // queue is: [1, 2] (leftmost is front of the queue)
+        myQueue.peek(); // return 1
+        myQueue.pop(); // return 1, queue is [2]
+        myQueue.empty(); // return false
+    }
 }
 
 /**
