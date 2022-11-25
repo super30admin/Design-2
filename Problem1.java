@@ -1,5 +1,5 @@
-// Time Complexity :O(n)
-// Space Complexity :O(1)
+// Time Complexity :O(1)
+// Space Complexity :O(n)
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : Learnt the queue data structure
 
@@ -7,8 +7,8 @@
 // Your code here along with comments explaining your approach
 
 class MyQueue {
-    Stack<Integer> stack1;
-    Stack<Integer> stack2;
+    private Stack<Integer> stack1;
+    private Stack<Integer> stack2;
 
     public MyQueue() {
         stack1 = new Stack<>();
