@@ -66,4 +66,5 @@ func main() {
 	fmt.Println(obj.Peek())
 	fmt.Println(obj.Pop())
 	obj.Push(4)
+	obj.Push(4)
 }
