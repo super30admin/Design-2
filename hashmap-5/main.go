@@ -75,5 +75,7 @@ func (this *MyHashMap) Remove(key int) {
 }
 
 func main() {
+	obj := Constructor()
+	obj.Put(1, 3)
 
 }
