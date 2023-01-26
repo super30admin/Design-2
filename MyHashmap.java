@@ -23,9 +23,11 @@ import java.util.LinkedList;
 class MyHashMap {
     LinkedList<Pair> map[];
     public MyHashMap() {
-        map = new LinkedList[769];
+        map = new LinkedList[10000];
     }
     
+    // TC: O(1) since the map size is huge (given max size is 10^6 in question), in each index, at most 100 elements would
+    // be inserted. So, O(100) would be the traversal TC which can be also said as O(1).
     public void put(int key, int value) {
         int hash = _hash(key);
         LinkedList<Pair> keySet = map[hash];
@@ -44,6 +46,8 @@ class MyHashMap {
         }
     }
     
+    // TC: O(1) since the map size is huge (given max size is 10^6 in question), in each index, at most 100 elements would
+    // be inserted. So, O(100) would be the traversal TC which can be also said as O(1).
     public int get(int key) {
         int hash = _hash(key);
         LinkedList<Pair> keySet = map[hash];
@@ -58,6 +62,8 @@ class MyHashMap {
         }
     }
     
+    // TC: O(1) since the map size is huge (given max size is 10^6 in question), in each index, at most 100 elements would
+    // be inserted. So, O(100) would be the traversal TC which can be also said as O(1).
     public void remove(int key) {
         int hash = _hash(key);
         LinkedList<Pair> keySet = map[hash];
