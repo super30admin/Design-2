@@ -1,3 +1,11 @@
+// Leverage the same technique used to create the HashSet with the addition of storing integer values and initializing the arrays with -1
+// Time Complexity : O(n)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+
+
 public class MyHashMap2 {
 		
     int buckets;
