@@ -1,3 +1,5 @@
+// Simple implementation using an array of size corresponding to input and using the input key as index of the array.
+// At each index, simply insert the value provided.
 // Time Complexity : O(1)
 // Space Complexity : O(1)
 // Did this code successfully run on Leetcode : Yes
