@@ -1,3 +1,8 @@
+# Implementing Queue using two stacks
+# Time Complexity: O(1) for average case and O(n) for worst case
+# Space Complexity: O(n)
+
+
 class ListNode: 
     def __init__(self, key=None, val=None, next=None):
         self.key = key
