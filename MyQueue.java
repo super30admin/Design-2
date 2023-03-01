@@ -1,3 +1,12 @@
+// Add elements to the primary stack while pushing
+// For pop and peek functions, pop elements from primary stack one-by-one into the secondary stack. At the end, pop or peek in secondary stack.
+// Time Complexity : O(n)
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+
+// Your code here along with comments explaining your approach
 
 
 class MyQueue {
