@@ -1,132 +1,124 @@
 // Time Complexity: O(1)
-// Space Complexity: O(n)
+// Space Complexity: O(1)
 // Did this code successfully run on Leetcode : Yes
-// Any problem you faced while coding this : Yes, It took me a long time to implement,
-// although I understood the push and pop concept.
+// Any problem you faced while coding this : No
 
 
 // Your code here along with comments explaining your approach
-class MyQueue {
-    private Stack<Integer> stack1; //insertion
-    private Stack<Integer> stack2; //deletion
+class MyHashMap {
 
-    /** Initialize your data structure here. */
-    public MyQueue() {
-        stack1 = new Stack<>();
-        stack2 = new Stack<>();
-        
-        
-    }
+    //This is class node.
+        class Node {
+            int key;
+            int val;
+            Node next;
     
-    /** Push element x to the back of queue. */
-    public void push(int x) { //Pushes element x to the back of the queue.
-        stack1.push(x);
-        
-    }
-    
-    public void pushToPop(){
-        while(!stack1.isEmpty()){
-            stack2.push(stack1.pop());
-        }
-    }
-    
-    /** Removes the element from in front of queue and returns that element. */
-    public int pop() { //Removes the element from the front of the queue and returns it.
-        if(stack2.isEmpty()){
-            pushToPop();
-        }
-        return  stack2.pop();
-    }
-    
-    /** Get the front element. */
-    public int peek() { //returns the element at the front of the queue.
-        if(stack2.isEmpty()){
-            pushToPop();
-        }
-        return stack2.peek();
-        
-    }
-    
-    /** Returns whether the queue is empty. */
-    public boolean empty() { //Returns true if the queue is empty, false otherwise.
-        return stack1.isEmpty() && stack2.isEmpty();
-        
-    }
-}
-
-/**
- * Your MyQueue object will be instantiated and called as such:
- * MyQueue obj = new MyQueue();
- * obj.push(x);
- * int param_2 = obj.pop();
- * int param_3 = obj.peek();
- * boolean param_4 = obj.empty();
- */
-
-
- // Time Complexity: O(1)
-// Space Complexity: O(n)
-// Did this code successfully run on Leetcode : No
-// Any problem you faced while coding this : Yes, I couldn't figure out why I kept getting index out of bound error.
-
-class MyHashSet {
-    boolean [][] storage;
-        int buckets;
-        int bucketElements;
-
-    /** Initialize your data structure here. */
-    public MyHashSet() {
-        buckets = 1000;
-        bucketElements = 1000;
-        storage = new boolean[buckets][];
-        
-    }
-    
-    private int bucket(int key){
-        return key % buckets;
-    }
-    
-    private int bucketElements(int key){
-        return key / bucketElements;
-    }
-    
-    public void add(int key) {
-        int bucket = bucket(key);
-        int bucketElements = bucketElements(key);
-        if(storage[bucket] == null){
-            if(bucket == 0){
-                storage[bucket] = new boolean[bucketElements + 1];
+            public Node(int key, int val){
+                this.key = key;
+                this.val = val;
             }
-            else
+        }
+    
+        //This is for the primary array.
+        Node[] storage;
+    
+        private int hash(int key){
+            return key%10000;
+        }
+    
+        public MyHashMap() {
+            this.storage = new Node[10000];
+        }
+        
+        private Node find(Node node, int key){
+            Node previous = null;
+            Node current = node;
+            while(current != null && current.key != key){
+                previous = current;
+                current = current.next;
+            }
+            return previous;
+        }
+    
+        public void put(int key, int value) {
+            int hash = hash(key);
+            if(storage[hash] == null)
             {
-                storage[bucket] = new boolean[bucketElements];
+                storage[hash] = new Node(-1, -1);
+            }
+            Node previous = find(storage[hash], key);
+            if(previous.next == null){
+                previous.next = new Node(key, value);
+            }
+            else{
+                previous.next.val = value;
             }
         }
-        storage[bucket][bucketElements] = true;
+        
+        public int get(int key) {
+            int hash = hash(key);
+            if(storage[hash] == null){
+                return -1;
+            }
+            Node previous = find(storage[hash], key);
+            if(previous.next == null){
+                return -1;
+            }
+            return previous.next.val;
+        }
+        
+        public void remove(int key) {
+            int hash = hash(key);
+            if(storage[hash] == null){
+                return;
+            }
+            Node previous = find(storage[hash], key);
+            if(previous.next == null){
+                return;
+            }
+            previous.next = previous.next.next;
+        }
     }
     
-    public void remove(int key) {
-        int bucket = bucket(key);
-        int bucketElements = bucketElements(key);
-        if(storage[bucket] == null) return;
-        storage[bucket][bucketElements] = false;
-        
+// Time Complexity: O(n)
+// Space Complexity: O(2n)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : Yes, it was an easy question but I got confused at some point before I understood it.
+
+class MyQueue {
+    Stack<Integer> in;
+    Stack<Integer> out;
+    
+
+    public MyQueue() {
+        this.in = new Stack<>();
+        this.out = new Stack<>();
     }
     
-    /** Returns true if this set contains the specified element */
-    public boolean contains(int key) {
-        int bucket = bucket(key);
-        int bucketElements = bucketElements(key);
-        if(storage[bucket] == null) return false;
-        return storage[bucket][bucketElements];    
-        
+    public void push(int x) {
+        in.push(x);
+    }
+    
+    public int pop() {
+        if(out.isEmpty()){
+            while(!in.isEmpty()){
+                out.push(in.pop());
+            }
+        }
+        return out.pop();
+    }
+    
+    public int peek() {
+        if(out.isEmpty()){
+            while(!in.isEmpty()){
+                out.push(in.pop());
+            }
+        }
+        return out.peek();
+    }
+    
+    public boolean empty() {
+        return in.isEmpty() && out.isEmpty();
     }
 }
 
-/**
- * Your MyHashSet object will be instantiated and called as such:
- * MyHashSet obj = new MyHashSet();
- * obj.add(key);
- * obj.remove(key);
- * boolean param_3 = obj.contains(key);
- */
