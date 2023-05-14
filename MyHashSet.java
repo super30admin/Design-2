@@ -1,8 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public 
-class MyHashSet {
+public class MyHashSet {
   private Bucket[] bucketArray;
   private int keyRange;
 
