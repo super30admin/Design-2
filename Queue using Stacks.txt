@@ -1,0 +1,60 @@
+//232. Implement Queue using Stacks
+// Time Complexity :
+// Space Complexity :O(n)
+// Did this code successfully run on Leetcode :Yes
+// Any problem you faced while coding this :No
+
+
+// Your code here along with comments explaining your approach
+//declared 2 stacks in which I m oushing old values to stack2 and then new value to stack1
+//after that poping the values from stack2 to stack1 so that older values will be at top 
+
+class MyQueue {
+
+
+Stack<Integer>st1;
+Stack<Integer>st2;
+
+    public MyQueue() {
+        st1=new Stack<Integer>();
+        st2=new Stack<Integer>();
+    }
+    
+    public void push(int x) {
+        while(st1.size()!=0){		// Time Complexity :O(n)
+            st2.push(st1.pop());
+        }
+    st1.push(x);			
+
+        while(st2.size()!=0){
+            st1.push(st2.pop());
+        }
+    }
+    
+    public int pop() {		// Time Complexity :O(1)
+        //if(st1.size()!=0){
+            return st1.pop();
+        //}
+        
+    }
+    
+    public int peek() { // Time Complexity :O(1)
+        return st1.peek();
+    }
+    
+    public boolean empty() {  // Time Complexity :O(1)
+        if(st1.size()==0){
+            return true;
+        }
+        return false;
+    }
+}
+
+/**
+ * Your MyQueue object will be instantiated and called as such:
+ * MyQueue obj = new MyQueue();
+ * obj.push(x);
+ * int param_2 = obj.pop();
+ * int param_3 = obj.peek();
+ * boolean param_4 = obj.empty();
+ */
