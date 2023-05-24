@@ -1,67 +1,71 @@
 import java.util.Stack;
 // Time Complexity :
 // push(): O(1) as we're pushing to the top of the stack
-//pop(): O(1) as we're popping from the top of the stack
+//pop(): O(1) amortized as we need to rebuild if the second stack becomes empty or a series of pop() calls happen and that will take O(n)
 //peek(): O(1) as we're reading from the top of the stack
-//empty(): O(1) again reading the top of the stack
+//empty(): O(1) as we're checking if the stack is empty
 // Space Complexity : O(n): where n is total number of inputs possible as we're using an auxiliary array
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this :
 class MyQueue
 {
-
-    //this is created with an initial size of 10, which should suffice for our input range
     private Stack<Integer> pushStack;
     private Stack<Integer> popStack;
-    private int[] previousElementMap;
+    private int frontValue;
 
     public MyQueue()
     {
         pushStack = new Stack<>();
-        popStack = new Stack<>();  //we really only need one element in this stack
-        previousElementMap = new int[10]; // for range 1 to 9; will be initialized with 0s
+        popStack = new Stack<>();
+        frontValue = -1;
 
     }
 
     public void push(int x)
     {
-        //this will only be empty
-        if(popStack.empty())
+        if(popStack.empty() && pushStack.empty())
         {
-            //push on both the stacks
-            pushStack.push(x);
-            popStack.push(x);
-            previousElementMap[x] = -1; // this is the only element in the queue and has no previous
+            frontValue = x;
         }
-        else
-        {
-            int currentLastValue = pushStack.peek();
-            previousElementMap[currentLastValue] = x;
-            previousElementMap[x] = -1;
-            pushStack.push(x);
-        }
+        pushStack.push(x);
     }
 
     public int pop()
     {
-        int firstElement = popStack.pop();
-        //push the next element from the queue onto the
-        if(previousElementMap[firstElement] != -1)
+        if(popStack.empty())
         {
-            popStack.push(previousElementMap[firstElement]);
+            //if the popStack becomes empty rebuild from pushStack
+            //pop from the pushStack and push to the popStack
+            while(!pushStack.empty())
+            {
+                popStack.push(pushStack.pop());
+            }
         }
 
-        return firstElement;
+        //pop
+        int poppedValue = ! popStack.empty() ? popStack.pop() : -1;
+        //rebuild again if empty
+        if(popStack.empty())
+        {
+            while(!pushStack.empty())
+            {
+                popStack.push(pushStack.pop());
+            }
+        }
+
+        frontValue = ! popStack.empty() ? popStack.peek() : -1;
+
+        return poppedValue;
     }
 
     public int peek()
     {
-        return popStack.peek();
+        return frontValue;
     }
 
     public boolean empty()
     {
-        return popStack.empty();
+        return (pushStack.empty() && popStack.empty());
     }
 
     public static void main(String[] args)

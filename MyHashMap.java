@@ -1,3 +1,7 @@
+// Time Complexity : O(1) for all methods as we're fetching an array element by index for all operations.
+// Space Complexity : O(n) where n is the size of range of the input
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this :
 class MyHashMap
 {
     private int buckets;
