@@ -5,61 +5,37 @@
 
 // Your code here along with comments explaining your approach
 
-/* 
-Base DS :
-(1) arrar[100] since only 100 calls will be made, max size can go to 100
-(2) Singly linked list. selecting this
-*/
+import java.util.*;
 class MyQueue {
 
-    class Node {
-        int val;
-        Node next;
-
-        public Node(int data) {
-            val = data;
-        }
-    }
-
-    private Node head; // pop here 
-    private Node tail; // push here
-
-    int size;
+    Stack<Integer> in;
+    Stack<Integer> out;
 
     public MyQueue() {
-        size = 0;
+        in = new Stack<Integer> ();
+        out = new Stack<Integer> ();        
     }
     
     public void push(int x) {
-       if (tail == null ) {
-           tail = new Node(x);
-           head = tail;
-        }
-       else {
-           tail.next = new Node(x);
-           tail = tail.next;
-       }
-       size++;
+        in.push(x);
     }
     
     public int pop() {
-        int ret = head.val;
-        head = head.next;
-        size--;
-        
-        // if head and tail were at same node, then head move to null then move tail as well
-        if (head == null) tail = null; 
-        
-        return ret;
-
+        peek();
+        return out.pop();
     }
     
     public int peek() {
-        return head.val;
+        if (out.isEmpty()) {
+            while(!in.isEmpty()) {
+                out.push(in.pop());
+            }
+        }
+        return out.peek();
     }
     
     public boolean empty() {
-        return size==0;
+        return in.isEmpty() && out.isEmpty();
     }
 }
 
