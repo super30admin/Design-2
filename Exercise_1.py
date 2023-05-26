@@ -1,5 +1,12 @@
+# Time complexity: Amortized time complexity O(1) and Worst case O(n) for push and pop.
+# Space complexity: O(1)
+# Does it work on Leetcode: Yes
+# Did you face any problems while doing this: No
 
 
+# We use a push stack and a pop stack. 
+# We only pop from the pop stack and push to the push stack
+# If pop stack is empty, we move all elements from push stack into the pop stack for all future pops (until empty again)
 
 class MyQueue:
 

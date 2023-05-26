@@ -1,3 +1,11 @@
+# Time complexity: O(1) for all operations
+# Space complexity: O(1) if we are not considering the actual hashmap itself, otherwise O(n).
+# Does it work on Leetcode: Yes
+# Did you face any problems while doing this: No
+
+# Here we use a linear chaining implementation to solve this problem.
+# The linked list has a mazimum size of 100 given the constraints of this problem.
+# We also use a dummy node for easier operations on the linked list.
 
 class Node:
     def __init__(self, key, val):
