@@ -8,7 +8,7 @@ public class MyHashSet {
 
   /** Initialize your data structure here. */
   public MyHashSet() {
-    this.keyRange = 769;
+    this.keyRange = 769; // prime number
     this.bucketArray = new Bucket[this.keyRange];
     for (int i = 0; i < this.keyRange; ++i)
       this.bucketArray[i] = new Bucket();
