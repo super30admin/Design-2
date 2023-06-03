@@ -1,0 +1,56 @@
+class MyQueue {
+    Stack <Integer> in;
+    Stack <Integer> out;
+    public MyQueue() {
+        this.in = new Stack<>();
+        this.out = new Stack<>();
+    }
+    
+    public void push(int x) {
+        //just push the element in "in Stack"
+        in.push(x);
+        
+    }
+    
+    public int pop() {
+        //check if out is empty
+        if(out.isEmpty()){
+            //if empty push all the elements from in stack to out
+            while(!in.isEmpty()){
+            //pop all the "in" elements untill in stack is empty
+            out.push(in.pop());
+            }
+        }
+        //once in stack is empty pop the top element from the out stack.
+        //First In First Out
+        return out.pop();
+    }
+    
+    public int peek() {
+        //we will check the peek element in out stack
+        if(out.isEmpty()){
+            while(!in.isEmpty()){
+                out.push(in.pop());
+            }
+        }
+        //just return peek 
+        //here peek() is the stack in-built function not the public int peek
+        return out.peek();
+        
+    }
+    
+    public boolean empty() {
+        //when both in and out stack are empty the queue is empty
+        return in.isEmpty() && out.isEmpty();
+        
+    }
+}
+
+/**
+ * Your MyQueue object will be instantiated and called as such:
+ * MyQueue obj = new MyQueue();
+ * obj.push(x);
+ * int param_2 = obj.pop();
+ * int param_3 = obj.peek();
+ * boolean param_4 = obj.empty();
+ */
