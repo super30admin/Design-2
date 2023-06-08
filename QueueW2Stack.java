@@ -7,7 +7,7 @@
  * Hence we try to empty the stack1 at the very first (by adding the popped elements one by one to stack2 - 
  * then push the new element to stack1 -- and then again push the elements back from stack2 to stack1 
  * newElement=3 - stack1=9 stack2=empty; -- stack2 = 9;stack1 = 3 -- stack1=3,9; stack2=empty ;
- * Basically swapping the elements using 2 stacks
+ * Basically swapping the elements using 2 stacks --  also sometimes referred to reversed stack technique (check once!)
  */
 
 
