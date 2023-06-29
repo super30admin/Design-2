@@ -1,49 +1,41 @@
-/*
-Runtime: 0 ms, faster than 100.00% of Java online submissions for Implement Queue using Stacks.
-Memory Usage: 37 MB, less than 56.64% of Java online submissions for Implement Queue using Stacks.
-*/
+// TC - O(1)
+// SC - O(n)
 
 import java.util.Stack;
 
 class MyQueue {
-    
+
     Stack<Integer> st1;
     Stack<Integer> st2;
     int peek;
-
-    /** Initialize your data structure here. */
     public MyQueue() {
-        st1 = new Stack<>();
+        st1 = new Stack<>(); 
         st2 = new Stack<>();
     }
     
-    /** Push element x to the back of queue. */
     public void push(int x) {
         if(st1.isEmpty())
             peek = x;
-        while(!st1.isEmpty()) {
-            st2.push(st1.pop());
-        }
-        st2.push(x);
-        while(!st2.isEmpty())
-            st1.push(st2.pop());
+        st1.push(x);
+        // st2 = new Stack<>();
     }
     
-    /** Removes the element from in front of queue and returns that element. */
     public int pop() {
-        int pop = st1.pop();
-        if(!st1.isEmpty())
-            peek = st1.peek();
-        return pop;
+        if(st2.isEmpty()){
+            while(!st1.isEmpty()) {
+                st2.push(st1.pop());
+            }
+        }
+        return st2.pop();
     }
     
-    /** Get the front element. */
     public int peek() {
+        if(!st2.isEmpty())
+            return st2.peek();
         return peek;
     }
     
-    /** Returns whether the queue is empty. */
     public boolean empty() {
-        return st1.isEmpty();
+        return st2.isEmpty() && st1.isEmpty();
     }
 }
