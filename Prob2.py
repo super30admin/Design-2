@@ -20,7 +20,7 @@ class Node:
 class MyHashMap: 
    
     def __init__(self):
-        self.buckets=[None]*10000
+        self.buckets=[None for _ in range(10000)]
 
     def hash(self,key):
         return key%10000
