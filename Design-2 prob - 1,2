@@ -1,0 +1,56 @@
+1st problem : 706. Design HashMap
+
+class MyHashMap:
+
+    def __init__(self):
+        self.hmp = {}
+    def put(self, key: int, value: int) -> None:
+        if key in self.hmp:
+            self.hmp[key] = value
+        else:
+            self.hmp[key] = value
+
+    def get(self, key: int) -> int:
+        if key not in self.hmp:
+            return -1
+        else:
+            return self.hmp[key]
+
+    def remove(self, key: int) -> None:
+        if key in self.hmp:
+            del self.hmp[key]
+
+
+# Your MyHashMap object will be instantiated and called as such:
+# obj = MyHashMap()
+# obj.put(key,value)
+# param_2 = obj.get(key)
+# obj.remove(key)
+
+2nd problem: 155. Min Stack
+class MinStack:
+        def __init__(self):
+                self.stk = []
+                self.min = []
+        
+        def push(self, val: int) -> None:
+                self.stk += [val]
+                if self.min:
+                        self.min += [min(val, self.min[-1])]
+                else:
+                        self.min += [val]
+        def pop(self) -> None:
+                self.stk = self.stk[:-1]
+                self.min = self.min[:-1]
+        def top(self) -> int:
+                return self.stk[-1]
+        def getMin(self) -> int:
+                return self.min[-1]
+
+
+# Your MinStack object will be instantiated and called as such:
+# obj = MinStack()
+# obj.push(val)
+# obj.pop()
+# param_3 = obj.top()
+# param_4 = obj.getMin()
