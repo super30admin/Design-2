@@ -19,6 +19,7 @@ class MyQueue {
 
     """
     push elements into stack1
+    TC O(1)
     """
 
     public void push(int x) {
@@ -27,6 +28,7 @@ class MyQueue {
 
     """
     whenever an element is about to be popped, pop the elements from stack1 and push it to stack2 , get the peek from stack2, to get queue effetct
+    TC O(1)
     """
     public int peek() {
         if(s2.isEmpty())
@@ -39,7 +41,9 @@ class MyQueue {
         return s2.peek();
     }
     """
-    get the peek element from s2, and pop it about"""
+    get the peek element from s2, and pop it about
+    TC:O(1)
+    """
 
     public int pop() {
         peek();
@@ -48,6 +52,7 @@ class MyQueue {
 
     """
     check whether s1 and s2 are present
+    TC:O(1)
     """
 
     public boolean empty() {
