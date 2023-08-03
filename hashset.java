@@ -1,3 +1,7 @@
+"""
+TC:O(1)
+"""
+
 class MyHashMap {
 
     class Node{
