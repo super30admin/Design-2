@@ -1,3 +1,7 @@
+// Queue is FIFO structure with in and out 
+// Time Complxity: O(1)
+// Space Complexity: O(1)
+
 class MyQueue {
 
     Stack<Integer> in;
