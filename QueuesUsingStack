@@ -1,0 +1,38 @@
+#Time Complexity : O(1) for push, oeek and empty operation. O(N) for pop operations in worst case, where N is the number elements pushed in the stack.
+#Space Complexity : O(N) where N is the number of elements added in the stack
+#Did this code successfully run on Leetcode : Yes
+#Any problem you faced while coding this : No
+
+#Approach: We use 2 stack here (in and out stacks). We push in the in stack and when we have to pop a element, we pop it from the out stack.
+#If the out stack is empty, we pop the elements from the in stack and then push in the out stack.
+
+class MyQueue:
+    def __init__(self):
+        self.ins = []
+        self.out = []
+
+    def push(self, x: int) -> None:
+        self.ins.append(x)
+
+    def pop(self) -> int:
+        self.peek()
+        return self.out.pop()
+        
+
+    def peek(self) -> int:
+        if len(self.out) == 0:
+            while len(self.ins) != 0:
+                self.out.append(self.ins.pop())
+        return self.out[-1]
+        
+
+    def empty(self) -> bool:
+        return len(self.out) == 0 and len(self.ins) == 0
+        
+
+# Your MyQueue object will be instantiated and called as such:
+# obj = MyQueue()
+# obj.push(x)
+# param_2 = obj.pop()
+# param_3 = obj.peek()
+# param_4 = obj.empty()
