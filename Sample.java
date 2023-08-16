@@ -1,6 +1,6 @@
 /***
  Problem 1: implement-queue-using-stacks
- Time Complexity : O(n)
+ Time Complexity : O(n) for push and O(1) for pop, peek and empty.
  Space Complexity : O(n)
  Did this code successfully run on Leetcode : Yes
  Any problem you faced while coding this : No
@@ -16,28 +16,24 @@ class MyQueue {
     }
 
     public void push(int x) {
-        while(!stk1.isEmpty())
-        {
+        while (!stk1.isEmpty()) {
             stk2.push(stk1.pop());
         }
         stk1.push(x);
-        while(!stk2.isEmpty())
-        {
+        while (!stk2.isEmpty()) {
             stk1.push(stk2.pop());
         }
     }
 
     public int pop() {
-        if(!stk1.isEmpty())
-        {
+        if (!stk1.isEmpty()) {
             return stk1.pop();
         }
         return -1;
     }
 
     public int peek() {
-        if(!stk1.isEmpty())
-        {
+        if (!stk1.isEmpty()) {
             return stk1.peek();
         }
         return -1;
@@ -57,28 +53,23 @@ class MyQueue {
  Here, we are following the oversized array way to implement the hashmmap.
  ***/
 
-class MyHashMap
-{
+class MyHashMap {
     int[] map;
 
-    public MyHashMap()
-    {
+    public MyHashMap() {
         map = new int[1000001];
-        Arrays.fill(map,-1);
+        Arrays.fill(map, -1);
     }
 
-    public int get(int key)
-    {
+    public int get(int key) {
         return map[key];
     }
 
-    public void put(int key, int value)
-    {
+    public void put(int key, int value) {
         map[key] = value;
     }
 
-    public void remove(int key)
-    {
+    public void remove(int key) {
         map[key] = -1;
     }
 }
