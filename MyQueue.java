@@ -3,12 +3,13 @@ import java.util.Stack;
 class MyQueue {
     //Implementation of Queue using two stacks. We'll use stack's standard operations to imitate queue.
 //Overall Time complexity will be O(1) except in the worst case scenario where pop and peek are called after each element i.e O(N).
+    //Space complexity of this code will be O(2N) that can be rounded of to O(N).
     Stack<Integer> in;  //Stack to store values before pop fxn is called
     Stack<Integer> out; //Stack to store values once pop fxn is called and will pop the value from out stack. As queue is based on FIFO(First In First Out) and stack is LIFO based so we'll move the elements to the out stack to implement queue using stack operation.
 
     public MyQueue() {
-        in =new Stack<>(); //declaration of in stack
-        out=new Stack<>(); //Declaration of out stack
+        in =new Stack<>(); //declaration of in stack. SC for this is O(N)
+        out=new Stack<>(); //Declaration of out stack. SC for this is O(N)
     }
 
     public void push(int x) {
