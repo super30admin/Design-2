@@ -1,4 +1,4 @@
-//Time and space complexity is O(n) n = no.of key,values
+//Time O(n) and space complexity is O(n) n = no.of nodes
 class MyHashMap {
 
     class Node{
