@@ -1,5 +1,7 @@
 import java.util.Stack;
 
+//Time Complexity O(1) and Space Complexity O(n) n= no.of elements stored
+
 class MyQueue {
 
     Stack<Integer> stk1;
