@@ -1,0 +1,59 @@
+#time complexity:O(1)
+#space complexity:O(1)
+#Did this code successfully run on Leetcode : Runtime Error due to None type, Indexerror Index out of range in remove method showing in leetcode
+#Any problem you faced while coding this : In remove method, i got errors multiple times like Type error Nonetype not subscriptable, int type error not subscriptable
+class MyHashMap:
+
+    def __init__(self):                                 #initialising hash constructor
+        self.size = 1000
+        self.data_map = [None] * self.size
+
+    def __hash(self, key):                              #defined a hash function
+        index = key % self.size
+        return index
+
+    def put(self, key: int, value: int) -> None:        #function to set [key,value] pair
+        index = self.__hash(key)                        #calling hash function to get unique index, if hashtable is empty
+        if self.data_map[index] == None:                #then a blank list is set at that index
+            self.data_map[index] = []
+            self.data_map[index].append([key, value])     #[key,value] pair is appended
+        else:
+            i = 0
+            while i < len((self.data_map[index])):       #traversing through hashtable to check if a keys exists and update the value
+                if self.data_map[index][i][0] == key:
+                    self.data_map[index][i][1] = value
+                    break
+                i += 1
+            self.data_map[index].append([key,value])      #matching key not found, so append a key,value pair
+
+    def get(self, key: int) -> int:
+        index = self.__hash(key)                         #calling has function to get unique index
+        if self.data_map[index] is not None:             #runs only if hashtable is not empty else returns -1
+            for i in range(len(self.data_map[index])):   #runs loop till length of the list present at that index, if key is present returns the value
+                if self.data_map[index][i][0] == key:
+                    return self.data_map[index][i][1]
+        return -1
+
+    def remove(self, key: int) -> None:
+        index = self.__hash(key)                        #calling has function to get unique index
+        if self.data_map[index] is not None:            #runs only if hashtable is not empty else returns -1
+            for i in range(len(self.data_map[index])):  #runs loop till length of the list present at that index
+                if self.data_map[index][i][0] == key:   #if that key is present, that [key,value] pair(list) is popped
+                    self.data_map.pop([index][i])
+        else:
+            return -1
+
+
+# Your MyHashMap object will be instantiated and called as such:
+obj = MyHashMap()
+obj.put(3,11)
+obj.put(4,13)
+obj.put(15,6)
+obj.put(6,15)
+obj.put(8,8)
+obj.put(11,0)
+param = obj.get(8)
+print(param)
+obj.remove(8)
+param1 = obj.get(8)
+print(param1)
