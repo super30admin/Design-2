@@ -1,0 +1,52 @@
+// Time Complexity : 
+/* push --> O(1)
+pop --> O(n)
+peek  --> O(n)
+*/
+// Space Complexity :
+// Did this code successfully run on Leetcode :
+// Any problem you faced while coding this :
+
+
+// Your code here along with comments explaining your approach : creating a temp stack 
+
+
+
+class MyQueue {
+
+    Stack<Integer> stack1,stack2;
+    public MyQueue() {
+        stack1 = new Stack();
+        stack2 = new Stack();
+    }
+    
+    public void push(int x) {
+        stack1.push(x);
+    }
+    
+    public int pop() {
+        while(stack1.size() >1) {
+            stack2.push(stack1.pop());
+        }
+        int data = stack1.pop();
+        while(!stack2.isEmpty()) {
+            stack1.push(stack2.pop());
+        }
+        return data;
+    }
+    
+    public int peek() {
+        while(stack1.size() >1) {
+            stack2.push(stack1.pop());
+        }
+        int data = stack1.peek();
+        while(!stack2.isEmpty()) {
+            stack1.push(stack2.pop());
+        }
+        return data;
+    }
+    
+    public boolean empty() {
+       return(stack1.size() == 0); 
+    }
+}
