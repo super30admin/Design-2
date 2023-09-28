@@ -80,11 +80,8 @@ public class QueueWith2Stacks {
         return stack2.isEmpty() ? -1 : stack2.peek();
     }
 
-    boolean empty() {
-        if (stack2.isEmpty()) {
-            return stack1.isEmpty();
-        }
-        return false;
+    public boolean empty() {
+        return stack1.isEmpty() && stack2.isEmpty();
     }
 
 }

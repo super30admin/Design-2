@@ -1,5 +1,3 @@
-// Time Complexity :
-// Space Complexity :
 // Did this code successfully run on Leetcode : yes
 /**
  * Any problem you faced while coding this : 
@@ -47,6 +45,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HashMap {
+
+    /**
+     * HashMap with Linear Chaining
+     */
 
     private static final int SIZE = 1031;
     private List<Bucket> buckets;
