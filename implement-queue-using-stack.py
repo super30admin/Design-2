@@ -1,3 +1,9 @@
+# Time Complexity - O(1) for all the defined functions in the code
+# Space Complexity - O(n) for storing the data in 2 stacks
+
+# Approach - 2 Stacks are used and when push happens, the input is pushed to initial stack
+# and pop or seek happens, all the elements in 1st stack are pushed to 2nd stack, so that 
+# FIFO approach is followed
 
 class MyQueue:
 
