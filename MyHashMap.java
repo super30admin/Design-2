@@ -14,7 +14,7 @@ public class MyHashMap {
 
     private Pair[][]  storage;
     private int size;
-    public MyHashMap1(){
+    public MyHashMap(){
         size = 10000;
         storage = new Pair[size][];
     }

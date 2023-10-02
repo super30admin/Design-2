@@ -16,7 +16,7 @@ public class MyHashMapUsingSingleLinkedList {
         static final double mult = 0.618033988749895;
         SingleLinkedListNode[] dataArray;
 
-        public MyHashMap() {
+        public MyHashMapUsingSingleLinkedList() {
             this.dataArray = new SingleLinkedListNode[size];
         }
         //to reduce the collusion applied multiplicative hashing
