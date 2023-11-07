@@ -1,3 +1,9 @@
+// Time Complexity : Enqueue - O(1)
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : I am not able to 
+//understand time complexity of pop operation here
+
 //Implementing Queue using two stacks with amortized cost of each operation O(1)
 class MyQueue {
 
