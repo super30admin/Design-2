@@ -1,3 +1,13 @@
+# Time Complexity :
+# put: O(1)
+# get: O(1)
+# remove: O(1)
+# Space Complexity :
+# put: O(1)
+# get: O(1)
+# remove: O(1
+
+
 class MyHashMap:
 
     def __init__(self):
@@ -31,11 +41,3 @@ class MyHashMap:
         if not self.map[idx]:
             return
         self.map[idx][inner_idx] = None
-        
-
-
-# Your MyHashMap object will be instantiated and called as such:
-# obj = MyHashMap()
-# obj.put(key,value)
-# param_2 = obj.get(key)
-# obj.remove(key)
