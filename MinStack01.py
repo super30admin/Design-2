@@ -2,7 +2,7 @@
 // Time Complexity : Push O(1), 
 // Space Complexity : Worst O(n), Best O(1)
 // Did this code successfully run on Leetcode : Yes
-// Any problem you faced while coding this : No, Because precourse also had similar
+// Any problem you faced while coding this : No, Had to consider empty array to pass all the cases on leetcode.
 
 
 // Your code here along with comments explaining your approach
@@ -12,30 +12,24 @@ class MinStack:
 
     def __init__(self):
         self.items = []
-
-    def isEmpty(self):
-        return len(self.items)==0
+        self.minitems = []
         
     def push(self, val: int) -> None:
-        return self.items.append(val)
+        self.items.append(val)
+        if self.minitems:
+            self.minitems.append(min(val, self.minitems[-1]))
+        else:
+            self.minitems.append(val)
         
     def pop(self) -> None:
-        if not self.isEmpty():
-            return self.items.pop()
-        else:
-            print("Can't remove from empty stack.")
+        self.items.pop()
+        self.minitems.pop()
         
     def top(self) -> int:
-        if not self.isEmpty():
-            return self.items[-1]
-        else:
-            print("Empty stack!")
+        return self.items[-1]
        
     def getMin(self) -> int:
-        if not self.isEmpty():
-            return min(self.items)
-        else:
-            print("Empty stack to find minimum value.")
+        return self.minitems[-1]
         
 
 
