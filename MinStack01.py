@@ -1,14 +1,11 @@
 '''
-// Time Complexity : All operations O(1) except when the outstack is empty and instack is not during pop or peek operation 
-// Space Complexity : Worst O(n)
+// Time Complexity : Push O(1), 
+// Space Complexity : Worst O(n), Best O(1)
 // Did this code successfully run on Leetcode : Yes
-// Any problem you faced while coding this :
+// Any problem you faced while coding this : No, Had to consider empty array to pass all the cases on
 
 
 // Your code here along with comments explaining your approach
-I have 2 stacks, one is instack and other one is outstack. Instack is for input values during pushes. During peek or pop when 
-outStack is empty but instack is not, values would be transferred from in to out and at the end operation would be done
-on final value of outstack which would be first value of queue.
 '''
 
 class MinStack:
