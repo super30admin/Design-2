@@ -1,0 +1,35 @@
+Problem Statement : Implement Queue using two Stacks
+Time Complexity : push: O(1)
+                  pop: O(1) amortized
+                  peek: O(1) amortized
+                  empty: O(1)
+Space Complexity : O(n), where n is the number of elements pushed into the queue.
+Did this code successfully run on Leetcode : Yes
+Any problem you faced while coding this : what is peek() and how does it work internally
+
+Your code here along with comments explaining your approach in three sentences only:
+We've used two stack in and out to create a queue
+For put operation, we push the new elements to in stack
+For pop operation, we pop out of the in stack and push in the out stack if out stack is empty and then perform pop
+on out stack to achieve FIFO, when the out stack is not empty we pop from out stack
+For peek operation, we do the same as pop operation but instead of pop we peek into the out stack to get the first
+element pushed
+For isEmpty we check if both the in and out stacks are empty
+
+Problem Statement : Implements a HashMap
+Time Complexity :   put: O(1)
+                    get: O(1)
+                    remove: O(1)
+Space Complexity : O(M) i.e - Number of nodes in the linkedList
+Did this code successfully run on Leetcode : Yes
+Any problem you faced while coding this : yes, in get function and also some other few places
+
+Your code here along with comments explaining your approach in three sentences only:
+We've used linear chaining to create a hashmap.
+For put operation, we first check if there is already a Linkedlist starting at that index if not we create a dummy
+node and put our node next to it, if not we also traverse through the list to check if there exists a key to update its
+value if not then we append a new Node at the end of the Linkedlist
+For get operation, we traverse through the list and see if we find it or else return -1
+For remove operation, instead of using doubly linked list we keep track of the prev node
+We have created a find function to find the node at the given index, it traverses through the ll by updating the prev &
+curr pointers
