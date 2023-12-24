@@ -1,3 +1,14 @@
+// Time Complexity : O(1) for push, O(n) for pop
+// Space Complexity : O(n) + O(n) which is O(n) since we used stacks to store n elements
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+
+// Your code here along with comments explaining your approach
+
+// Have two stacks, instack to store any incoming element and outstack to push all the elements into when we peek/pop so that we peek/pop the first pushed element
+
+
 class MyQueue {
     Stack <Integer> inStack;
     Stack <Integer> outStack;
