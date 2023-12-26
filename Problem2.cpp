@@ -1,14 +1,11 @@
-# Design-2
+// Time Complexity :O(1)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : YES
+// Any problem you faced while coding this : NO
 
-Explain your approach in **three sentences only** at top of your code
+// Your code here along with comments explaining your approach
 
-
-## Problem 1: (https://leetcode.com/problems/implement-queue-using-stacks/)
-
-
-## Problem 2:
-Design Hashmap (https://leetcode.com/problems/design-hashmap/)
-
+//Follwed the approach discussed in class.
 
 class MyHashMap {
 public:
@@ -32,5 +29,3 @@ public:
         mp[key] = -1; // Set the value at the key index to -1 to remove the key-value pair from the HashMap.
     }
 };
-
-
