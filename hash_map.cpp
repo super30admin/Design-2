@@ -27,34 +27,33 @@ struct Node {
     {
 
     }
-    // Default constructor
-    Node() 
-        : key(-1)
-        , val(-1)
-        , next(nullptr)
+
+    Node()
+    : key(-1)
+    , val(-1)
+    , next(nullptr)
     {
     }
 };
 
 class MyHashMap {
 private:
-    #define BUCKETS (10000U)
+    #define BUCKETS 10000U
     
-    // Hash function to calculate has value
     int hash_func(int key)
     {
         return key%BUCKETS;
     }
 
 public:
-    std::vector<Node> storage[BUCKETS];
+    std::vector<Node*> storage;
     MyHashMap() {
-        
+        storage.resize(BUCKETS, nullptr);
     }
-    //function to find the mentioned node.
     Node* find(Node* node, int key) {
         Node* curr = node;
         Node* prev = nullptr;
+        
         while(curr != nullptr && curr->key != key)
         {
             prev = curr;
@@ -64,16 +63,14 @@ public:
     }
     void put(int key, int value) {
         int idx = hash_func(key);
-        if(storage[idx].empty())
+
+        if(storage[idx] == nullptr)
         {
             // create a dummy node
             Node* dummy = new Node();
-            // use push back operation to push the dummy node. As the vector elements are nodes, I have to link 
-            // dummy node to the indexed element.
-            storage[idx].push_back(*dummy);
+            storage[idx] = dummy;
         }
-        
-        Node* prev = find(storage[idx].data(), key);
+        Node* prev = find(storage[idx], key);
         if(prev->next == nullptr)
         {
             prev->next = new Node(key, value);
@@ -87,11 +84,11 @@ public:
     
     int get(int key) {
         int idx = hash_func(key);
-        if(storage[idx].empty())
+        if(storage[idx] == nullptr)
         {
             return -1;
         }
-        Node* prev = find(storage[idx].data(), key);
+        Node* prev = find(storage[idx], key);
         if(prev->next == nullptr)
         {
             return -1;
@@ -101,17 +98,15 @@ public:
     
     void remove(int key) {
         int idx = hash_func(key);
-        if(storage[idx].empty())
+        if(storage[idx] == nullptr)
         {
             return;
         }
-        Node* prev = find(storage[idx].data(), key);
-        // if node is not present.
+        Node* prev = find(storage[idx], key);
         if(prev->next == nullptr)
         {
             return;
         }
-        // unlink the specified node and update the link
         Node* temp = prev->next;
         prev->next = prev->next->next;
         temp->next = nullptr;
