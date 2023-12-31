@@ -1,0 +1,63 @@
+#  Implement Queue using Stacks
+
+class MyQueue(object):
+
+    def __init__(self):
+        # Two stacks to simulate the queue
+        self.stack1 = []  # For enqueue
+        self.stack2 = []  # For dequeue
+
+    def push(self, x):
+        """
+        :type x: int
+        :rtype: None
+        """
+        self.stack1.append(x)
+
+    def _transfer(self):
+        """
+        Transfer elements from stack1 to stack2 when stack2 is empty.
+        """
+        if not self.stack2:
+            while self.stack1:
+                self.stack2.append(self.stack1.pop())
+
+    def pop(self):
+        """
+        :rtype: int
+        """
+        self._transfer()
+        if self.stack2:
+            return self.stack2.pop()
+        return None
+
+    def peek(self):
+        """
+        :rtype: int
+        """
+        self._transfer()
+        if self.stack2:
+            return self.stack2[-1]
+        return None
+
+    def empty(self):
+        """
+        :rtype: bool
+        """
+        return not self.stack1 and not self.stack2
+
+# Example usage:
+myQueue = MyQueue()
+myQueue.push(1)
+myQueue.push(2)
+print(myQueue.peek())   # Output: 1
+print(myQueue.pop())    # Output: 1
+print(myQueue.empty())  # Output: False
+
+
+#Time Complexity Analysis:
+
+#Push Operation (Enqueue): O(1) - Appending to a stack takes constant time.
+#Pop Operation (Dequeue): Amortized O(1) - Transferring elements from stack1 to stack2 happens infrequently, and each element is transferred at most twice.
+#Peek Operation: Amortized O(1) - Similar to the pop operation.
+#Empty Operation: O(1) - Checking if both stacks are empty takes constant time.
