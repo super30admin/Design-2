@@ -1,0 +1,50 @@
+# Design Hashmap
+
+
+#The time complexity of the provided code is as follows:
+
+#Initialization (__init__): O(1) Creating an empty dictionary is a constant time operation.
+#Put Operation (put): O(1) Assigning a value to a key in a dictionary is an average constant time operation.
+#Get Operation (get): O(1) Retrieving a value based on a key in a dictionary is an average constant time operation.
+#Remove Operation (remove): O(1) Deleting a key-value pair from a dictionary is an average constant time operation.
+
+
+class MyHashMap(object):
+
+    def __init__(self):
+        self.hash_map = {}
+        
+
+    def put(self, key, value):
+        """
+        :type key: int
+        :type value: int
+        :rtype: None
+        """
+        self.hash_map[key] = value
+        
+
+    def get(self, key):
+        """
+        :type key: int
+        :rtype: int
+        """
+        val = self.hash_map.get(key)
+        return val if val is not None else -1
+        
+
+    def remove(self, key):
+        """
+        :type key: int
+        :rtype: None
+        """
+        if key in self.hash_map:
+            del self.hash_map[key]
+        
+
+
+# Your MyHashMap object will be instantiated and called as such:
+# obj = MyHashMap()
+# obj.put(key,value)
+# param_2 = obj.get(key)
+# obj.remove(key)
