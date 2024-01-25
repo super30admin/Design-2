@@ -21,7 +21,7 @@
 // Your code here along with comments explaining your approach
 
 // Hashmap with linear chaining
-class MyHashMap {
+class Problem2 {
 
     class Node{
         int key;
