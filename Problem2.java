@@ -37,7 +37,7 @@ class Problem2 {
     private Node[] storage;
 
 
-    public MyHashMap() {
+    public Problem2() {
         // Number of buckets can be changed 
         buckets=10000;
         storage=new Node[buckets];
