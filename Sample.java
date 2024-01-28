@@ -157,3 +157,121 @@ class MyHashMap {
  * int param_2 = obj.get(key);
  * obj.remove(key);
  */
+
+// Hashmap using linear chaining
+class MyHashMap {
+
+    class Node {
+        int key;
+        int value;
+
+        Node next;
+
+        Node(int key, int value) {
+            this.key = key;
+            this.value = value;
+
+            this.next = null;
+        }
+
+        public int getKey() {
+            return this.key;
+        }
+
+        public int getValue() {
+            return this.value;
+        }
+    }
+
+    Node[] storage;
+
+    int buckets;
+
+    public MyHashMap() {
+        buckets = 10000;
+
+        storage = new Node[buckets];
+    }
+
+    private int hash(int key) {
+        return key%buckets;
+    }
+
+    private Node search(Node head, int key) {
+        Node current = head;
+        Node prev = null;
+
+        while(current != null && current.key != key) {
+            prev = current;
+            current = current.next;
+        }
+
+        return prev;
+    }
+
+    public void put(int key, int value) {
+
+        int hash = hash(key);
+        Node newNode = new Node(key, value);
+
+        if(storage[hash] == null) {
+            storage[hash] = newNode;
+        } else {
+            Node prevNode = search(storage[hash], key);
+
+            if(prevNode == null) {
+                storage[hash].value = value;
+            } else if(prevNode.next == null) {
+                prevNode.next = newNode;
+            } else {
+                prevNode.next.value = value;
+            }
+        }
+    }
+
+    public int get(int key) {
+        int hash = hash(key);
+
+        if(storage[hash] == null) {
+            return -1;
+        } else {
+            Node prevNode = search(storage[hash], key);
+
+            if(prevNode == null) {
+                return storage[hash].value;
+            } else if(prevNode.next != null) {
+                return prevNode.next.value;
+            }
+        }
+
+        return -1;
+    }
+
+    public void remove(int key) {
+        int hash = hash(key);
+
+        if(storage[hash] == null) {
+            return;
+        } else {
+            Node prevNode = search(storage[hash], key);
+
+            if(prevNode == null) {
+                storage[hash] = storage[hash].next;
+            } else if(prevNode.next != null) {
+                Node temp = prevNode.next;
+                prevNode.next = prevNode.next.next;
+                temp = null;
+            }
+
+            return;
+        }
+    }
+}
+
+/**
+ * Your MyHashMap object will be instantiated and called as such:
+ * MyHashMap obj = new MyHashMap();
+ * obj.put(key,value);
+ * int param_2 = obj.get(key);
+ * obj.remove(key);
+ */
