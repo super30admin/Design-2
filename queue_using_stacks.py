@@ -26,6 +26,4 @@ class MyQueue:
         return self.pop_stack[-1]
 
     def empty(self) -> bool:
-        if not self.main_stack and not self.pop_stack:
-            return True
-        return False
+        return self.main_stack and self.pop_stack
