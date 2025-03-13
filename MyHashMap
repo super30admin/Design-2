@@ -1,0 +1,118 @@
+// Time Complexity : O(1) on average, O(N) in the worst case due to collisions.  
+// Space Complexity : O(N) for storing key-value pairs in the array and linked lists.  
+// Did this code successfully run on Leetcode : Yes  
+// Any problem you faced while coding this : --
+
+
+
+// Approach : 
+// Used an array of linked lists for collision handling with separate chaining.  
+// put() inserts or updates a key-value pair, get() retrieves a value, and remove() deletes a key.  
+// Each operation runs in O(1) on average due to even key distribution but can be O(N) in the worst case.  
+
+
+public class MyHashMap {
+    class Node 
+    {
+        int key;
+        int value;
+        Node next;
+        public Node(int key,int value)
+        {
+            this.key = key;
+            this.value = value;
+            this.next = null;
+        }
+    }
+    Node[] node;
+    public MyHashMap() 
+    {
+        node = new Node[1000];
+    }
+    public void put(int key, int value) 
+    {
+        int i = key%1000;
+        if(node[i] == null)
+        {
+            node[i] = new Node(key,value);
+        }
+        else
+        {
+            Node dup = node[i];
+            Node prev = null;
+            boolean b = false;
+            while(dup!=null)
+            {
+                if(dup.key == key)
+                {
+                    dup.value = value;
+                    b=true;
+                    break;
+                }
+                prev = dup ;
+                dup = dup.next;
+            }
+            if(!b)
+            {
+                prev.next = new Node(key,value);
+            }
+        }    
+    }
+    
+    public int get(int key) 
+    {
+        int i = key%1000;
+        if(node[i] == null)
+        {
+            return -1;
+        }
+        else
+        {
+            Node dup = node[i];
+            while(dup!=null)
+            {
+                if(dup.key == key)
+                {
+                    return dup.value;
+                }
+                dup = dup.next;
+            }
+        }
+        return -1;
+    }
+    
+    public void remove(int key) 
+    {
+        int i = key%1000;
+        if(node[i] != null)
+        {
+            Node dup = node[i];
+            Node prev = null;
+            while(dup!=null)
+            {
+                if(dup.key == key)
+                {
+                    if(prev==null)
+                    {
+                        node[i] = dup.next;
+                    }
+                    else
+                    {
+                        prev.next = dup.next;
+                    }
+                    break;
+                }
+                prev = dup;
+                dup = dup.next;
+            }
+        }
+    }
+}
+
+/**
+ * Your MyHashMap object will be instantiated and called as such:
+ * MyHashMap obj = new MyHashMap();
+ * obj.put(key,value);
+ * int param_2 = obj.get(key);
+ * obj.remove(key);
+ */
