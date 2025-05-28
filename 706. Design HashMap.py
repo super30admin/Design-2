@@ -1,3 +1,12 @@
+# Time Complexity : O(1) as maximum would always be 100
+# Space Complexity : O(n) n => number of key value pairs inserted
+# Did this code successfully run on Leetcode : Yes
+# Any problem you faced while coding this : I didn't get why and how the helper function was used
+
+
+# Your code here along with comments explaining your approach
+
+
 class MyHashMap:
     # Node will contain the things of the hashmap so it has key values and the next pointer
     class Node:
@@ -18,7 +27,7 @@ class MyHashMap:
         prev = head
         curr = head.next
 
-        # to loop until current is there and we have not found the key
+        # to loop until current is there(i.e. elements are there in the linked list) and we have not found the key
         while curr and curr.key != key:
             prev = curr
             curr = curr.next
