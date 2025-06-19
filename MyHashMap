@@ -1,0 +1,59 @@
+class MyHashMap {
+
+    //I used Double hashing approach similar to the hashset implementation
+
+    class Node{
+        int key, value;
+        Node(int key, int value){
+            this.key = key;
+            this.value = value;
+        }
+    }
+    Node[][] hashmap;
+    
+    public MyHashMap() {
+        this.hashmap = new Node[1000][];
+    }
+    
+    public int getBucket(int key){
+        return key%1000;
+    }
+    public int getBucketIndex(int key){
+        return key/1000;
+    }
+
+    public void put(int key, int value) {
+        int i = getBucket(key);
+        if(i == 0 && hashmap[i] == null){
+            hashmap[i] = new Node[1001];
+        }
+        else if(i !=0 && hashmap[i] == null){
+            hashmap[i] = new Node[1000];
+        }
+        hashmap[i][getBucketIndex(key)] = new Node(key,value);
+    }
+    
+    public int get(int key) {
+        if(hashmap[getBucket(key)] != null){
+        Node m = hashmap[getBucket(key)][getBucketIndex(key)];
+            if(m != null){
+                return m.value;
+            }
+        }
+        return -1;
+    }
+    
+    public void remove(int key) {
+        if(hashmap[getBucket(key)] != null){
+            hashmap[getBucket(key)][getBucketIndex(key)] = null;
+        }
+    }
+}
+
+/**
+ * Your MyHashMap object will be instantiated and called as such:
+ * MyHashMap obj = new MyHashMap();
+ * obj.put(key,value);
+ * int param_2 = obj.get(key);
+ * obj.remove(key);
+ */
