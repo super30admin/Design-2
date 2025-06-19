@@ -1,0 +1,54 @@
+// Time Complexity : O(1)
+// Space Complexity : O(N)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : None
+
+
+// Your code here along with comments explaining your approach
+For pushing, my approach was to push everything to stack1, so that stack2 remains empty. Then, pop and peek would pop everything from stack1 and push it into stack 2 so that everything in the stack would be in the same 
+order as it would if it were in a queue. As a result, we can just pop and peek from stack2 since it is in the same order as a queue would have all the elements.
+
+class MyQueue {
+    Stack<Integer> stack1;
+    Stack<Integer> stack2;
+
+    public MyQueue() {
+        stack1=new Stack<Integer>();
+        stack2=new Stack<Integer>();
+    }
+    
+    public void push(int x) {
+        stack1.add(x);
+    }
+    
+    public int pop() {
+        if(stack2.isEmpty()){
+            while(!stack1.isEmpty()){
+                stack2.add(stack1.pop());
+            }
+        }
+        return stack2.pop();
+    }
+    
+    public int peek() {
+        if(stack2.isEmpty()){
+            while(!stack1.isEmpty()){
+                stack2.add(stack1.pop());
+            }
+        }
+        return stack2.peek();
+    }
+    
+    public boolean empty() {
+        return stack1.isEmpty() && stack2.isEmpty();
+    }
+}
+
+/**
+ * Your MyQueue object will be instantiated and called as such:
+ * MyQueue obj = new MyQueue();
+ * obj.push(x);
+ * int param_2 = obj.pop();
+ * int param_3 = obj.peek();
+ * boolean param_4 = obj.empty();
+ */
