@@ -1,0 +1,58 @@
+#Used array of linked lists to handle collision
+#Every array index represents an bucket and the _get_hash function determines which key an array belongs to
+#put, get, and remove traverse the linked list at the correct bucket index to perform the operations
+
+class MyHashMap:
+    class Node:
+        def __init__(self, key, value):
+            self.key = key
+            self.value = value
+            self.next = None
+
+    def __init__(self):
+        self.buckets = 1000
+        self.storage = [None] * self.buckets
+
+    def _get_hash(self, key):
+        return (2 * key) % self.buckets
+
+    def _get_prev(self, head, key):
+        prev = None
+        curr = head
+        while curr is not None and curr.key != key:
+            prev = curr
+            curr = curr.next
+        return prev
+
+    def put(self, key, value): 
+        index = self._get_hash(key)
+        if self.storage[index] is None:
+            self.storage[index] = self.Node(-1, -1)
+            self.storage[index].next = self.Node(key, value)
+            return
+
+        prev = self._get_prev(self.storage[index], key)
+        if prev.next is None:
+            prev.next = self.Node(key, value)
+        else:
+            prev.next.value = value
+
+    def get(self, key):
+        index = self._get_hash(key)
+        if self.storage[index] is None:
+            return -1
+        
+        prev = self._get_prev(self.storage[index], key)
+        if prev.next is None:
+            return -1
+        return prev.next.value
+
+    def remove(self, key):
+        index = self._get_hash(key)
+        if self.storage[index] is None:
+            return
+        
+        prev = self._get_prev(self.storage[index], key)
+        if prev.next is None:
+            return
+        prev.next = prev.next.next
