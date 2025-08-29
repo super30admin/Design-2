@@ -1,0 +1,23 @@
+class MyQueue:
+    def __init__(self):
+        self.inSt = []   # pushes go here
+        self.outSt = []  # pops/peeks come from here
+
+    def push(self, x):
+        self.inSt.append(x)
+
+    def _move(self):
+        if not self.outSt:
+            while self.inSt:
+                self.outSt.append(self.inSt.pop())
+
+    def pop(self):
+        self._move()
+        return self.outSt.pop()
+
+    def peek(self):
+        self._move()
+        return self.outSt[-1]
+
+    def empty(self):
+        return not self.inSt and not self.outSt
