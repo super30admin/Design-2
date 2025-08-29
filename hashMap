@@ -1,0 +1,48 @@
+class MyHashMap:
+    class Node:
+        def __init__(self, key, value, nxt):
+            self.key = key
+            self.value = value
+            self.next = nxt
+
+    def __init__(self):
+        self.buckets = 1001
+        self.storage = [None] * self.buckets
+
+    def _index(self, key):
+        return key % self.buckets
+
+    def put(self, key, value):
+        idx = self._index(key)
+        head = self.storage[idx]
+
+        # update if key exists
+        cur = head
+        while cur:
+            if cur.key == key:
+                cur.value = value
+                return
+            cur = cur.next
+
+        # insert new at head
+        self.storage[idx] = MyHashMap.Node(key, value, head)                             
+
+    def get(self, key):
+        idx = self._index(key)
+        cur = self.storage[idx]
+        while cur:
+            if cur.key == key:
+                return cur.value
+            cur = cur.next
+        return -1
+
+    def remove(self, key):
+        idx = self._index(key)
+        dummy = MyHashMap.Node(-1, -1, self.storage[idx])
+        prev, cur = dummy, dummy.next
+        while cur:
+            if cur.key == key:
+                prev.next = cur.next
+                break
+            prev, cur = cur, cur.next
+        self.storage[idx] = dummy.next
