@@ -1,0 +1,56 @@
+// Time Complexity :Amortized - O(1) Worst Case - O(n)
+// Space Complexity : O(n) number of elements in the stack
+// Did this code successfully run on Leetcode :Yes
+// Any problem you faced while coding this :No , As I solved the problem after attending a class
+
+
+// Your code here along with comments explaining your approach
+// I have maintained two stacks in and out , for every push elements are added in the in stack , for pop/peek if items in 
+// the outstack are empty then pop elements from in stack and add it to the out stack 
+
+
+public class MyQueue {
+
+    Stack<int> inStack;
+    Stack<int> outStack; 
+    public MyQueue() {
+        this.inStack = new Stack<int>();
+        this.outStack= new Stack<int>();
+    }
+    
+    public void Push(int x) {
+        inStack.Push(x);
+    }
+    
+    public int Pop() {
+        if(Empty()) return -1;
+        Peek();
+        return outStack.Pop();
+    }
+    
+    public int Peek() {
+
+        if(outStack.Count == 0)
+        {
+            while(inStack.Count !=0)
+            {
+                outStack.Push(inStack.Pop());
+            }
+        }
+        Console.WriteLine(outStack.Peek());
+        return outStack.Peek();
+    }
+    
+    public bool Empty() {
+        return inStack.Count == 0 && outStack.Count == 0;
+    }
+}
+
+/**
+ * Your MyQueue object will be instantiated and called as such:
+ * MyQueue obj = new MyQueue();
+ * obj.Push(x);
+ * int param_2 = obj.Pop();
+ * int param_3 = obj.Peek();
+ * bool param_4 = obj.Empty();
+ */

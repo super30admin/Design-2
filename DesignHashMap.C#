@@ -1,0 +1,103 @@
+// Time Complexity:
+// Amortized - O(1)
+
+// Space Complexity:
+// O(n)
+// Did this code successfully run on Leetcode :Yes
+// Any problem you faced while coding this :No , As I solved the problem after attending a class
+
+
+// Your code here along with comments explaining your approach
+//I implemented a HashMap using an array of buckets 
+//and resolved collisions using separate chaining with singly linked lists and a dummy head node.
+
+
+public class MyHashMap {
+    Node[] storage;
+    int bucket;
+    private class Node
+    {
+        public int key;
+        public int value;
+        public Node next;
+        public Node(int key,int value)
+        {
+            this.key = key;
+            this.value = value;
+        }
+    }
+
+    public MyHashMap() {
+        bucket = 1000;
+        storage = new Node[bucket];
+    }
+    private int GetHash(int key)
+    {
+        return key % bucket;
+    }
+    private Node GetPrev(Node head,int key)
+    {
+        Node prev=null;
+        Node cur = head;
+        while(cur!=null && cur.key!=key)
+        {
+            prev=cur;
+            cur=cur.next;
+        }
+        return prev;
+    }
+    public void Put(int key, int value) {
+        int index = GetHash(key);
+        if(storage[index]==null)
+        {
+            storage[index] = new Node(-1, -1); // dummy head
+            storage[index].next = new Node(key, value);
+            return;
+        }
+        Node prev = GetPrev(storage[index],key);
+        if (prev.next == null)
+            prev.next = new Node(key, value);
+        else
+            prev.next.value = value; // Key found then update
+
+    }
+    
+    public int Get(int key) {
+         int index = GetHash(key);
+
+        if (storage[index] == null)
+            return -1;
+
+        Node prev = GetPrev(storage[index], key);
+
+        if (prev.next == null)
+            return -1;
+
+        return prev.next.value;
+    }
+    
+    public void Remove(int key) {
+         int index = GetHash(key);
+
+        if (storage[index] == null)
+            return;
+
+        Node prev = GetPrev(storage[index], key);
+
+        if (prev.next == null)
+            return;
+
+        // Remove node
+        Node curr = prev.next;
+        prev.next = curr.next;
+        curr.next = null;
+    }
+}
+
+/**
+ * Your MyHashMap object will be instantiated and called as such:
+ * MyHashMap obj = new MyHashMap();
+ * obj.Put(key,value);
+ * int param_2 = obj.Get(key);
+ * obj.Remove(key);
+ */
