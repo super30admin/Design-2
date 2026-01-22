@@ -1,0 +1,29 @@
+# I’m using two stacks because it lets me fake the behavior of a queue even though stacks are LIFO.
+# The idea is that I push everything into one stack, and when I need to pop or peek, I dump things into the second stack so the order flips.
+# It feels weird at first, but once the second stack has the reversed order, getting the front element becomes super easy.
+
+class MyQueue:
+
+    def __init__(self):
+        self.in_stack = []   # stack for pushing new elements
+        self.out_stack = []  # stack for popping/peeking in queue order
+
+    def push(self, x: int) -> None:
+        self.in_stack.append(x)
+
+    def _shift(self):
+        # Move elements only when out_stack is empty
+        if not self.out_stack:
+            while self.in_stack:
+                self.out_stack.append(self.in_stack.pop())
+
+    def pop(self) -> int:
+        self._shift()
+        return self.out_stack.pop()
+
+    def peek(self) -> int:
+        self._shift()
+        return self.out_stack[-1]
+
+    def empty(self) -> bool:
+        return not self.in_stack and not self.out_stack
