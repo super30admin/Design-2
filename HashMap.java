@@ -1,3 +1,13 @@
+
+//Hashmap implementation with array of type Node (linked list)
+
+
+
+// Time Complexity :  time complexity of O(1) , it doesn't traverse more than 100 items per operation
+// Space Complexity : allocating O(n) node spaces
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : wiritng getPrev and handling null pointer exception is something took time for me.
+
 class MyHashMap {
 
     Node[] storage;
@@ -17,8 +27,8 @@ class MyHashMap {
 
     public MyHashMap() {
 
-    this.buckets = 1000;
-    storage = new Node[1000];
+    this.buckets = 10000;
+    storage = new Node[buckets];
         
         
     }

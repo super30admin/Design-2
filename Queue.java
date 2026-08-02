@@ -1,5 +1,14 @@
 //Problem 1: (https://leetcode.com/problems/implement-queue-using-stacks/)
 
+// Implement Queue using 2 Stacks
+// 
+
+// Time Complexity : Amortized O(1) time complexity for pop and peek
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : checking if outStack and is empty and instack is not empty condition took some time for me
+// followed the same approach as in class
+
 class MyQueue {
         Stack<Integer> inStack ;
           Stack<Integer> outStack;
