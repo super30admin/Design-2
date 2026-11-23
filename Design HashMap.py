@@ -1,5 +1,8 @@
+
+#Problem 2
 #Using double hashing approach.
 #T: O(1) for put, get and remove operation
+#S: O(n)
 
 
 class MyHashMap:
