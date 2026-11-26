@@ -4,50 +4,39 @@
 // Inserting into one stack representing the back of a Queue, and 
 // exerting out from the output stack representing the top of a queue.
 
+
 class MyQueue {
-    public Stack<Integer>inputStack;
-    public Stack<Integer>outputStack;
+    private final Stack<Integer> inputStack;
+    private final Stack<Integer> outputStack;
 
     public MyQueue() {
-        inputStack = new Stack<>();
-        outputStack = new Stack<>();
+        this.inputStack = new Stack<>();
+        this.outputStack = new Stack<>();
     }
-    
+
     public void push(int x) {
         inputStack.push(x);
-        return;
     }
-    
-    public int pop() {
-        
-        if (outputStack == null) return -1;
 
-        if (outputStack.isEmpty()) {
-            int isize = inputStack.size();
-            while (isize > 0) {
-                int transfer = inputStack.pop();
-                outputStack.push(transfer);
-                isize--;
-            }
-        }
+    public int pop() {
+        shiftStacks();
         return outputStack.pop();
     }
-    
+
     public int peek() {
-        if (outputStack == null) return -1;
-        if (outputStack.isEmpty()) {
-            int isize = inputStack.size();
-            while (isize > 0) {
-                int transfer = inputStack.pop();
-                outputStack.push(transfer);
-                isize--;
-            }
-        }
+        shiftStacks();
         return outputStack.peek();
     }
-    
+
     public boolean empty() {
-        if (inputStack.isEmpty() && outputStack.isEmpty()) return true;
-        else return false;
+        return inputStack.isEmpty() && outputStack.isEmpty();
+    }
+
+    private void shiftStacks() {
+        if (outputStack.isEmpty()) {
+            while (!inputStack.isEmpty()) {
+                outputStack.push(inputStack.pop());
+            }
+        }
     }
 }
